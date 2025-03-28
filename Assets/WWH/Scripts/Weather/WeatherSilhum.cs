@@ -22,10 +22,10 @@ public class WeatherSilhum : MonoBehaviour
         }
     }
 
-    public void OnDisable()
-    {
-        stageWeather.WeatherEnd();
-    }
+    //public void OnDisable()
+    //{
+    //    stageWeather.WeatherEnd();
+    //}
 
 
 }
