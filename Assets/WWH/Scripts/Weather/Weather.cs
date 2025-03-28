@@ -5,8 +5,7 @@ using UnityEngine;
 public class Weather : MonoBehaviour
 {
 
-    protected float value;
-    protected Sprite sprite;
+    [SerializeField][Range(0f,50f)] float value;
     public virtual void WeatherEnter()
     {
 
