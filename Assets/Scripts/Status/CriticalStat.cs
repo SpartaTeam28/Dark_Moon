@@ -21,11 +21,6 @@ public class CriticalStat : BaseStat
 
     public void AddDamageMultiples(float amount)
     {
-        SetDamageMultiples(criticalDamageMutilples + amount);
-    }
-
-    public void SubDamageMultiples(float amount)
-    {
         SetDamageMultiples(Mathf.Max(0, criticalDamageMutilples + amount));
     }
 }
