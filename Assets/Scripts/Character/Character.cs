@@ -6,11 +6,13 @@ public class Character : MonoBehaviour
 {
     public CharacterStat stat;
     public CharacterTraitManager traitManager;
+    public CharacterInfo info;
 
     private void Awake()
     {
         stat = GetComponent<CharacterStat>();
         traitManager = GetComponent<CharacterTraitManager>();
+        info = GetComponent<CharacterInfo>();
     }
 
     public void TakeDamaged(float amount)
