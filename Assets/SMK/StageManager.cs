@@ -5,23 +5,35 @@ using UnityEngine.SceneManagement;
 
 public class StageManager : MonoBehaviour
 {
-   
-    public static StageManager Instance;
+
+    public static StageManager instance;
+    public static StageManager Instance{ get { return instance; } }
     int currentScene = 1;
     int maxScene = 5;
-    bool isMonsterDie = false; // ÀûÀÌ ´Ù Á×À¸¸é true·Î ¹Ù²ãÁÙ°Í
+    public bool isMonsterDie = false; // ì ì´ ë‹¤ ì£½ìœ¼ë©´ trueë¡œ ë°”ê¿”ì¤„ê²ƒ
 
-
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
     bool CheckDie()
     {
-        // if monsterÃ¼·Â ==0
-        // Á¶°Ç¹® ³ÖÀ» °Í monster°¡ ´Ù Á×¾ú´ÂÁö È®ÀÎ ÈÄ 
+        // if monsterì²´ë ¥ ==0
+        // ì¡°ê±´ë¬¸ ë„£ì„ ê²ƒ monsterê°€ ë‹¤ ì£½ì—ˆëŠ”ì§€ í™•ì¸ í›„ 
         isMonsterDie = true;
 
         return isMonsterDie;
     }
 
-    public void NextScene()
+    public void ChangeScene()
     {
         if (isMonsterDie)
         {
@@ -29,25 +41,27 @@ public class StageManager : MonoBehaviour
         }
         else
         {
-            RestartGame(); // ¸ó½ºÅÍ ´Ù ¾ÈÁ×À¸¸é MainSceneÀ¸·Î ÀÌµ¿ÇØ¾ßÇÒ µí
+            RestartGame(); // ëª¬ìŠ¤í„° ë‹¤ ì•ˆì£½ìœ¼ë©´ MainSceneìœ¼ë¡œ ì´ë™í•´ì•¼í•  ë“¯
+            return;
         }
 
         if (currentScene > maxScene)
         {
             currentScene = maxScene;
-            Debug.Log("¸ğµç ¾ÀÀ» Å¬¸®¾î Çß½À´Ï´Ù");
-            //SceneManager.LoadScene("EndingScene"); // ¸ğµç ¾À Å¬¸®¾î½Ã ¸ŞÀÎÀ¸·Î ÀÌµ¿ÇØ¾ßÇÏ³ª °í¹Î
+            Debug.Log("ëª¨ë“  ì”¬ì„ í´ë¦¬ì–´ í–ˆìŠµë‹ˆë‹¤");
+            //SceneManager.LoadScene("EndingScene"); // ëª¨ë“  ì”¬ í´ë¦¬ì–´ì‹œ ë©”ì¸ìœ¼ë¡œ ì´ë™í•´ì•¼í•˜ë‚˜ ê³ ë¯¼
             return;
         }
 
         SceneManager.LoadScene("Stage"+currentScene);
+        isMonsterDie=false; // ë‹¤ìŒ ìŠ¤í…Œì´ì§€ë¥¼ ìœ„í•´ falseë¡œ ë³€ê²½
 
 
     }
 
     public void RestartGame()
     {
-        SceneManager.LoadScene("MainScene"); // °ÔÀÓ Àç½ÃÀÛ, ¸ŞÀÎ¾À Á¤ÇØÁö¸é ÀÌµ¿
+        SceneManager.LoadScene("MainScene"); // ê²Œì„ ì¬ì‹œì‘, ë©”ì¸ì”¬ ì •í•´ì§€ë©´ ì´ë™
 
     }
 }
