@@ -7,13 +7,22 @@ using UnityEngine;
 public class SynergyChecker : MonoBehaviour
 {
 
-    public Player[] party = new Player[4];
+
+
+
 
     public bool[] SynergyCheaker = new bool[] { false, false, false,false,false,false };
 
     public GameObject SynergyPrefabs;
     public Sprite[] SynergyIcon;
     public SynergyData[] synergyDatas;
+
+    public List<Character> confu;
+    public List<Character> kiseng;
+    public List<Character> kumGeok;
+    public List<Character> buddi;
+    public List<Character> hunter;
+    public List<Character> doSa;
 
     private void Awake()
     {
@@ -33,18 +42,47 @@ public class SynergyChecker : MonoBehaviour
 
     public void PartySynergyCheck()
     {
-        if (Array.Find(party, element => element.playerType == PlayerType.Dosa))
-            SynergyCheaker[0] = true;
-        if (Array.Find(party, element => element.playerType == PlayerType.KumGeok))
-            SynergyCheaker[1] = true;
-        if (Array.Find(party, element => element.playerType == PlayerType.Confusianism))
-            SynergyCheaker[2] = true;
-        if (Array.Find(party, element => element.playerType == PlayerType.Buddhist))
-            SynergyCheaker[3] = true;
-        if (Array.Find(party, element => element.playerType == PlayerType.Hunter))
-            SynergyCheaker[4] = true;
-        if (Array.Find(party, element => element.playerType == PlayerType.KiSeng))
-            SynergyCheaker[5] = true;
+
+
+        foreach(var character in GameManager.instance.friendlyCharacterList) 
+        {
+            if (character.GetComponent<Player>().playerType == PlayerType.Dosa)
+            {
+                SynergyCheaker[0] = true;
+                doSa.Add(character);
+                
+            }
+
+            if (character.GetComponent<Player>().playerType == PlayerType.KumGeok)
+            {
+                SynergyCheaker[1] = true;
+                kumGeok.Add(character);
+            }
+
+            if (character.GetComponent<Player>().playerType == PlayerType.Confusianism)
+            {
+                SynergyCheaker[2] = true;
+                confu.Add(character);
+            }
+     
+            if (character.GetComponent<Player>().playerType == PlayerType.Buddhist)
+            {
+                SynergyCheaker[3] = true;
+                buddi.Add(character);
+            }
+
+            if (character.GetComponent<Player>().playerType == PlayerType.Hunter)
+            {
+                SynergyCheaker[4] = true;
+                hunter.Add(character);
+            }
+
+            if (character.GetComponent<Player>().playerType == PlayerType.KiSeng)
+            {
+                SynergyCheaker[5] = true;
+                kiseng.Add(character);
+            }
+        }
     }
 
     public void PartySynergyOn()
@@ -53,35 +91,36 @@ public class SynergyChecker : MonoBehaviour
         int number = SynergyCheaker.Where(element => true).Count();
         if(number == 1)
         {
-            for (int i = 0; i< party.Length; i++) 
+            for (int i = 0; i< GameManager.instance.friendlyCharacterList.Count; i++) 
             {
-                party[i].GetComponent<CharacterStat>().health.AddHealth(100f);
+                GameManager.instance.friendlyCharacterList[i].GetComponent<CharacterStat>().health.AddHealth(100f);
             }
             SetSynergyPopUP(0);
         }
 
         if (SynergyCheaker[2] && SynergyCheaker[5]) //À¯»ý, ±â»ý
         {
-
-
-            Player[] Confu = Array.FindAll(party, element => element.playerType == PlayerType.Confusianism);
-            Player[] Kiseng = Array.FindAll(party, element => element.playerType == PlayerType.KiSeng);
-            Player[][] Jobset = new Player[][] {Confu, Kiseng};
+            List<List<Character>> characters = new List<List<Character>>
+            {
+                confu,
+                kiseng
+            };
 
             SetSynergyPopUP(1);
-            ApplySynergy(Jobset, synergyDatas[1]);
+            ApplySynergy(characters, synergyDatas[1]);
 
         }
 
         if (SynergyCheaker[1] && SynergyCheaker[4]) //»ç³É²Û °Ë°´
         {
-            Debug.Log("¸ö ¾²´Â »ç¶÷µé");
-            Player[] Confu = Array.FindAll(party, element => element.playerType == PlayerType.KumGeok);
-            Player[] Kiseng = Array.FindAll(party, element => element.playerType == PlayerType.Hunter);
-            Player[][] Jobset = new Player[][] { Confu, Kiseng };
 
+            List<List<Character>> characters = new List<List<Character>>
+            {
+               kumGeok,
+               hunter
+            };
             SetSynergyPopUP(2);
-            ApplySynergy(Jobset, synergyDatas[2]);
+            ApplySynergy(characters, synergyDatas[2]);
         }
 
         //if (SynergyCheaker[2] && SynergyCheaker[3]) //½º´Ô, À¯»ý
@@ -110,32 +149,33 @@ public class SynergyChecker : MonoBehaviour
         Popup.GetComponent<Synergy>().SetIcon(SynergyIcon[index]);
         Popup.GetComponent<Synergy>().SetText(synergyDatas[index]);
     }
-    public void ApplySynergy(Player[][] Jobset, SynergyData synergyData)
+    public void ApplySynergy(List<List<Character>> Jobset, SynergyData synergyData)
     {
 
-        if (synergyData.IsAdd)
+
+        if(synergyData.IsAdd)
         {
-            for (int i = 0; i < Jobset.Length; i++)
+            foreach(List<Character> characterList in Jobset)
             {
-                for (int j = 0; j < Jobset[i].Length; j++)
+                foreach(Character character in characterList)
                 {
-                    Jobset[i][j].GetComponent<CharacterStat>().StatusDictionary[synergyData.statType].AddStat(synergyData.value);
+                    character.GetComponent<CharacterStat>().StatusDictionary[synergyData.statType].AddMultiples(synergyData.multivalue);
                 }
             }
         }
         else
         {
-            for (int i = 0; i < Jobset.Length; i++)
+            foreach (List<Character> characterList in Jobset)
             {
-                for (int j = 0; j < Jobset[i].Length; j++)
+                foreach (Character character in characterList)
                 {
-                    Jobset[i][j].GetComponent<CharacterStat>().StatusDictionary[synergyData.statType].AddMultiples(synergyData.multivalue);
+                    character.GetComponent<CharacterStat>().StatusDictionary[synergyData.statType].AddStat(synergyData.value);
                 }
             }
         }
-    
 
-       
+
+
     }
 
 

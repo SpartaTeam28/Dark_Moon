@@ -178,6 +178,8 @@ GameObject:
   - component: {fileID: 56690862}
   - component: {fileID: 56690861}
   - component: {fileID: 56690863}
+  - component: {fileID: 56690865}
+  - component: {fileID: 56690864}
   m_Layer: 0
   m_Name: Buddhist
   m_TagString: Untagged
@@ -238,6 +240,35 @@ MonoBehaviour:
   critical: {fileID: 0}
   evasion: {fileID: 0}
   accuracy: {fileID: 0}
+--- !u!114 &56690864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56690860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b5597ea0764b5469ef32be4f1419de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availableTraits: []
+  appliedTraits: []
+  maxTraitCount: 2
+--- !u!114 &56690865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56690860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e25bd606acadb8c4080dfd3665537bd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat: {fileID: 0}
+  traitManager: {fileID: 0}
 --- !u!1 &71295351
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,6 +281,8 @@ GameObject:
   - component: {fileID: 71295352}
   - component: {fileID: 71295354}
   - component: {fileID: 71295355}
+  - component: {fileID: 71295357}
+  - component: {fileID: 71295356}
   m_Layer: 0
   m_Name: KiSeng
   m_TagString: Untagged
@@ -324,6 +357,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allSkillSet: []
   SilhumSkill: []
+--- !u!114 &71295356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71295351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b5597ea0764b5469ef32be4f1419de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availableTraits: []
+  appliedTraits: []
+  maxTraitCount: 2
+--- !u!114 &71295357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71295351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e25bd606acadb8c4080dfd3665537bd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat: {fileID: 0}
+  traitManager: {fileID: 0}
 --- !u!1 &140923916
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,6 +725,8 @@ GameObject:
   - component: {fileID: 353418451}
   - component: {fileID: 353418450}
   - component: {fileID: 353418452}
+  - component: {fileID: 353418454}
+  - component: {fileID: 353418453}
   m_Layer: 0
   m_Name: Confusianism
   m_TagString: Untagged
@@ -723,6 +787,35 @@ MonoBehaviour:
   critical: {fileID: 0}
   evasion: {fileID: 0}
   accuracy: {fileID: 0}
+--- !u!114 &353418453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353418449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b5597ea0764b5469ef32be4f1419de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availableTraits: []
+  appliedTraits: []
+  maxTraitCount: 2
+--- !u!114 &353418454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353418449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e25bd606acadb8c4080dfd3665537bd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat: {fileID: 0}
+  traitManager: {fileID: 0}
 --- !u!1 &356896843
 GameObject:
   m_ObjectHideFlags: 0
@@ -1209,6 +1302,56 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1024301664
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1024301666}
+  - component: {fileID: 1024301665}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1024301665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024301664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40056d1b99990c94591ba4035505a206, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  friendlyCharacterList:
+  - {fileID: 2053133746}
+  - {fileID: 71295357}
+  - {fileID: 353418454}
+  - {fileID: 1778817548}
+  EnemyCharacterList: []
+--- !u!4 &1024301666
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024301664}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 548.80884, y: 467.08344, z: -5.303641}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1764,6 +1907,8 @@ GameObject:
   - component: {fileID: 1778817546}
   - component: {fileID: 1778817545}
   - component: {fileID: 1778817547}
+  - component: {fileID: 1778817549}
+  - component: {fileID: 1778817548}
   m_Layer: 0
   m_Name: Hunter
   m_TagString: Untagged
@@ -1824,6 +1969,35 @@ MonoBehaviour:
   critical: {fileID: 0}
   evasion: {fileID: 0}
   accuracy: {fileID: 0}
+--- !u!114 &1778817548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778817544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e25bd606acadb8c4080dfd3665537bd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat: {fileID: 0}
+  traitManager: {fileID: 0}
+--- !u!114 &1778817549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778817544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b5597ea0764b5469ef32be4f1419de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availableTraits: []
+  appliedTraits: []
+  maxTraitCount: 2
 --- !u!1 &1901004325
 GameObject:
   m_ObjectHideFlags: 0
@@ -1838,6 +2012,8 @@ GameObject:
   - component: {fileID: 1901004329}
   - component: {fileID: 1901004330}
   - component: {fileID: 1901004331}
+  - component: {fileID: 1901004333}
+  - component: {fileID: 1901004332}
   m_Layer: 0
   m_Name: Dosa
   m_TagString: Untagged
@@ -2009,6 +2185,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allSkillSet: []
   SilhumSkill: []
+--- !u!114 &1901004332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901004325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b5597ea0764b5469ef32be4f1419de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availableTraits: []
+  appliedTraits: []
+  maxTraitCount: 2
+--- !u!114 &1901004333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901004325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e25bd606acadb8c4080dfd3665537bd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat: {fileID: 0}
+  traitManager: {fileID: 0}
 --- !u!1 &1992342470
 GameObject:
   m_ObjectHideFlags: 0
@@ -2136,6 +2341,7 @@ MonoBehaviour:
   - {fileID: 2053133742}
   - {fileID: 71295352}
   - {fileID: 353418450}
+  party_: []
   SynergyCheaker: 000000000000
   SynergyPrefabs: {fileID: 0}
   SynergyIcon: []
@@ -2196,6 +2402,8 @@ GameObject:
   - component: {fileID: 2053133743}
   - component: {fileID: 2053133742}
   - component: {fileID: 2053133744}
+  - component: {fileID: 2053133746}
+  - component: {fileID: 2053133745}
   m_Layer: 0
   m_Name: KumGeok
   m_TagString: Untagged
@@ -2256,6 +2464,35 @@ MonoBehaviour:
   critical: {fileID: 0}
   evasion: {fileID: 0}
   accuracy: {fileID: 0}
+--- !u!114 &2053133745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053133741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b5597ea0764b5469ef32be4f1419de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availableTraits: []
+  appliedTraits: []
+  maxTraitCount: 2
+--- !u!114 &2053133746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053133741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e25bd606acadb8c4080dfd3665537bd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat: {fileID: 0}
+  traitManager: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2269,3 +2506,4 @@ SceneRoots:
   - {fileID: 140923920}
   - {fileID: 665554945}
   - {fileID: 1042148004}
+  - {fileID: 1024301666}

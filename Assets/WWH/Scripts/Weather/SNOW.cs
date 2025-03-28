@@ -8,10 +8,18 @@ public class SNOW : Weather
     {
         base.WeatherEnter();
         Debug.Log("´«½ÃÀÛ");
+        foreach (Character character in GameManager.instance.friendlyCharacterList)
+        {
+            character.GetComponent<CharacterStat>().attack.AddMultiples(0.3f);
+        }
     }
     public override void WeatherLeave()
     {
         base.WeatherLeave();
         Debug.Log("´«³¡");
+        foreach (Character character in GameManager.instance.friendlyCharacterList)
+        {
+            character.GetComponent<CharacterStat>().attack.AddMultiples(-0.3f);
+        }
     }
 }

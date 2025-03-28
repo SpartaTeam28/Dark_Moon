@@ -7,11 +7,19 @@ public class FOG : Weather
     public override void WeatherEnter()
     {
         base.WeatherEnter();
-        Debug.Log("안개시작");
+
+        foreach(Character character in GameManager.instance.friendlyCharacterList)
+        {
+            character.GetComponent<CharacterStat>().accuracy.AddMultiples(-0.3f);
+        }
+ 
     }
     public override void WeatherLeave()
     {
         base.WeatherLeave();
-        Debug.Log("안개끝");
+        foreach (Character character in GameManager.instance.friendlyCharacterList)
+        {
+            character.GetComponent<CharacterStat>().accuracy.AddMultiples(0.3f);
+        }
     }
 }
