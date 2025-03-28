@@ -76,7 +76,6 @@ public class UIManager : MonoBehaviour
         titleUI?.SetActive(currentState);
         characterSelectUI?.SetActive(currentState);
         lobbyUI?.SetActive(currentState);
-        
 
         //lobbyUI?.SetActive(currentState);
         //gameUI?.SetActive(currentState);
