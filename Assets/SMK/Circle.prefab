@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3188384374455086357}
   - component: {fileID: 3959039876501707009}
+  - component: {fileID: 70950286812548392}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -84,3 +85,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &70950286812548392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5849937774913682135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9919e5acded51814f933cf5471019149, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 0
+  atk: 20
+  speed: 20
+  maxHp: 1000
+  bossPrefab: {fileID: 0}
+  bossSpawned: 0

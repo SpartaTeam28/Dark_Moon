@@ -5,50 +5,49 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    [SerializeField]
-    int hp;
-    int atk = 20; // 공격력
-    int speed = 20; // 공격속도
-    int maxHp = 1000; 
-    public GameObject bossPrefab; // bossPrefab
-    private bool bossSpawned = false;
+
+    public float hp;
+    public int atk = 20; // 공격력
+    public int speed = 20; // 공격속도
+    public int maxHp = 1000;
+  
+
+    [SerializeField] private bool bossSpawned = false;
     bool isDead = false;
+
     void Start()
     {
         hp = maxHp;
+       
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Die()
     {
-        if (isDead)
-        {
-            Die();
-        }
-    }
+        if (isDead) return;
 
-   /* void SpawnBoss() // 보스 생성
-    {
-        Instantiate(bossPrefab,new Vector3(5,0,0),Quaternion.identity);
-        bossSpawned = true;
-    }
-   */
-    void Die()
-    {
-        if (hp <= 0)
-        {
-            StageManager.Instance.isMonsterDie = true;
-            StageManager.Instance.ChangeScene();
-           
-        }
-        
+        isDead = true;
+        Debug.Log("보스가 사망했습니다."); 
+
+        // 보스가 죽으면 StageManager에게 알림
+        StageManager.Instance.BossDefeated(); 
+
+        // 보스 오브젝트 삭제
+        Destroy(gameObject);
     }
     public void Attack() // 보스가 플레이어 공격 ,타격
     {
-        // GameManager.Instance.~ -= atk;
+        int i = 0;
+        GameManager.Instance.friendlyCharacterList[i].stat.startMaxHealth -= atk;
     }
     public void TakeDamage(int damage) // 피격
     {
         hp -= damage;
+
+        if (hp <= 0)
+        {
+            Die();
+
+        }
+
     }
 }
