@@ -43,12 +43,7 @@ public class HealthStat : BaseStat
 
     public void AddHealth(float amount)
     {
-        SetHealth(amount + curHealth);
-    }
-
-    public void SubHealth(float amount)
-    {
-        SetHealth(Mathf.Max(0, curHealth - amount));
+        SetHealth(Mathf.Max(0, curHealth + amount));
     }
 
     public override string GetValueToString()
