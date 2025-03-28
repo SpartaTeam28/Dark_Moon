@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public enum PlayerType
 {
@@ -15,4 +16,17 @@ public enum PlayerType
 public class Player : MonoBehaviour
 {
     public PlayerType playerType;
+    public SkillBook skillBook;
+    private void Awake()
+    {
+        skillBook = GetComponent<SkillBook>();
+    }
+
+    private void OnMouseDown()
+    {
+        ClickManager.Instance.skillBook = skillBook;
+    }
+
+
 }
+

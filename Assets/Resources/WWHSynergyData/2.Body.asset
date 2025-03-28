@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54f2273e11c0aed4fac564b0e5f09ae0, type: 3}
-  m_Name: 0.ONE
+  m_Name: 2.Body
   m_EditorClassIdentifier: 
-  synergyName: "\uB3C4\uD50C\uAC31\uC5B4"
-  synergyDes: "4\uBA85\uC774 \uBAA8\uB450 \uAC19\uC740 \uCE90\uB9AD\uD130"
-  synergyEffect: "\uCCB4\uB825 10% \uC99D\uAC00"
-  statType: 2
+  synergyName: "\uBAB8 \uC4F0\uB294 \uC0AC\uB78C\uB4E4"
+  synergyDes: "\uC0AC\uB0E5\uAFBC\uACFC \uAC80\uAC1D\uC740 \uC9C1\uC811 \uB3CC\uC9C4\uD569\uB2C8\uB2E4"
+  synergyEffect: "\uBC29\uC5B4\uB825 20% \uC99D\uAC00"
+  statType: 1
   IsAdd: 0
   value: 0
-  multivalue: 0
+  multivalue: 0.2

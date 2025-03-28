@@ -17,6 +17,13 @@ MonoBehaviour:
   isCoolTimeSkill: 0
   skillCoolTime: 0
   skillType: 0
+  skillUsingType: 0
+  UsingValue: 0
   isBuff: 0
   isDebuff: 0
   duration: 0
+  skillText:
+    skillNametext: 6
+    skillDestext: 6
+    skillAllAttactext: 6
+  Icon: {fileID: 21300000, guid: 06abe4d0d97c03542a9ff7896e156d25, type: 3}

@@ -73,13 +73,16 @@ public class SynergyChecker : MonoBehaviour
 
         }
 
-        //if (SynergyCheaker[1] && SynergyCheaker[4]) //»ç³É²Û °Ë°´
-        //{
-        //    Debug.Log("¸ö ¾²´Â »ç¶÷µé");
-        //    Player[] Confu = Array.FindAll(party, element => element.playerType == PlayerType.KumGeok);
-        //    Player[] Kiseng = Array.FindAll(party, element => element.playerType == PlayerType.Hunter);
-        //    //½Ã³ÊÁö ¾ÆÀÌÄÜ ¾÷
-        //}
+        if (SynergyCheaker[1] && SynergyCheaker[4]) //»ç³É²Û °Ë°´
+        {
+            Debug.Log("¸ö ¾²´Â »ç¶÷µé");
+            Player[] Confu = Array.FindAll(party, element => element.playerType == PlayerType.KumGeok);
+            Player[] Kiseng = Array.FindAll(party, element => element.playerType == PlayerType.Hunter);
+            Player[][] Jobset = new Player[][] { Confu, Kiseng };
+
+            SetSynergyPopUP(2);
+            ApplySynergy(Jobset, synergyDatas[2]);
+        }
 
         //if (SynergyCheaker[2] && SynergyCheaker[3]) //½º´Ô, À¯»ý
         //{

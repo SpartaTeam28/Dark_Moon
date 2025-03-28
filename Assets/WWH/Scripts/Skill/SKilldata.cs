@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,8 +39,16 @@ public class SKilldata : ScriptableObject
     public bool isDebuff;
     public int duration;
 
-
-
-
-
+    [Header("SkillDesInfo")]
+    public SkillText skillText;
+    public Sprite Icon;
 }
+
+[Serializable]
+public class SkillText
+{
+    public string skillNametext;
+    public string skillDestext;
+    public string skillAllAttactext;
+}
+
