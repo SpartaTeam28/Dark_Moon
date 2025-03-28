@@ -6,11 +6,19 @@ using UnityEngine;
 public enum SkillType
 {
     Dosa,
-    GumGeok,
-    GiSeng,
+    KumGeok,
+    KiSeng,
     Buddhist,
     Hunter,
     Confucianism
+
+}
+
+public enum SkillUsingType
+{
+    Mana,
+    Ki,
+    Blood
 
 }
 
@@ -23,6 +31,8 @@ public class SKilldata : ScriptableObject
     public bool isCoolTimeSkill;
     public int skillCoolTime;
     public SkillType skillType;
+    public SkillUsingType skillUsingType;
+    public float UsingValue;
     [Header("Buff/Debuff Info")]
     public bool isBuff;
     public bool isDebuff;
