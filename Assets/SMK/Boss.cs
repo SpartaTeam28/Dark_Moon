@@ -16,5 +16,22 @@ public class Boss : MonoBehaviour
     }
 
     // Update is called once per frame
-   
+    void Update()
+    {
+        if (!bossSpawned)
+        {
+            SpawnBoss();
+        }
+    }
+
+    public void Attack()
+    {
+        // GameManager.Instance.~ -= atk;
+    }
+
+    void SpawnBoss()
+    {
+        Instantiate(bossPrefab,new Vector3(5,0,0),Quaternion.identity);
+        bossSpawned = true;
+    }
 }
