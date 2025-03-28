@@ -83,7 +83,7 @@ public class StageManager : MonoBehaviour
     {
         
         Debug.Log("모든 씬을 클리어 했습니다");
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("MainScene"); // 성공씬
     }
 
     public void SpawnBoss() //보스 생성

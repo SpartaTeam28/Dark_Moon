@@ -275,9 +275,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d66b701fa6118742a8617cc9d4677df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentScene: 0
+  currentScene: 4
+  maxScene: 5
   isMonsterDie: 0
+  bossSpawned: 0
   bossPrefab: {fileID: 5849937774913682135, guid: 064f406ec376c114ab8f4b51dd89025b, type: 3}
+  stage:
+  - Busan
+  - Daegu
+  - Ulsan
+  - Daejeon
+  - Seoul
 --- !u!4 &1652763327
 Transform:
   m_ObjectHideFlags: 0

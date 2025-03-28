@@ -37,7 +37,7 @@ public class Boss : MonoBehaviour
     public void Attack() // 보스가 플레이어 공격 ,타격
     {
         int i = 0;
-        GameManager.Instance.friendlyCharacterList[i].stat.startMaxHealth -= atk;
+        //GameManager.Instance.friendlyCharacterList[i].stat.startMaxHealth -= atk;
     }
     public void TakeDamage(int damage) // 피격
     {
