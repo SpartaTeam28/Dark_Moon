@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54f2273e11c0aed4fac564b0e5f09ae0, type: 3}
+  m_Name: ConfuGi
+  m_EditorClassIdentifier: 
+  synergyName: "\uB9E4\uB09C\uAD6D\uC8FD"
+  synergyDes: "\uC120\uBE44\uC640 \uAE30\uC0DD\uC740 \uC2DC\uB97C \uC368\uC694"
+  synergyEffect: "\uACF5\uACA9\uB825 20% \uC0C1\uC2B9"
+  statType: 0
+  IsAdd: 0
+  value: 2
+  multivalue: 0.2
