@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SUN : Weather
@@ -8,6 +9,7 @@ public class SUN : Weather
     public override void WeatherEnter()
     {
         base.WeatherEnter();
+
         Debug.Log("태양시작");
         foreach (Character character in GameManager.instance.friendlyCharacterList)
         {
@@ -24,4 +26,8 @@ public class SUN : Weather
         }
     }
 
+    protected override void SetText()
+    {
+        TextUi.GetComponentInChildren<TextMeshProUGUI>(true).text = "태양입니다";
+    }
 }

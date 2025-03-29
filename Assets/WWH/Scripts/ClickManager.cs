@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class ClickManager : MonoBehaviour
 
 
     public SkillBook skillBook;
+
+    public SKilldata sKilldata;
     private void Awake()
     {
         if(instance == null)
@@ -21,6 +24,12 @@ public class ClickManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+
+    public void SetSkill(int index)
+    {
+        sKilldata = skillBook.SilhumSkill[index];
     }
 
 

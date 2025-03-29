@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class MOON : Weather
@@ -8,6 +9,7 @@ public class MOON : Weather
     {
         base.WeatherEnter();
         Debug.Log("π„Ω√¿€");
+  
         foreach (Character character in GameManager.instance.friendlyCharacterList)
         {
             character.GetComponent<CharacterStat>().critical.AddMultiples(0.3f);
@@ -21,5 +23,9 @@ public class MOON : Weather
         {
             character.GetComponent<CharacterStat>().critical.AddMultiples(0.3f);
         }
+    }
+    protected override void SetText()
+    {
+        TextUi.GetComponentInChildren<TextMeshProUGUI>(true).text = "π„¿‘¥œ¥Ÿ";
     }
 }

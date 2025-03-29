@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class FOG : Weather
@@ -8,7 +9,7 @@ public class FOG : Weather
     {
         base.WeatherEnter();
 
-        foreach(Character character in GameManager.instance.friendlyCharacterList)
+        foreach (Character character in GameManager.instance.friendlyCharacterList)
         {
             character.GetComponent<CharacterStat>().accuracy.AddMultiples(-0.3f);
         }
@@ -21,5 +22,10 @@ public class FOG : Weather
         {
             character.GetComponent<CharacterStat>().accuracy.AddMultiples(0.3f);
         }
+    }
+
+    protected override void SetText()
+    {
+        TextUi.GetComponentInChildren<TextMeshProUGUI>(true).text = "안개입니다";
     }
 }

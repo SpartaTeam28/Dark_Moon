@@ -1,11 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Weather : MonoBehaviour
+public class Weather : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
 
     [SerializeField][Range(0f,50f)] float value;
+    protected GameObject TextUi;
+
+    private void Start()
+    {
+        TextUi = transform.GetChild(0).gameObject;
+    }
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        TextUi.SetActive(true);
+        SetText();
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+       TextUi.SetActive(false);
+    }
+
+
     public virtual void WeatherEnter()
     {
 
@@ -15,4 +35,11 @@ public class Weather : MonoBehaviour
 
     }
 
+    protected virtual void SetText()
+    {
+     
+
+    }
+ 
+   
 }

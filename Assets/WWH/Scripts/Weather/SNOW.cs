@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SNOW : Weather
@@ -21,5 +22,10 @@ public class SNOW : Weather
         {
             character.GetComponent<CharacterStat>().attack.AddMultiples(-0.3f);
         }
+    }
+
+    protected override void SetText()
+    {
+        TextUi.GetComponentInChildren<TextMeshProUGUI>(true).text = "´«ÀÔ´Ï´Ù";
     }
 }

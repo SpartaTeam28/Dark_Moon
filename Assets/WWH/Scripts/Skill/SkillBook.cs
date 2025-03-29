@@ -9,7 +9,6 @@ public class SkillBook : MonoBehaviour
     private void Awake()
     {
         SilhumSkill =  FourSkillSet("Dosa");
-
     }
     public SKilldata[] FourSkillSet(string PlayerName)
     {
