@@ -17,14 +17,17 @@ public class Player : MonoBehaviour
 {
     public PlayerType playerType;
     public SkillBook skillBook;
+    public CharacterStat characterStat;
     private void Awake()
     {
         skillBook = GetComponent<SkillBook>();
+        characterStat = GetComponent<CharacterStat>();
     }
 
     private void OnMouseDown()
     {
-        ClickManager.Instance.skillBook = skillBook;
+        ClickManager.Instance.SetSkillBook(skillBook);
+        ClickManager.Instance.SetCharecterStat(characterStat);
     }
 
 
