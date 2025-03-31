@@ -14,7 +14,8 @@ public enum UIState
     HealStation, //4
     Training, //5
     Smith, //6
-    Stage //7
+    Stage, //7
+    Battle //8
 }
 
 

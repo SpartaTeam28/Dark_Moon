@@ -11,11 +11,19 @@ public class StageSelectUI : BaseUI
     public Button busanButton;
     public Button exitButton;
 
-    public GameObject seoulStage;
-    public GameObject deajonStage;
-    public GameObject deaguStage;
-    public GameObject busanStage;
+    public BaseStageSelectUI seoulStage;
+    public BaseStageSelectUI deajonStage;
+    public BaseStageSelectUI deaguStage;
+    public BaseStageSelectUI busanStage;
 
+
+    private void Awake()
+    {
+        seoulButton.interactable = false;
+        deajonButton.interactable = false;
+        deaguButton.interactable = false;
+        
+    }
     protected override UIState GetUIState()
     {
         return UIState.Stage;
@@ -24,37 +32,16 @@ public class StageSelectUI : BaseUI
     public override void Init(UIManager uiManager)
     {
         base.Init(uiManager);
-        seoulButton.onClick.AddListener(OnClickSeoilStage);
-        deajonButton.onClick.AddListener(OnClickDeajonStage);
-        deaguButton.onClick.AddListener(OnClickDeajonStage);
-        busanButton.onClick.AddListener(OnClickBusanStage);
         exitButton.onClick.AddListener(OnClickExit);
     }
-
-
-    public void OnClickSeoilStage()
-    {
-        seoulStage.SetActive(true);
-    }
-    public void OnClickDeajonStage()
-    {
-        deaguStage.SetActive(true);
-    }
-
-    public void OnClickDeaguStage()
-    {
-        deaguStage.SetActive(true);
-    }
-
-    public void OnClickBusanStage()
-    {
-        busanStage.SetActive(true);
-    }
-
 
 
     public void OnClickExit()
     {
         uiManager.OnClickLobby();
+        seoulStage.gameObject.SetActive(false);
+        deajonStage.gameObject.SetActive(false);
+        deaguStage.gameObject.SetActive(false);
+        busanStage.gameObject.SetActive(false);
     }
 }

@@ -179,13 +179,13 @@ public class TrainingUI : BaseUI
 
     public void SetCharacterStats(Character character)
     {
-        attackText.text = character.stat.attack.ToString();
-        defenceText.text = character.stat.defence.ToString();
+        attackText.text = character.stat.attack.GetValueToString();
+        defenceText.text = character.stat.defence.GetValueToString();
         healthText.text = character.stat.health.GetValueToString();
         manaText.text = character.stat.mana.GetValueToString();
-        criticalText.text = character.stat.critical.ToString();
-        accuracyText.text = character.stat.accuracy.ToString();
-        evasionText.text = character.stat.accuracy.ToString();     
+        criticalText.text = character.stat.critical.GetValueToString();
+        accuracyText.text = character.stat.accuracy.GetValueToString();
+        evasionText.text = character.stat.accuracy.GetValueToString();
     }
 
     public void SelectCharacter(int index)
