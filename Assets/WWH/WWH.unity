@@ -1769,6 +1769,7 @@ MonoBehaviour:
   characterStat: {fileID: 0}
   skillBook: {fileID: 0}
   skillData: {fileID: 0}
+  IsBuff: 0
   isAttacking: 0
 --- !u!4 &1042148004
 Transform:
@@ -1803,7 +1804,7 @@ GameObject:
   - component: {fileID: 1044718090}
   - component: {fileID: 1044718089}
   m_Layer: 0
-  m_Name: Dosa (2)
+  m_Name: Friend
   m_TagString: Friends
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
