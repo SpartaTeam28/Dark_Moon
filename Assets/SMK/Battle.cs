@@ -90,7 +90,7 @@ public class Battle : MonoBehaviour
     {
         // 플레이어와 적 리스트를 하나의 리스트로 합친 후 속도 순 정렬
         turnOrder = new List<Character>();
-        //turnOrder.AddRange(players);
+        turnOrder.AddRange(players);
         turnOrder.AddRange(enemies);
         // 수정? 고민
         turnOrder = turnOrder.OrderByDescending(c => c.stat.speed.value).ToList();
