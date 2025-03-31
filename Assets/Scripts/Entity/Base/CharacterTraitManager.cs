@@ -94,6 +94,8 @@ public class CharacterTraitManager : MonoBehaviour
             return;
         }
 
+        int oldIndex = appliedTraits.IndexOf(oldTrait);
+
         // 기존 특성 효과 제거
         BaseStat oldStat = stat.StatusDictionary[oldTrait.affectedStat];
 
@@ -103,7 +105,7 @@ public class CharacterTraitManager : MonoBehaviour
         if (oldTrait.multiplierModifier != 0f)
             oldStat.AddStat(oldTrait.multiplierModifier * -1);
 
-        appliedTraits.Remove(oldTrait);
+        appliedTraits.RemoveAt(oldIndex);
         availableTraits.Add(oldTrait); // 제거한 특성은 다시 풀로 되돌림
 
         // 새로운 특성 무작위 선택
@@ -124,7 +126,7 @@ public class CharacterTraitManager : MonoBehaviour
         if (newTrait.multiplierModifier != 0f)
             newStat.AddMultiples(newTrait.multiplierModifier);
 
-        appliedTraits.Add(newTrait);
+        appliedTraits.Insert(oldIndex, newTrait);
         availableTraits.Remove(newTrait); // 중복 방지
 
         Debug.Log($"[특성 교체] {oldTrait.traitName} → {newTrait.traitName}");
