@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54f2273e11c0aed4fac564b0e5f09ae0, type: 3}
-  m_Name: 1.ConfuGi
+  m_Name: 0. ONE
   m_EditorClassIdentifier: 
-  synergyName: "\uB9E4\uB09C\uAD6D\uC8FD"
-  synergyDes: "\uC120\uBE44\uC640 \uAE30\uC0DD\uC740 \uC2DC\uB97C \uC368\uC694"
-  synergyEffect: "\uACF5\uACA9\uB825 20% \uC0C1\uC2B9"
-  statType: 0
+  synergyName: "\uB3C4\uD50C\uAC31\uC5B4"
+  synergyDes: "4\uBA85\uC774 \uBAA8\uB450 \uAC19\uC740 \uCE90\uB9AD\uD130"
+  synergyEffect: "\uCCB4\uB825 10% \uC99D\uAC00"
+  statType: 2
   IsAdd: 0
-  value: 2
-  multivalue: 0.2
+  value: 0
+  multivalue: 0

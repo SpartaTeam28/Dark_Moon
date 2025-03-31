@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43797c51a088d3b48ab4a8876a533138, type: 3}
-  m_Name: cut
+  m_Name: cut 7
   m_EditorClassIdentifier: 
   skillDamage: 0
   skillTargetCount: 0
