@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: JeonUChi 3
   m_EditorClassIdentifier: 
   skillDamage: 0
-  skillTargetCount: 0
+  skillTargetCount: 3
   isCoolTimeSkill: 0
   skillCoolTime: 0
   skillType: 0
@@ -24,6 +24,6 @@ MonoBehaviour:
   duration: 0
   skillText:
     skillNametext: 3
-    skillDestext: 3
+    skillDestext: multi Attack
     skillAllAttactext: 3
   Icon: {fileID: 21300000, guid: eed1ebcab0d6c3743950949d537f1f5b, type: 3}

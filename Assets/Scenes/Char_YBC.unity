@@ -155,6 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
   traitManager: {fileID: 0}
+  info: {fileID: 0}
 --- !u!114 &231367348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,15 +171,19 @@ MonoBehaviour:
   startAttck: 19
   startDefence: 19
   startMaxHealth: 100
+  startMaxMana: 0
   startCritical: 39
   startAccurracy: 80
   startEvasion: 10
+  startSpeed: 0
   attack: {fileID: 0}
   defence: {fileID: 0}
   health: {fileID: 0}
+  mana: {fileID: 0}
   critical: {fileID: 0}
   evasion: {fileID: 0}
   accuracy: {fileID: 0}
+  speed: {fileID: 0}
 --- !u!4 &231367349
 Transform:
   m_ObjectHideFlags: 0
@@ -206,6 +211,7 @@ GameObject:
   - component: {fileID: 265237697}
   - component: {fileID: 265237698}
   - component: {fileID: 265237700}
+  - component: {fileID: 265237701}
   m_Layer: 0
   m_Name: Character (2)
   m_TagString: Untagged
@@ -227,6 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
   traitManager: {fileID: 0}
+  info: {fileID: 0}
 --- !u!114 &265237698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,15 +249,19 @@ MonoBehaviour:
   startAttck: 19
   startDefence: 19
   startMaxHealth: 100
+  startMaxMana: 50
   startCritical: 39
   startAccurracy: 80
   startEvasion: 10
+  startSpeed: 1
   attack: {fileID: 0}
   defence: {fileID: 0}
   health: {fileID: 0}
+  mana: {fileID: 0}
   critical: {fileID: 0}
   evasion: {fileID: 0}
   accuracy: {fileID: 0}
+  speed: {fileID: 0}
 --- !u!4 &265237699
 Transform:
   m_ObjectHideFlags: 0
@@ -284,6 +295,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 357ffa8a048725e44b0c571d8c7e28fd, type: 2}
   appliedTraits: []
   maxTraitCount: 2
+--- !u!114 &265237701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265237696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ce2ad0e727d9b4d9bf368a7819d947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: 
+  job: {fileID: 0}
 --- !u!1 &341702750
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,6 +341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
   traitManager: {fileID: 0}
+  info: {fileID: 0}
 --- !u!114 &341702752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,15 +357,19 @@ MonoBehaviour:
   startAttck: 19
   startDefence: 19
   startMaxHealth: 100
+  startMaxMana: 0
   startCritical: 39
   startAccurracy: 80
   startEvasion: 10
+  startSpeed: 0
   attack: {fileID: 0}
   defence: {fileID: 0}
   health: {fileID: 0}
+  mana: {fileID: 0}
   critical: {fileID: 0}
   evasion: {fileID: 0}
   accuracy: {fileID: 0}
+  speed: {fileID: 0}
 --- !u!4 &341702753
 Transform:
   m_ObjectHideFlags: 0
@@ -479,6 +509,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
   traitManager: {fileID: 0}
+  info: {fileID: 0}
 --- !u!114 &673855056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -494,15 +525,19 @@ MonoBehaviour:
   startAttck: 19
   startDefence: 19
   startMaxHealth: 100
+  startMaxMana: 0
   startCritical: 39
   startAccurracy: 80
   startEvasion: 10
+  startSpeed: 0
   attack: {fileID: 0}
   defence: {fileID: 0}
   health: {fileID: 0}
+  mana: {fileID: 0}
   critical: {fileID: 0}
   evasion: {fileID: 0}
   accuracy: {fileID: 0}
+  speed: {fileID: 0}
 --- !u!4 &673855057
 Transform:
   m_ObjectHideFlags: 0
@@ -550,6 +585,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
   traitManager: {fileID: 0}
+  info: {fileID: 0}
 --- !u!114 &1085559099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -565,15 +601,19 @@ MonoBehaviour:
   startAttck: 19
   startDefence: 19
   startMaxHealth: 100
+  startMaxMana: 0
   startCritical: 39
   startAccurracy: 80
   startEvasion: 10
+  startSpeed: 0
   attack: {fileID: 0}
   defence: {fileID: 0}
   health: {fileID: 0}
+  mana: {fileID: 0}
   critical: {fileID: 0}
   evasion: {fileID: 0}
   accuracy: {fileID: 0}
+  speed: {fileID: 0}
 --- !u!4 &1085559100
 Transform:
   m_ObjectHideFlags: 0
@@ -655,6 +695,7 @@ GameObject:
   - component: {fileID: 1829798298}
   - component: {fileID: 1829798299}
   - component: {fileID: 1829798301}
+  - component: {fileID: 1829798302}
   m_Layer: 0
   m_Name: Character (1)
   m_TagString: Untagged
@@ -676,6 +717,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
   traitManager: {fileID: 0}
+  info: {fileID: 0}
 --- !u!114 &1829798299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -691,15 +733,19 @@ MonoBehaviour:
   startAttck: 19
   startDefence: 19
   startMaxHealth: 100
+  startMaxMana: 50
   startCritical: 39
   startAccurracy: 80
   startEvasion: 10
+  startSpeed: 1
   attack: {fileID: 0}
   defence: {fileID: 0}
   health: {fileID: 0}
+  mana: {fileID: 0}
   critical: {fileID: 0}
   evasion: {fileID: 0}
   accuracy: {fileID: 0}
+  speed: {fileID: 0}
 --- !u!4 &1829798300
 Transform:
   m_ObjectHideFlags: 0
@@ -733,6 +779,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 357ffa8a048725e44b0c571d8c7e28fd, type: 2}
   appliedTraits: []
   maxTraitCount: 2
+--- !u!114 &1829798302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829798297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ce2ad0e727d9b4d9bf368a7819d947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: 
+  job: {fileID: 0}
 --- !u!1 &1924968748
 GameObject:
   m_ObjectHideFlags: 0
@@ -745,6 +805,7 @@ GameObject:
   - component: {fileID: 1924968750}
   - component: {fileID: 1924968749}
   - component: {fileID: 1924968752}
+  - component: {fileID: 1924968753}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -767,15 +828,19 @@ MonoBehaviour:
   startAttck: 10
   startDefence: 10
   startMaxHealth: 100
+  startMaxMana: 50
   startCritical: 39
   startAccurracy: 80
   startEvasion: 10
+  startSpeed: 1
   attack: {fileID: 0}
   defence: {fileID: 0}
   health: {fileID: 0}
+  mana: {fileID: 0}
   critical: {fileID: 0}
   evasion: {fileID: 0}
   accuracy: {fileID: 0}
+  speed: {fileID: 0}
 --- !u!114 &1924968750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -790,6 +855,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
   traitManager: {fileID: 0}
+  info: {fileID: 0}
 --- !u!4 &1924968751
 Transform:
   m_ObjectHideFlags: 0
@@ -823,6 +889,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 357ffa8a048725e44b0c571d8c7e28fd, type: 2}
   appliedTraits: []
   maxTraitCount: 2
+--- !u!114 &1924968753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924968748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ce2ad0e727d9b4d9bf368a7819d947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: 
+  job: {fileID: 0}
 --- !u!1 &1957408003
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,6 +915,7 @@ GameObject:
   - component: {fileID: 1957408004}
   - component: {fileID: 1957408005}
   - component: {fileID: 1957408007}
+  - component: {fileID: 1957408008}
   m_Layer: 0
   m_Name: Character (3)
   m_TagString: Untagged
@@ -856,6 +937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
   traitManager: {fileID: 0}
+  info: {fileID: 0}
 --- !u!114 &1957408005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -871,15 +953,19 @@ MonoBehaviour:
   startAttck: 19
   startDefence: 19
   startMaxHealth: 100
+  startMaxMana: 50
   startCritical: 39
   startAccurracy: 80
   startEvasion: 10
+  startSpeed: 1
   attack: {fileID: 0}
   defence: {fileID: 0}
   health: {fileID: 0}
+  mana: {fileID: 0}
   critical: {fileID: 0}
   evasion: {fileID: 0}
   accuracy: {fileID: 0}
+  speed: {fileID: 0}
 --- !u!4 &1957408006
 Transform:
   m_ObjectHideFlags: 0
@@ -913,6 +999,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 357ffa8a048725e44b0c571d8c7e28fd, type: 2}
   appliedTraits: []
   maxTraitCount: 2
+--- !u!114 &1957408008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957408003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ce2ad0e727d9b4d9bf368a7819d947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: 
+  job: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
