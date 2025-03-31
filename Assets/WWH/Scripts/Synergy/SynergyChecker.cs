@@ -105,10 +105,8 @@ public class SynergyChecker : MonoBehaviour
                 confu,
                 kiseng
             };
-
             SetSynergyPopUP(1);
             ApplySynergy(characters, synergyDatas[1]);
-
         }
 
         if (SynergyCheaker[1] && SynergyCheaker[4]) //»ç³É²Û °Ë°´
@@ -173,9 +171,30 @@ public class SynergyChecker : MonoBehaviour
                 }
             }
         }
+    }
 
-
-
+    public void EndSynergy(List<List<Character>> Jobset, SynergyData synergyData)
+    {
+        if (synergyData.IsAdd)
+        {
+            foreach (List<Character> characterList in Jobset)
+            {
+                foreach (Character character in characterList)
+                {
+                    character.GetComponent<CharacterStat>().StatusDictionary[synergyData.statType].AddMultiples(-synergyData.multivalue);
+                }
+            }
+        }
+        else
+        {
+            foreach (List<Character> characterList in Jobset)
+            {
+                foreach (Character character in characterList)
+                {
+                    character.GetComponent<CharacterStat>().StatusDictionary[synergyData.statType].AddStat(-synergyData.value);
+                }
+            }
+        }
     }
 
 

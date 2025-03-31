@@ -43,26 +43,15 @@ public class ClickManager : MonoBehaviour
                 {
                     if (hit.transform != null)
                     {
-                        if (hit.transform.CompareTag("Enemy") && skillData.skillTargetCount == 1)
+                        if (skillData.skillTargetCount == 1)
                         {
-                            OnePersonAttack(hit.transform.GetComponent<Character>());
+                            OnePersonAttack(hit.transform.GetComponent<Character>(), hit);
                         }
-                        if (hit.transform.CompareTag("Enemy") && skillData.skillTargetCount > 1 && !skillData.isDebuff)
+                        else if(skillData.skillTargetCount>1)
                         {
                             AllPersomAttack();
                         }
-                        if (hit.transform.CompareTag("Enemy") && skillData.isDebuff)
-                        {
-                            Debuff(hit.transform.GetComponent<CharacterStat>());
-                        }
-                        if (hit.transform.CompareTag("Friends") && skillData.isBuff)
-                        { 
-                            Buff(hit.transform.GetComponent<CharacterStat>());
-                        }
-                        if(hit.transform.CompareTag("Friends") && skillData.isHeal)
-                        {
-                            Heal();
-                        }
+
                         AttackEnd();
                     }
                 }
@@ -112,24 +101,65 @@ public class ClickManager : MonoBehaviour
 
 
 
-    public void OnePersonAttack(Character stat)
+    public void OnePersonAttack(Character stat, RaycastHit2D hit)
     {
-       
-        stat.TakeDamaged(skillData.skillDamage);
+        if(skillData.isDebuff && hit.transform.CompareTag("Emeny")) 
+        {
+            Debuff(hit.transform.GetComponent<CharacterStat>());
+        }
+        else if(skillData.isBuff)
+        {
+            Buff(hit.transform.GetComponent<CharacterStat>());
+        }
+        else if(skillData.isHeal)
+        {
+            Heal(hit.transform.GetComponent<CharacterStat>());
+        }
+        else
+        {
+            stat.TakeDamaged(skillData.skillDamage);
+        }
 
     }
 
     public void AllPersomAttack()
     {
-        foreach(Character character in GameManager.instance.EnemyCharacterList)
+        if (skillData.isBuff)
         {
-            character.TakeDamaged(skillData.skillDamage);
+            foreach (Character character in GameManager.instance.EnemyCharacterList)
+            {
+                Buff(character.stat);
+            }
         }
+        else if (skillData.isDebuff)
+        {
+            foreach (Character character in GameManager.instance.EnemyCharacterList)
+            {
+                Debuff(character.stat);
+            }
+        }
+        else if (skillData.isHeal)
+        {
+            foreach (Character character in GameManager.instance.EnemyCharacterList)
+            {
+                Heal(character.stat);
+            }
+        }
+        else
+        {
+            foreach (Character character in GameManager.instance.EnemyCharacterList)
+            {
+                character.TakeDamaged(skillData.skillDamage);
+            }
+        }
+
+
+   
     }
 
-    public void Heal()
+    public void Heal(CharacterStat character)
     {
-        characterStat.health.AddHealth(skillData.skillDamage);
+        character.health.AddHealth(skillData.skillDamage);
     }
     public void Debuff(CharacterStat stat)
     {
