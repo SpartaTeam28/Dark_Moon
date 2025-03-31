@@ -1,17 +1,21 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
 
 
 public enum UIState
 {
     Title, //0
     CharacterSelect, // 1
-    Lobby // 2
-
-
+    Lobby, // 2
+    Jumag, // 3
+    HealStation, //4
+    Training, //5
+    Smith, //6
+    Stage, //7
+    Battle //8
 }
 
 
@@ -24,13 +28,21 @@ public class UIManager : MonoBehaviour
     TitleUI titleUI = null;
     CharacterSelectUI characterSelectUI = null;
     LobbyUI lobbyUI = null;
+    JumagUI jumagUI = null;
+    //HealStationUI healStationUI = null;
+    TrainingUI trainingUI = null;
+    SmithUI smithUI = null;
+    StageSelectUI stageSelectUI = null;
 
+    public List<Character> partnerCharacters;// 구매한 캐릭터 리스트
 
-    public string playerName { get; private set; }
+    public event Action<int> OnGoldChanged;
+    private int gold = 10000;
+
 
     private static UIManager _instance;
 
-
+    public bool isNotStart;
 
     public static UIManager instance
     {
@@ -63,27 +75,37 @@ public class UIManager : MonoBehaviour
         characterSelectUI.Init(this);
         lobbyUI = GetComponentInChildren<LobbyUI>(true);
         lobbyUI.Init(this);
+        jumagUI = GetComponentInChildren<JumagUI>(true);
+        jumagUI?.Init(this);
+        //healStationUI = GetComponentInChildren<HealStationUI>(true);
+        //healStationUI?.Init(this);
+        trainingUI = GetComponentInChildren<TrainingUI>(true);
+        trainingUI?.Init(this);
+        smithUI = GetComponentInChildren<SmithUI>(true);
+        smithUI?.Init(this);
+        stageSelectUI = GetComponentInChildren<StageSelectUI>(true);
+        stageSelectUI?.Init(this);
+
     }
 
     private void Start()
     {
-        ChangeState(currentState);
+        if (!isNotStart) 
+            ChangeState(currentState);
     }
 
     public void ChangeState(UIState state) //UI오브젝트를 on off 해주는 기능
     {
         currentState = state; //아래에서 해당하는 UI오브젝트를 찾아 on off 해줌
+
         titleUI?.SetActive(currentState);
         characterSelectUI?.SetActive(currentState);
         lobbyUI?.SetActive(currentState);
-
-        //lobbyUI?.SetActive(currentState);
-        //gameUI?.SetActive(currentState);
-        //pauseUI?.SetActive(currentState);
-        //gameOverUI?.SetActive(currentState);
-        //settingUI?.SetActive(currentState);
-        //achievementUI?.SetActive(currentState);
-        //customizeUI?.SetActive(currentState);
+        jumagUI?.SetActive(currentState);
+        //healStationUI?.SetActive(currentState);
+        trainingUI?.SetActive(currentState);
+        smithUI?.SetActive(currentState);
+        stageSelectUI?.SetActive(currentState);
     }
 
     public void OnClickStart() //시작하기를 누른경우
@@ -105,15 +127,87 @@ public class UIManager : MonoBehaviour
         ChangeState(UIState.Lobby);
     }
 
+    public void OnClickJumag()
+    {
+        ChangeState(UIState.Jumag);
+    }
+
+    //public void OnClickHealStation()
+    //{
+    //    ChangeState(UIState.HealStation);
+    //}
+
+    public void OnClickSmith()
+    {
+        ChangeState(UIState.Smith);
+    }
+
+    public void OnClickTraining()
+    {
+        ChangeState(UIState.Training);
+    }
+
+    public void OnClickStartStage()
+    {
+        ChangeState(UIState.Stage);
+    }
+
     public void OnClickBack()
     {
         ChangeState(prevState);
     }
 
-
-    public void SetPlayerName()
+    public void SetPlayer(string name)
     {
-        playerName = characterSelectUI.nickNamePopup.nickNameText.text.ToString();
+        characterSelectUI.SetPlayerCharacter(name);
+    }
+
+   
+
+    public void SetCharacterInfo(Character character, int index)
+    {
+        trainingUI.SetCharacterStats(character);
+        trainingUI.SelectCharacter(index);
+    }
+
+    public void AddPartnerSlotList(Character character)
+    {
+        partnerCharacters.Add(character);
+        trainingUI.InstatiateCharacterSlotList(character);
+    }
+
+    public void AddGold(int amount)
+    {
+        gold += amount;
+        OnGoldChanged?.Invoke(gold);
+    }
+
+    public void SpenGold(int amount)
+    {
+        gold -= amount;
+        OnGoldChanged?.Invoke(gold);
+    }
+
+    public int GetGold() => gold;
+
+    public Transform SetTraitTransform()
+    {
+        return trainingUI.traitTransform;
+    }
+
+    public Character SelectCharacter()
+    {
+        return trainingUI.selectCharacter;
+    }
+
+    public void ReturnCharacter(Character character)
+    {
+        jumagUI.allPartnerList.Add(character);
+    }
+
+    public void GeneratePartner()
+    {
+        jumagUI.GenerateNewPartners();
     }
 
 

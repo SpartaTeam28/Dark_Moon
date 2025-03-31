@@ -11,7 +11,7 @@ public class SNOW : Weather
         Debug.Log("传矫累");
         foreach (Character character in GameManager.instance.friendlyCharacterList)
         {
-            character.GetComponent<CharacterStat>().attack.AddMultiples(0.3f);
+            character.GetComponent<CharacterStat>().speed.AddStat(-3);
         }
     }
     public override void WeatherLeave()
@@ -20,12 +20,12 @@ public class SNOW : Weather
         Debug.Log("传场");
         foreach (Character character in GameManager.instance.friendlyCharacterList)
         {
-            character.GetComponent<CharacterStat>().attack.AddMultiples(-0.3f);
+            character.GetComponent<CharacterStat>().speed.AddStat(+3);
         }
     }
 
     protected override void SetText()
     {
-        TextUi.GetComponentInChildren<TextMeshProUGUI>(true).text = "传涝聪促";
+        TextUi.GetComponentInChildren<TextMeshProUGUI>(true).text = "气汲\n酒焙狼 加档 3 皑家";
     }
 }
