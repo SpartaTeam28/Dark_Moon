@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
 public enum Turn
 {
     start,
@@ -20,16 +22,23 @@ public class Battle : MonoBehaviour
     public GameObject attackButtonPrefab; // 버튼 프리팹 (Inspector에서 설정
     public bool isLock; // 잠금
 
-    List<Character> players;
-    List<Character> enemies;  // 적 리스트
-    List<Character> turnOrder; // 턴 순서 리스트
+    public List<Character> players;
+    public List<Character> enemies;  // 적 리스트
+    public List<Character> turnOrder; // 턴 순서 리스트
     int currentTurnIndex = 0; // 현재 턴 진행 중인 캐릭터 인덱스
 
     private List<Button> attackButtons = new List<Button>(); // 버튼 리스트
-
+    
+    [Header("스테이지별 적 리스트")]
+    [SerializeField] public List<Character> UlsanEnemies;
+    [SerializeField] private List<Character> BusanEnemies;
+    [SerializeField] private List<Character> HanbatEnemies;
+    [SerializeField] private List<Character> DeaguEnemies;
 
     private void Awake()
     {
+        players = new List<Character>(GameManager.Instance.friendlyCharacterList);
+        LoadEnemies();
         turn = Turn.start; // 전투 시작
         BattleStart();
     }
@@ -41,14 +50,50 @@ public class Battle : MonoBehaviour
         CreateAttackButtons();
         NextTurn();
     }
+    public void LoadEnemies()
+    {
+        // 스테이지에 맞는 적 리스트 로드
+        Debug.Log($"UlsanEnemies Count: {DeaguEnemies.Count}"); // 몇 개의 적이 있는지 확인
+        
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        switch (currentScene)
+        {
+            case "Ulsan":
+                enemies = new List<Character>(UlsanEnemies);
+                Debug.Log($"UlsanEnemies Count: {UlsanEnemies.Count}");
+                break;
+
+            case "Daegu":
+                enemies = new List<Character>(DeaguEnemies);
+                Debug.Log($"DeaguEnemies Count: {DeaguEnemies.Count}");
+                break;
+
+            case "Busan":
+                enemies = new List<Character>(BusanEnemies);
+                Debug.Log($"BusanEnemies Count: {BusanEnemies.Count}");
+                break;
+
+            case "Hanbat":
+                enemies = new List<Character>(HanbatEnemies);
+                Debug.Log($"HanbatEnemies Count: {HanbatEnemies.Count}");
+                break;
+
+            default:
+                Debug.LogError($"적 리스트가 없습니다! 현재 씬: {currentScene}");
+                break;
+        }
+        Debug.Log($"Enemies Count after LoadEnemies(): {enemies.Count}"); // enemies가 정상적으로 설정됐는지 확인
+    }
 
     public void SpeedCheck()
     {
         // 플레이어와 적 리스트를 하나의 리스트로 합친 후 속도 순 정렬
         turnOrder = new List<Character>();
-        turnOrder.AddRange(players);
+        //turnOrder.AddRange(players);
         turnOrder.AddRange(enemies);
-        turnOrder = turnOrder.OrderByDescending(c => c.speed).ToList(); // 속도 기준 내림차순 정렬
+        // 수정? 고민
+        turnOrder = turnOrder.OrderByDescending(c => c.stat.speed.value).ToList();
         currentTurnIndex = 0; // 첫 번째 캐릭터부터 시작
     }
     public void NextTurn()
