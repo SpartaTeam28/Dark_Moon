@@ -51,7 +51,7 @@ public class ClickManager : MonoBehaviour
                         }
                         else if(skillData.skillTargetCount>1)
                         {
-                            AllPersomAttack();
+                            AllPersonAttack();
                         }
 
                         AttackEnd();
@@ -123,12 +123,13 @@ public class ClickManager : MonoBehaviour
         else
         {
             stat.TakeDamaged(skillData.skillDamage);
+            ManaSub();
             TargetDown();
         }
 
     }
 
-    public void AllPersomAttack()
+    public void AllPersonAttack()
     {
 
         if (skillData.isBuff)
@@ -159,6 +160,7 @@ public class ClickManager : MonoBehaviour
             foreach (Character character in GameManager.instance.EnemyCharacterList)
             {
                 character.TakeDamaged(skillData.skillDamage);
+                ManaSub();
                 TargetDown();
             }
         }
@@ -170,6 +172,7 @@ public class ClickManager : MonoBehaviour
     public void Heal(CharacterStat character)
     {
         character.health.AddHealth(skillData.skillDamage);
+        ManaSub();
         TargetDown();
     }
     public void Debuff(CharacterStat stat)
@@ -227,6 +230,7 @@ public class ClickManager : MonoBehaviour
     public IEnumerator BuffStart(BaseStat stat)
     {
         SKilldata sKilldata = skillData;
+        ManaSub();
         if (skillData.isMulti)
         {
             stat.AddMultiples(skillData.multiValue);
@@ -251,6 +255,7 @@ public class ClickManager : MonoBehaviour
     public IEnumerator DeBuffStart(BaseStat stat)
     {
         SKilldata sKilldata = skillData;
+        ManaSub();
         if (skillData.isMulti)
         {
             stat.AddMultiples(-skillData.multiValue);
@@ -326,6 +331,16 @@ public class ClickManager : MonoBehaviour
             character.transform.GetChild(0).gameObject.SetActive(false);
         }
     }
+
+    public void ManaSub()
+    {
+        characterStat.mana.curMana -= skillData.UsingValue;
+    }
+
+    //public void CoolTimeSet()
+    //{
+        
+    //}
 
 
 

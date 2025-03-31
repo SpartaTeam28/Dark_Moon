@@ -122,21 +122,30 @@ public class SynergyChecker : MonoBehaviour
             ApplySynergy(characters, synergyDatas[2]);
         }
 
-        //if (SynergyCheaker[2] && SynergyCheaker[3]) //스님, 유생
-        //{
-        //    Debug.Log("종교전쟁");
-        //    Player[] Confu = Array.FindAll(party, element => element.playerType == PlayerType.Confusianism);
-        //    Player[] Kiseng = Array.FindAll(party, element => element.playerType == PlayerType.Buddhist);
-        //    //시너지 아이콘 업
-        //}
+        if (SynergyCheaker[3] && SynergyCheaker[2]) //스님 유생
+        {
 
-        //if (SynergyCheaker[0] && SynergyCheaker[5])
-        //{
-        //    Debug.Log("한국판 하울의 움직이는 성");
-        //    Player[] Confu = Array.FindAll(party, element => element.playerType == PlayerType.Dosa);
-        //    Player[] Kiseng = Array.FindAll(party, element => element.playerType == PlayerType.KiSeng);
-        //    //시너지 아이콘 업
-        //}
+            List<List<Character>> characters = new List<List<Character>>
+            {
+                confu,
+                buddi
+
+            };
+            SetSynergyPopUP(3);
+            ApplySynergy(characters, synergyDatas[3]);
+        }
+
+        if (SynergyCheaker[0] && SynergyCheaker[5])
+        {
+            List<List<Character>> characters = new List<List<Character>>
+            {
+                doSa,
+                kiseng
+
+            };
+            SetSynergyPopUP(4);
+            ApplySynergy(characters, synergyDatas[4]);
+        }
 
 
 
@@ -152,7 +161,7 @@ public class SynergyChecker : MonoBehaviour
     {
 
 
-        if(synergyData.IsAdd)
+        if(!synergyData.IsAdd)
         {
             foreach(List<Character> characterList in Jobset)
             {
@@ -176,7 +185,7 @@ public class SynergyChecker : MonoBehaviour
 
     public void EndSynergy(List<List<Character>> Jobset, SynergyData synergyData)
     {
-        if (synergyData.IsAdd)
+        if (!synergyData.IsAdd)
         {
             foreach (List<Character> characterList in Jobset)
             {

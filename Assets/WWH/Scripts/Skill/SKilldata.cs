@@ -42,8 +42,6 @@ public class SKilldata : ScriptableObject
     [Header("Skill Basic Info")]
     public float skillDamage;
     public int skillTargetCount;
-    public bool isCoolTimeSkill;
-    public int skillCoolTime;
     public bool isHeal;
     public SkillType skillType;
     public SkillUsingType skillUsingType;
