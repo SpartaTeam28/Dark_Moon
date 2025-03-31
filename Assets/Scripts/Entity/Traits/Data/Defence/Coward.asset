@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: caa7aae40ca9ded489cd3631e9e6ae7f, type: 3}
-  m_Name: Weakling
+  m_Name: Coward
   m_EditorClassIdentifier: 
-  traitName: "\uB098\uC57D\uD568"
-  description: "\uBAB8\uC774 \uBD80\uC2E4\uD574\uBCF4\uC778\uB2E4."
-  affectedStat: 0
+  traitName: "\uAC81\uC7C1\uC774"
+  description: "\uBAB8\uC774 \uC6C0\uCE20\uB824\uC788\uB2E4."
+  affectedStat: 1
   valueModifier: -10
   multiplierModifier: 0

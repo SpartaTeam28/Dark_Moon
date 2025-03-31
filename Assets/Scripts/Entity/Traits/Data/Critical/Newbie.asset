@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: caa7aae40ca9ded489cd3631e9e6ae7f, type: 3}
-  m_Name: Stoutness
+  m_Name: Newbie
   m_EditorClassIdentifier: 
-  traitName: "\uAE45\uACE8"
-  description: "\uBAB8\uC774 \uB0A8\uB4E4\uBCF4\uB2E4 \uB354 \uD2BC\uD2BC\uD558\uB2E4."
-  affectedStat: 1
-  valueModifier: 10
+  traitName: "\uC2E0\uC785"
+  description: "\uC804\uD22C\uC5D0 \uC11C\uD234\uB7EC \uBCF4\uC778\uB2E4."
+  affectedStat: 4
+  valueModifier: -10
   multiplierModifier: 0
