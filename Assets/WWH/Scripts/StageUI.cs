@@ -21,14 +21,36 @@ public class StageUI : MonoBehaviour
 
     public void Set()
     {
+
+
         if(ClickManager.Instance.skillBook != null)
         {
             for(int i = 0; i < images.Length; i++) 
             {
+                images[i].enabled = true;
                 images[i].sprite = ClickManager.Instance.skillBook.SilhumSkill[i].Icon;
             }
-          
+
+            for(int i = 0;i < buttons.Length; i++) 
+            {
+                buttons[i].onClick.RemoveAllListeners();
+                int index = i;
+                buttons[i].onClick.AddListener(() => ClickManager.Instance.SetSkill(index));
+            }
         }
+        else
+        {
+            for (int i = 0; i < images.Length; i++)
+            {
+                images[i].enabled = false;
+            }
+
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                buttons[i].onClick.RemoveAllListeners();
+            }
+        }
+
     }
 
 

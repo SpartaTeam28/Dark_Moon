@@ -19,11 +19,11 @@ MonoBehaviour:
   skillType: 0
   skillUsingType: 0
   UsingValue: 0
-  isBuff: 0
+  isBuff: 1
   isDebuff: 0
   duration: 0
   skillText:
     skillNametext: 4
-    skillDestext: 4
+    skillDestext: Buff
     skillAllAttactext: 4
   Icon: {fileID: 21300000, guid: aa9220a4630dfef45adbd0c6f1be9d0a, type: 3}

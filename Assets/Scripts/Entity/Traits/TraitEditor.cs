@@ -94,6 +94,16 @@ public class TraitEditor : EditorWindow
                 traitBox.Add(statLabel);
                 traitBox.Add(valueLabel);
 
+                var replaceButton = new Button(() =>
+                {
+                    character.traitManager.ReplaceTrait(trait);
+                    OnSpriteSelectionChange(new List<object> { character });
+                })
+                {
+                    text = "이 특성 교체"
+                };
+                traitBox.Add(replaceButton);
+
                 m_RightPane.Add(traitBox);
             }
         }
