@@ -37,7 +37,7 @@ public class Battle : MonoBehaviour
 
     private void Awake()
     {
-        players = new List<Character>(GameManager.Instance.friendlyCharacterList);
+        //players = new List<Character>(GameManager.Instance.friendlyCharacterList);
         LoadEnemies();
         turn = Turn.start; // 전투 시작
         BattleStart();
@@ -134,6 +134,7 @@ public class Battle : MonoBehaviour
         Debug.Log($"{player.name}이(가) 공격을 했습니다.");
 
         NextTurn();
+
     }
 
     IEnumerator EnemyAttack(Character enemy)
