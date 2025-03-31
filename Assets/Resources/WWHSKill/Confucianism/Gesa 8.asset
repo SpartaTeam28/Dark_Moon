@@ -10,22 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43797c51a088d3b48ab4a8876a533138, type: 3}
-  m_Name: PoemWriting 1
+  m_Name: Gesa 8
   m_EditorClassIdentifier: 
   skillDamage: 0
   skillTargetCount: 0
-  isHeal: 0
-  skillType: 2
-  skillUsingType: 0
-  UsingValue: 0
-  skillStatType: 0
-  isMulti: 0
+  isCoolTimeSkill: 0
+  skillCoolTime: 0
+  skillType: 5
   isBuff: 0
   isDebuff: 0
-  multiValue: 0
   duration: 0
-  skillText:
-    skillNametext: 
-    skillDestext: 
-    skillAllAttactext: 
-  Icon: {fileID: 0}

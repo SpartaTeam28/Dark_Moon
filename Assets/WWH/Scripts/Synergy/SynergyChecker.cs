@@ -6,11 +6,6 @@ using UnityEngine;
 
 public class SynergyChecker : MonoBehaviour
 {
-
-
-
-
-
     public bool[] SynergyCheaker = new bool[] { false, false, false,false,false,false };
 
     public GameObject SynergyPrefabs;

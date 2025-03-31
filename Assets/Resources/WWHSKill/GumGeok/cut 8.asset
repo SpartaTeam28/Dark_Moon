@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43797c51a088d3b48ab4a8876a533138, type: 3}
-  m_Name: Pray
+  m_Name: cut 8
   m_EditorClassIdentifier: 
   skillDamage: 0
   skillTargetCount: 0
   isCoolTimeSkill: 0
   skillCoolTime: 0
-  skillType: 3
+  skillType: 1
   isBuff: 0
   isDebuff: 0
   duration: 0
