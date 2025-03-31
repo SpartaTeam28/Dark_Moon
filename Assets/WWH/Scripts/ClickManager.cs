@@ -33,6 +33,8 @@ public class ClickManager : MonoBehaviour
 
         if (isAttacking)
         {
+
+            TargetSet();
             if (Input.GetMouseButtonDown(0))
             {
                 Vector2 WorldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -69,6 +71,7 @@ public class ClickManager : MonoBehaviour
     public void SetCharecterStat(CharacterStat character)
     {
         characterStat = character;
+        
     }
     public void SetSkillBook(SkillBook skill)
     {
@@ -80,6 +83,7 @@ public class ClickManager : MonoBehaviour
                 skillData = null;
             }
             isAttacking = false;
+            TargetDown();
         }
 
 
@@ -89,7 +93,8 @@ public class ClickManager : MonoBehaviour
     {
         skillData = skillBook.SilhumSkill[index];
         isAttacking = true;
-        if(skillData.isBuff || skillData.isHeal)
+        TargetDown();
+        if (skillData.isBuff || skillData.isHeal)
         {
             IsBuff = true;
         }
@@ -103,7 +108,7 @@ public class ClickManager : MonoBehaviour
 
     public void OnePersonAttack(Character stat, RaycastHit2D hit)
     {
-        if(skillData.isDebuff && hit.transform.CompareTag("Emeny")) 
+        if(skillData.isDebuff && hit.transform.CompareTag("Enemy")) 
         {
             Debuff(hit.transform.GetComponent<CharacterStat>());
         }
@@ -118,17 +123,21 @@ public class ClickManager : MonoBehaviour
         else
         {
             stat.TakeDamaged(skillData.skillDamage);
+            TargetDown();
         }
 
     }
 
     public void AllPersomAttack()
     {
+
         if (skillData.isBuff)
         {
-            foreach (Character character in GameManager.instance.EnemyCharacterList)
+            foreach (Character character in GameManager.instance.friendlyCharacterList)
             {
+           
                 Buff(character.stat);
+                
             }
         }
         else if (skillData.isDebuff)
@@ -140,7 +149,7 @@ public class ClickManager : MonoBehaviour
         }
         else if (skillData.isHeal)
         {
-            foreach (Character character in GameManager.instance.EnemyCharacterList)
+            foreach (Character character in GameManager.instance.friendlyCharacterList)
             {
                 Heal(character.stat);
             }
@@ -150,6 +159,7 @@ public class ClickManager : MonoBehaviour
             foreach (Character character in GameManager.instance.EnemyCharacterList)
             {
                 character.TakeDamaged(skillData.skillDamage);
+                TargetDown();
             }
         }
 
@@ -160,6 +170,7 @@ public class ClickManager : MonoBehaviour
     public void Heal(CharacterStat character)
     {
         character.health.AddHealth(skillData.skillDamage);
+        TargetDown();
     }
     public void Debuff(CharacterStat stat)
     {
@@ -182,12 +193,13 @@ public class ClickManager : MonoBehaviour
                 StartCoroutine(DeBuffStart(stat.speed));
                 break;
         }
-
+        TargetDown();
 
     }
 
     public void Buff(CharacterStat stat)
     {
+     
         switch (skillData.skillStatType)
         {
             case SkillStatType.Attack:
@@ -209,6 +221,7 @@ public class ClickManager : MonoBehaviour
                 StartCoroutine(BuffStart(stat.speed));
                 break;
         }
+        TargetDown();
     }
 
     public IEnumerator BuffStart(BaseStat stat)
@@ -241,32 +254,30 @@ public class ClickManager : MonoBehaviour
         if (skillData.isMulti)
         {
             stat.AddMultiples(-skillData.multiValue);
-            Debug.Log("Start");
         }
         else
         {
-            Debug.Log("Start");
             stat.AddStat(-skillData.skillDamage);
         }
         yield return new WaitUntil(() => IsSilhum);
         if (sKilldata.isMulti)
         {
             stat.AddMultiples(sKilldata.multiValue);
-            Debug.Log("End");
         }
         else
         {
-            Debug.Log("End");
             stat.AddStat(sKilldata.skillDamage);
         }
     }
 
     public void AttackEnd()
     {
+        TargetDown();
         characterStat = null;
         skillBook = null;
         skillData = null;
         isAttacking =false;
+        IsBuff = false;
     }
     public bool IsEnoughMana(CharacterStat character)
     {
@@ -279,6 +290,41 @@ public class ClickManager : MonoBehaviour
             return false;
         }
 
+    }
+
+
+    public void TargetSet()
+    {
+        if (skillData.skillTargetCount > 1)
+        {
+            if (skillData.isHeal || skillData.isBuff)
+            {
+                foreach (Character character in GameManager.instance.friendlyCharacterList)
+                {
+                    character.transform.GetChild(0).gameObject.SetActive(true);
+                }
+            }
+            else
+            {
+                foreach (Character character in GameManager.instance.EnemyCharacterList)
+                {
+                    character.transform.GetChild(0).gameObject.SetActive(true);
+                }
+            }
+        }
+    }
+
+
+    public void TargetDown()
+    {
+        foreach (Character character in GameManager.instance.friendlyCharacterList)
+        {
+            character.transform.GetChild(0).gameObject.SetActive(false);
+        }
+        foreach (Character character in GameManager.instance.EnemyCharacterList)
+        {
+            character.transform.GetChild(0).gameObject.SetActive(false);
+        }
     }
 
 
