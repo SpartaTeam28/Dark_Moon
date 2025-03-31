@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43797c51a088d3b48ab4a8876a533138, type: 3}
-  m_Name: JeonUChi
+  m_Name: JeonUChi 8
   m_EditorClassIdentifier: 
   skillDamage: 0
   skillTargetCount: 0
@@ -20,10 +20,10 @@ MonoBehaviour:
   skillUsingType: 0
   UsingValue: 0
   isBuff: 0
-  isDebuff: 0
+  isDebuff: 1
   duration: 0
   skillText:
     skillNametext: 8
-    skillDestext: 8
+    skillDestext: Debuff
     skillAllAttactext: 8
   Icon: {fileID: 21300000, guid: 26e3aeab4dc4e5343b4b40a99f2b5c0f, type: 3}

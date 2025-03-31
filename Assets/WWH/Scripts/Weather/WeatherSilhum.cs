@@ -10,6 +10,7 @@ public class WeatherSilhum : MonoBehaviour
 
     private void Start()
     {
+        stageWeather = GetComponent<StageWeather>();
         stageWeather.WeatherRandomStart();
     }
     private void Update()
