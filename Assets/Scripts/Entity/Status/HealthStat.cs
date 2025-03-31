@@ -46,6 +46,11 @@ public class HealthStat : BaseStat
         SetHealth(Mathf.Max(0, curHealth + amount));
     }
 
+    public void FullHealth()
+    {
+        curHealth = value;
+    }
+
     public override string GetValueToString()
     {
         return curHealth.ToString("F2") + "/" + base.GetValueToString();

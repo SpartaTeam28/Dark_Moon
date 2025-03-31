@@ -1,18 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class Character : MonoBehaviour
 {
     public CharacterStat stat;
     public CharacterTraitManager traitManager;
     public CharacterInfo info;
+    public AnimationHandler animationHandler;
+
+    public SpriteRenderer spriteRenderer;
+    public Animator animator;
+    public Sprite icon;
+    public AnimatorOverrideController animatorController;
 
     private void Awake()
     {
         stat = GetComponent<CharacterStat>();
         traitManager = GetComponent<CharacterTraitManager>();
         info = GetComponent<CharacterInfo>();
+        animationHandler = GetComponent<AnimationHandler>();
+
+        stat.character = this;
+        info.character = this;
     }
 
     public void TakeDamaged(float amount)
