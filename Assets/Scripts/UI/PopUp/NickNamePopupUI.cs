@@ -18,17 +18,14 @@ public class NickNamePopupUI : MonoBehaviour
 
     public void Awake()
     {
-        checkButton.onClick.AddListener(OnClickLobby);
-        closeButton.onClick.AddListener(OnClickClose);
+        //checkButton.onClick.AddListener(OnClickLobby);
+        //closeButton.onClick.AddListener(OnClickClose);
         
         placeholderText = nickNameText.placeholder as TextMeshProUGUI;
     }
 
     public void OnClickLobby()
     {
-        UIManager.instance.SetPlayerName();
-
-
         if(!IsOnlyLetters(nickNameText.text))
         {
             nickNameText.text = "";
@@ -36,6 +33,7 @@ public class NickNamePopupUI : MonoBehaviour
             return;
         }
 
+        UIManager.instance.SetPlayer(nickNameText.text);
         UIManager.instance.OnClickLobby();
     }
 
