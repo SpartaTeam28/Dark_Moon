@@ -1,27 +1,130 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-
+using UnityEngine.UI;
+public enum Turn
+{
+    start,
+    enemyTurn,
+    playerTurn,
+    win,
+    lose
+}
 public class Battle : MonoBehaviour
 {
     //
-    List<Character> Player;
+    public Turn turn; // 턴 상태
+    public bool isAlive; // 살아있는가
+    public Transform buttonPanel; // 버튼들이 위치할 UI 패널
+    public GameObject attackButtonPrefab; // 버튼 프리팹 (Inspector에서 설정
+    public bool isLock; // 잠금
 
-    bool isBoss = false;
-    int playerNumber = 0;
-    int monsterNumber = 0;
-    // 공격은 다 할 수 있음 speed 비교
-    // 첫빠따로 있는애가 모든 데미지 탱킹
-    public void Sequence()
+    List<Character> players;
+    List<Character> enemies;  // 적 리스트
+    List<Character> turnOrder; // 턴 순서 리스트
+    int currentTurnIndex = 0; // 현재 턴 진행 중인 캐릭터 인덱스
+
+    private List<Button> attackButtons = new List<Button>(); // 버튼 리스트
+
+
+    private void Awake()
     {
+        turn = Turn.start; // 전투 시작
+        BattleStart();
+    }
 
+    public void BattleStart()
+    {
+        // 스피드 비교해서 턴 정하기
+        SpeedCheck();
+        CreateAttackButtons();
+        NextTurn();
     }
 
     public void SpeedCheck()
     {
-        // 스피드 체크
+        // 플레이어와 적 리스트를 하나의 리스트로 합친 후 속도 순 정렬
+        turnOrder = new List<Character>();
+        turnOrder.AddRange(players);
+        turnOrder.AddRange(enemies);
+        turnOrder = turnOrder.OrderByDescending(c => c.speed).ToList(); // 속도 기준 내림차순 정렬
+        currentTurnIndex = 0; // 첫 번째 캐릭터부터 시작
+    }
+    public void NextTurn()
+    {
+        if (!isAlive)
+        {
+            turn = Turn.win;
+            EndBattle();
+            return;
+        }
+
+        Character currentCharacter = turnOrder[currentTurnIndex];
+
+        if (players.Contains(currentCharacter))
+        {
+            turn = Turn.playerTurn;
+            Debug.Log($"{currentCharacter.name}의 턴입니다. 공격 버튼을 눌러 공격하세요.");
+            UpdateButtonState(true);
+        }
+        else
+        {
+            turn = Turn.enemyTurn;
+            UpdateButtonState(false);
+            StartCoroutine(EnemyAttack(currentCharacter));
+        }
     }
 
-   
-    
+    public void PlayerAttack(int playerIndex)
+    {
+        if (turn != Turn.playerTurn) return;
+
+        StartCoroutine(PlayerAttackCoroutine(players[playerIndex]));
+    }
+
+    IEnumerator PlayerAttackCoroutine(Character player)
+    {
+        yield return new WaitForSeconds(1f);
+        Debug.Log($"{player.name}이(가) 공격을 했습니다.");
+
+        NextTurn();
+    }
+
+    IEnumerator EnemyAttack(Character enemy)
+    {
+        yield return new WaitForSeconds(1f);
+        Debug.Log($"{enemy.name}이(가) 공격을 했습니다.");
+
+        NextTurn();
+    }
+    private void CreateAttackButtons()
+    {
+        foreach (var btn in attackButtons)
+        {
+            Destroy(btn.gameObject); // 기존 버튼 삭제
+        }
+        attackButtons.Clear();
+
+        for (int i = 0; i < players.Count; i++)
+        {
+            GameObject newButton = Instantiate(attackButtonPrefab, buttonPanel);
+            newButton.GetComponentInChildren<Text>().text = players[i].name;
+            int index = i; // 람다 캡처 방지
+            newButton.GetComponent<Button>().onClick.AddListener(() => PlayerAttack(index));
+            attackButtons.Add(newButton.GetComponent<Button>());
+        }
+    }
+    public void EndBattle()
+    {
+        Debug.Log("전투 끝");
+    }
+
+    private void UpdateButtonState(bool active)
+    {
+        foreach (var btn in attackButtons)
+        {
+            btn.interactable = active;
+        }
+    }
 }
