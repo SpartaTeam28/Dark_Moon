@@ -21,11 +21,11 @@ public class MOON : Weather
         Debug.Log("밤끝");
         foreach (Character character in GameManager.instance.friendlyCharacterList)
         {
-            character.GetComponent<CharacterStat>().critical.AddMultiples(0.3f);
+            character.GetComponent<CharacterStat>().critical.AddMultiples(-0.3f);
         }
     }
     protected override void SetText()
     {
-        TextUi.GetComponentInChildren<TextMeshProUGUI>(true).text = "밤입니다";
+        TextUi.GetComponentInChildren<TextMeshProUGUI>(true).text = "밤\n모든 아군의 크리티컬 확률 30% 증가";
     }
 }

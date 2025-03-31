@@ -26,6 +26,6 @@ public class RAIN : Weather
     }
     protected override void SetText()
     {
-        TextUi.GetComponentInChildren<TextMeshProUGUI>(true).text = "비입니다";
+        TextUi.GetComponentInChildren<TextMeshProUGUI>(true).text = "비\n모든 아군의 회피율 30% 증가";
     }
 }

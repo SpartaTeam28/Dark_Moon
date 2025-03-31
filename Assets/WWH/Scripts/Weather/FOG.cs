@@ -26,6 +26,6 @@ public class FOG : Weather
 
     protected override void SetText()
     {
-        TextUi.GetComponentInChildren<TextMeshProUGUI>(true).text = "안개입니다";
+        TextUi.GetComponentInChildren<TextMeshProUGUI>(true).text = "안개\n모든 아군의 명중률 30% 감소";
     }
 }
