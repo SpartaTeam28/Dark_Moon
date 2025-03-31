@@ -12,15 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43797c51a088d3b48ab4a8876a533138, type: 3}
   m_Name: JeonUChi 5
   m_EditorClassIdentifier: 
-  skillDamage: 0
+  skillDamage: 10
   skillTargetCount: 0
   isCoolTimeSkill: 0
   skillCoolTime: 0
   skillType: 0
   skillUsingType: 0
   UsingValue: 0
+  skillStatType: 0
+  isMulti: 0
   isBuff: 1
   isDebuff: 0
+  multiValue: 0
   duration: 0
   skillText:
     skillNametext: 5

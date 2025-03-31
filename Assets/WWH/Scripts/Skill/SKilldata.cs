@@ -15,6 +15,19 @@ public enum SkillType
 
 }
 
+public enum SkillStatType
+{
+    Health,
+    Attack,
+    Defense,
+    Critical,
+    Evasion,
+    Accraucy,
+    Speed
+
+}
+
+
 public enum SkillUsingType
 {
     Mana,
@@ -31,12 +44,16 @@ public class SKilldata : ScriptableObject
     public int skillTargetCount;
     public bool isCoolTimeSkill;
     public int skillCoolTime;
+    public bool isHeal;
     public SkillType skillType;
     public SkillUsingType skillUsingType;
     public float UsingValue;
     [Header("Buff/Debuff Info")]
+    public SkillStatType skillStatType;
+    public bool isMulti;
     public bool isBuff;
     public bool isDebuff;
+    public float multiValue;
     public int duration;
 
     [Header("SkillDesInfo")]
@@ -50,5 +67,7 @@ public class SkillText
     public string skillNametext;
     public string skillDestext;
     public string skillAllAttactext;
+
+    
 }
 

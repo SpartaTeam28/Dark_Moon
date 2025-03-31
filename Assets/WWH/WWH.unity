@@ -188,15 +188,19 @@ MonoBehaviour:
   startAttck: 0
   startDefence: 0
   startMaxHealth: 0
+  startMaxMana: 0
   startCritical: 0
   startAccurracy: 0
   startEvasion: 0
+  startSpeed: 0
   attack: {fileID: 0}
   defence: {fileID: 0}
   health: {fileID: 0}
+  mana: {fileID: 0}
   critical: {fileID: 0}
   evasion: {fileID: 0}
   accuracy: {fileID: 0}
+  speed: {fileID: 0}
 --- !u!114 &56690864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,6 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
   traitManager: {fileID: 0}
+  info: {fileID: 0}
 --- !u!1 &71295351
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,15 +297,19 @@ MonoBehaviour:
   startAttck: 100
   startDefence: 0
   startMaxHealth: 0
+  startMaxMana: 0
   startCritical: 0
   startAccurracy: 0
   startEvasion: 0
+  startSpeed: 0
   attack: {fileID: 0}
   defence: {fileID: 0}
   health: {fileID: 0}
+  mana: {fileID: 0}
   critical: {fileID: 0}
   evasion: {fileID: 0}
   accuracy: {fileID: 0}
+  speed: {fileID: 0}
 --- !u!114 &71295355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,6 +353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
   traitManager: {fileID: 0}
+  info: {fileID: 0}
 --- !u!1 &140923916
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,15 +745,19 @@ MonoBehaviour:
   startAttck: 0
   startDefence: 0
   startMaxHealth: 0
+  startMaxMana: 0
   startCritical: 0
   startAccurracy: 0
   startEvasion: 0
+  startSpeed: 0
   attack: {fileID: 0}
   defence: {fileID: 0}
   health: {fileID: 0}
+  mana: {fileID: 0}
   critical: {fileID: 0}
   evasion: {fileID: 0}
   accuracy: {fileID: 0}
+  speed: {fileID: 0}
 --- !u!114 &353418453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -773,6 +787,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
   traitManager: {fileID: 0}
+  info: {fileID: 0}
 --- !u!1 &356896843
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,6 +1110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
   traitManager: {fileID: 0}
+  info: {fileID: 0}
 --- !u!114 &396911558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1221,15 +1237,19 @@ MonoBehaviour:
   startAttck: 0
   startDefence: 0
   startMaxHealth: 0
+  startMaxMana: 0
   startCritical: 0
   startAccurracy: 0
   startEvasion: 0
+  startSpeed: 0
   attack: {fileID: 0}
   defence: {fileID: 0}
   health: {fileID: 0}
+  mana: {fileID: 0}
   critical: {fileID: 0}
   evasion: {fileID: 0}
   accuracy: {fileID: 0}
+  speed: {fileID: 0}
 --- !u!114 &396911562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1771,6 +1791,7 @@ MonoBehaviour:
   skillData: {fileID: 0}
   IsBuff: 0
   isAttacking: 0
+  IsSilhum: 0
 --- !u!4 &1042148004
 Transform:
   m_ObjectHideFlags: 0
@@ -1854,6 +1875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
   traitManager: {fileID: 0}
+  info: {fileID: 0}
 --- !u!114 &1044718092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1980,15 +2002,19 @@ MonoBehaviour:
   startAttck: 0
   startDefence: 0
   startMaxHealth: 0
+  startMaxMana: 0
   startCritical: 0
   startAccurracy: 0
   startEvasion: 0
+  startSpeed: 0
   attack: {fileID: 0}
   defence: {fileID: 0}
   health: {fileID: 0}
+  mana: {fileID: 0}
   critical: {fileID: 0}
   evasion: {fileID: 0}
   accuracy: {fileID: 0}
+  speed: {fileID: 0}
 --- !u!114 &1044718096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2085,6 +2111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
   traitManager: {fileID: 0}
+  info: {fileID: 0}
 --- !u!61 &1225548456
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2194,18 +2221,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffeba181d8f09044e93c4b003baf46d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startAttck: 0
+  startAttck: 100
   startDefence: 0
   startMaxHealth: 0
+  startMaxMana: 0
   startCritical: 0
   startAccurracy: 0
   startEvasion: 0
+  startSpeed: 0
   attack: {fileID: 0}
   defence: {fileID: 0}
   health: {fileID: 0}
+  mana: {fileID: 0}
   critical: {fileID: 0}
   evasion: {fileID: 0}
   accuracy: {fileID: 0}
+  speed: {fileID: 0}
 --- !u!4 &1225548459
 Transform:
   m_ObjectHideFlags: 0
@@ -2423,6 +2454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
   traitManager: {fileID: 0}
+  info: {fileID: 0}
 --- !u!114 &1517536145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2549,15 +2581,19 @@ MonoBehaviour:
   startAttck: 0
   startDefence: 0
   startMaxHealth: 0
+  startMaxMana: 0
   startCritical: 0
   startAccurracy: 0
   startEvasion: 0
+  startSpeed: 0
   attack: {fileID: 0}
   defence: {fileID: 0}
   health: {fileID: 0}
+  mana: {fileID: 0}
   critical: {fileID: 0}
   evasion: {fileID: 0}
   accuracy: {fileID: 0}
+  speed: {fileID: 0}
 --- !u!114 &1517536149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2893,15 +2929,19 @@ MonoBehaviour:
   startAttck: 0
   startDefence: 100
   startMaxHealth: 0
+  startMaxMana: 0
   startCritical: 0
   startAccurracy: 0
   startEvasion: 0
+  startSpeed: 0
   attack: {fileID: 0}
   defence: {fileID: 0}
   health: {fileID: 0}
+  mana: {fileID: 0}
   critical: {fileID: 0}
   evasion: {fileID: 0}
   accuracy: {fileID: 0}
+  speed: {fileID: 0}
 --- !u!114 &1778817548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2916,6 +2956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
   traitManager: {fileID: 0}
+  info: {fileID: 0}
 --- !u!114 &1778817549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3000,15 +3041,19 @@ MonoBehaviour:
   startAttck: 0
   startDefence: 0
   startMaxHealth: 0
+  startMaxMana: 0
   startCritical: 0
   startAccurracy: 0
   startEvasion: 0
+  startSpeed: 0
   attack: {fileID: 0}
   defence: {fileID: 0}
   health: {fileID: 0}
+  mana: {fileID: 0}
   critical: {fileID: 0}
   evasion: {fileID: 0}
   accuracy: {fileID: 0}
+  speed: {fileID: 0}
 --- !u!212 &1901004329
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3149,6 +3194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
   traitManager: {fileID: 0}
+  info: {fileID: 0}
 --- !u!114 &1901004334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3406,15 +3452,19 @@ MonoBehaviour:
   startAttck: 0
   startDefence: 0
   startMaxHealth: 0
+  startMaxMana: 0
   startCritical: 0
   startAccurracy: 0
   startEvasion: 0
+  startSpeed: 0
   attack: {fileID: 0}
   defence: {fileID: 0}
   health: {fileID: 0}
+  mana: {fileID: 0}
   critical: {fileID: 0}
   evasion: {fileID: 0}
   accuracy: {fileID: 0}
+  speed: {fileID: 0}
 --- !u!114 &2053133745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3444,6 +3494,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
   traitManager: {fileID: 0}
+  info: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
