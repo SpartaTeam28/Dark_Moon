@@ -7,5 +7,6 @@ public class EvasionStat : BaseStat
         {
             value = 100f;
         }
+        job.evasion = value;
     }
 }

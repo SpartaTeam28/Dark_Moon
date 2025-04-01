@@ -28,30 +28,13 @@ public class CharacterStat : MonoBehaviour
 
     public Dictionary<StatType, BaseStat> StatusDictionary { get; private set; }//StatType과 BaseStatus연결
 
-
-    private void Awake()
-    {
-        Init();
-        StatusDictionary = new Dictionary<StatType, BaseStat>
-        {
-            { StatType.Attack, attack },
-            { StatType.Defence, defence },
-            { StatType.Health, health },
-            { StatType.Mana, mana },
-            { StatType.Critical, critical },
-            { StatType.Accuracy, accuracy },
-            { StatType.Evasion, evasion },
-            { StatType.Speed, speed },
-        };
-    }
-
     public void Init()
     {
         
         var job = character.info.job;
         if (job != null)
         {
-            startAttck = job.attck;
+            startAttck = job.attack;
             startDefence = job.defence;
             startMaxHealth = job.maxHealth;
             startMaxMana = job.maxMana;
@@ -69,11 +52,24 @@ public class CharacterStat : MonoBehaviour
         evasion = AddAndInit<EvasionStat>(startEvasion);
         accuracy = AddAndInit<AccuracyStat>(startAccurracy);
         speed = AddAndInit<SpeedStat>(startSpeed);
+
+        StatusDictionary = new Dictionary<StatType, BaseStat>
+        {
+            { StatType.Attack, attack },
+            { StatType.Defence, defence },
+            { StatType.Health, health },
+            { StatType.Mana, mana },
+            { StatType.Critical, critical },
+            { StatType.Accuracy, accuracy },
+            { StatType.Evasion, evasion },
+            { StatType.Speed, speed },
+        };
     }
 
     private T AddAndInit<T>(float initValue) where T : BaseStat//컴퍼넌트를 추가 하고 초기화
     {
         T status = gameObject.AddComponent<T>();
+        status.job = character.info.job;
         status.Init(initValue);
         return status;
     }

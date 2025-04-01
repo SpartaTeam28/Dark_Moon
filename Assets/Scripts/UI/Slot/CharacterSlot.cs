@@ -57,17 +57,17 @@ public class CharacterSlot : MonoBehaviour
 
     public void InstatiateTraitSlot()
     {
-        for (int i = 0; i < character.traitManager.appliedTraits.Count; i++)
+        for (int i = 0; i < character.trait.appliedTraits.Count; i++)
         {
             TraitSlot newTraitSlot = Instantiate(traitSlotPrefab, traitSlotsTransform);
-            newTraitSlot.traitData = character.traitManager.appliedTraits[i];
+            newTraitSlot.traitData = character.trait.appliedTraits[i];
             newTraitSlot.SetTraitName();
         }
     }
 
     public void RerollTrait()
     {
-        character.traitManager.ApplyTaritReroll();
+        character.trait.RerollTrait();
 
         // 기존 슬롯 제거
         ClearTraitSlots();

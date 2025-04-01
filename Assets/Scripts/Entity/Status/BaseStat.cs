@@ -6,13 +6,12 @@ public class BaseStat : MonoBehaviour
     public float value;
     public float valueMultiples = 1f;
 
-    public event Action<float> OnValueChanged;
+    public JobData job;
 
     public virtual void SetStat(float amount)
     {
         if (amount < 0) return;
         value = amount;
-        OnValueChanged?.Invoke(value);
     }
 
     public virtual void Init(float amount)

@@ -11,6 +11,7 @@ public class CriticalStat : BaseStat
         {
             value = 100f;
         }
+        job.critical = value;
     }
 
     public void SetDamageMultiples(float amount)

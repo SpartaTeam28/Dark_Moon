@@ -20,15 +20,17 @@ public class HealthStat : BaseStat
         }
         if (value * valueMultiples < curHealth)
         {
-            curHealth = value * valueMultiples;
+            curHealth = value;
         }
+        job.maxHealth = value;
+        job.curHealth = value;
     }
 
     public void SetHealth(float amount)
     {
         if (value * valueMultiples < curHealth)
         {
-            curHealth = value * valueMultiples;
+            curHealth = value;
         }
         else
         {

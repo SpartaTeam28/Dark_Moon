@@ -117,9 +117,9 @@ GameObject:
   - component: {fileID: 742731379115591595}
   - component: {fileID: 8096569094156588550}
   - component: {fileID: 7718965707958976893}
-  - component: {fileID: 3949180255357784701}
   - component: {fileID: 4868914253922456659}
   - component: {fileID: 1579511982921322933}
+  - component: {fileID: 2145446808715941868}
   m_Layer: 0
   m_Name: CharacterPrefab
   m_TagString: Untagged
@@ -192,21 +192,6 @@ MonoBehaviour:
   evasion: {fileID: 0}
   accuracy: {fileID: 0}
   speed: {fileID: 0}
---- !u!114 &3949180255357784701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8043999831487063626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13b5597ea0764b5469ef32be4f1419de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  availableTraits: []
-  appliedTraits: []
-  maxTraitCount: 2
 --- !u!114 &4868914253922456659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,3 +223,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
+--- !u!114 &2145446808715941868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8043999831487063626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5e4d6b34aed964ca71d90a8d4d68e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  appliedTraits: []
+  maxTraitCount: 2

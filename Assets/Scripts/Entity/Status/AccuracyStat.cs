@@ -7,5 +7,6 @@ public class AccuracyStat : BaseStat
         {
             value = 100f;
         }
+        job.accurracy = value;
     }
 }

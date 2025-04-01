@@ -3,7 +3,7 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     public CharacterStat stat;
-    public CharacterTraitManager traitManager;
+    public CharacterTrait trait;
     public CharacterInfo info;
     public AnimationHandler animationHandler;
 
@@ -15,10 +15,11 @@ public class Character : MonoBehaviour
     private void Awake()
     {
         stat = GetComponent<CharacterStat>();
-        traitManager = GetComponent<CharacterTraitManager>();
+        trait = GetComponent<CharacterTrait>();
         info = GetComponent<CharacterInfo>();
         animationHandler = GetComponent<AnimationHandler>();
 
+        trait.stat = stat;
         stat.character = this;
         info.character = this;
     }

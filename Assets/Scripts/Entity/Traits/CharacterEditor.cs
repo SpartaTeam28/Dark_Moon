@@ -49,9 +49,9 @@ public class CharacterEditor : EditorWindow
         foreach (var selected in selectedItems)
         {
             var character = selected as Character;
-            if (character == null || character.traitManager == null) continue;
+            if (character == null || character.trait == null) continue;
 
-            var traits = character.traitManager.appliedTraits;
+            var traits = character.trait.appliedTraits;
 
             //캐릭터 스탯
 
@@ -92,7 +92,7 @@ public class CharacterEditor : EditorWindow
 
             var rerollButton = new Button(() =>
             {
-                character.traitManager.ApplyTaritReroll();
+                character.trait.RerollTrait();
                 OnSpriteSelectionChange(new List<object> { character }); // UI 갱신
             })
             {
@@ -126,7 +126,7 @@ public class CharacterEditor : EditorWindow
 
                 var replaceButton = new Button(() =>
                 {
-                    character.traitManager.ReplaceTrait(trait);
+                    //character.trait.ReplaceTrait(trait);
                     OnSpriteSelectionChange(new List<object> { character });
                 })
                 {

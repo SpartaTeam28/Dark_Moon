@@ -10,8 +10,8 @@ public class JobData : ScriptableObject
     public Sprite icon;
     public AnimatorOverrideController animatorController;
 
-    [Header("Inintialize value")]
-    public float attck;//공격력 초기값
+    [Header("Stat value")]
+    public float attack;//공격력 초기값
     public float defence;//방어력 초기값
     public float maxHealth;//체력 초기값
     public float curHealth;
@@ -42,7 +42,7 @@ public class JobData : ScriptableObject
         copy.icon = this.icon;
         copy.animatorController = this.animatorController;
 
-        copy.attck = this.attck;
+        copy.attack = this.attack;
         copy.defence = this.defence;
         copy.maxHealth = this.maxHealth;
         copy.curHealth = this.curHealth;

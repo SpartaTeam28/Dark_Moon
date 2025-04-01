@@ -14,11 +14,6 @@ public class CharacterInfo : MonoBehaviour
     private void Awake()
     {
         character = GetComponent<Character>();
-
-        character.spriteRenderer.sprite = job.sprite;
-        character.icon = job.icon;
-        character.animatorController = job.animatorController;
-        character.animator.runtimeAnimatorController = character.animatorController;
     }
 
     private void Start()
@@ -28,6 +23,14 @@ public class CharacterInfo : MonoBehaviour
         {
             characterName = GameManager.Instance.nameGenerator.GetRandomName(job.isMale);
         }
+    }
+
+    public void Init()
+    {
+        character.spriteRenderer.sprite = job.sprite;
+        character.icon = job.icon;
+        character.animatorController = job.animatorController;
+        character.animator.runtimeAnimatorController = character.animatorController;
     }
 
     private void SetLevel()
