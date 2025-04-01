@@ -45,6 +45,11 @@ public class ManaStat : BaseStat
         SetMana(Mathf.Max(0, curMana + amount));
     }
 
+    public void FullMana()
+    {
+        curMana = value;
+    }
+
     public override string GetValueToString()
     {
         return curMana.ToString("F2") + "/" + base.GetValueToString();

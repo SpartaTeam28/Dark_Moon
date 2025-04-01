@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class CharacterStat : MonoBehaviour
 {
+    public Character character;
+
     [Header("Inintialize value")]
     [SerializeField] private float startAttck;//공격력 초기값
     [SerializeField] private float startDefence;//방어력 초기값
@@ -29,15 +31,7 @@ public class CharacterStat : MonoBehaviour
 
     private void Awake()
     {
-        attack = AddAndInit<AttackStat>(startAttck);
-        defence = AddAndInit<DefenseStat>(startDefence);
-        health = AddAndInit<HealthStat>(startMaxHealth);
-        mana = AddAndInit<ManaStat>(startMaxMana);
-        critical = AddAndInit<CriticalStat>(startCritical);
-        evasion = AddAndInit<EvasionStat>(startEvasion);
-        accuracy = AddAndInit<AccuracyStat>(startAccurracy);
-        speed = AddAndInit<SpeedStat>(startSpeed);
-
+        Init();
         StatusDictionary = new Dictionary<StatType, BaseStat>
         {
             { StatType.Attack, attack },
@@ -51,10 +45,58 @@ public class CharacterStat : MonoBehaviour
         };
     }
 
+    public void Init()
+    {
+        
+        var job = character.info.job;
+        if (job != null)
+        {
+            startAttck = job.attck;
+            startDefence = job.defence;
+            startMaxHealth = job.maxHealth;
+            startMaxMana = job.maxMana;
+            startCritical = job.critical;
+            startEvasion = job.evasion;
+            startAccurracy = job.accurracy;
+            startSpeed = job.speed;
+        }
+
+        attack = AddAndInit<AttackStat>(startAttck);
+        defence = AddAndInit<DefenseStat>(startDefence);
+        health = AddAndInit<HealthStat>(startMaxHealth);
+        mana = AddAndInit<ManaStat>(startMaxMana);
+        critical = AddAndInit<CriticalStat>(startCritical);
+        evasion = AddAndInit<EvasionStat>(startEvasion);
+        accuracy = AddAndInit<AccuracyStat>(startAccurracy);
+        speed = AddAndInit<SpeedStat>(startSpeed);
+    }
+
     private T AddAndInit<T>(float initValue) where T : BaseStat//컴퍼넌트를 추가 하고 초기화
     {
         T status = gameObject.AddComponent<T>();
         status.Init(initValue);
         return status;
+    }
+
+    public void LevelUp()
+    {
+        var job = character.info.job;
+        LevelUpAddStat<AttackStat>(job.levelAttck);
+        LevelUpAddStat<DefenseStat>(job.levelDefence);
+        LevelUpAddStat<HealthStat>(job.levelMaxHealth);
+        LevelUpAddStat<ManaStat>(job.levelMaxMana);
+        LevelUpAddStat<CriticalStat>(job.levelCritical);
+        LevelUpAddStat<EvasionStat>(job.leveltEvasion);
+        LevelUpAddStat<AccuracyStat>(job.levelAccurracy);
+        LevelUpAddStat<SpeedStat>(job.levelSpeed);
+
+        health.FullHealth();
+        mana.FullMana();
+    }
+
+    private void LevelUpAddStat<T>(float addValue) where T : BaseStat
+    {
+        T status = gameObject.GetComponent<T>();
+        status.AddStat(addValue);
     }
 }

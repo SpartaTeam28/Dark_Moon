@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CharacterTraitManager : MonoBehaviour
@@ -17,6 +18,7 @@ public class CharacterTraitManager : MonoBehaviour
     private void Awake()
     {
         stat = GetComponent<CharacterStat>();
+        availableTraits = GameManager.instance.availableTraits.Select(trait => trait.Clone()).ToList();
     }
 
     private void Start()
