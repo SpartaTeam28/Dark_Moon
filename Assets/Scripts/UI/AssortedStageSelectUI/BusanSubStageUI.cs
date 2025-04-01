@@ -15,7 +15,7 @@ public class BusanSubStageUI : BaseStageSelectUI
         for (int i = 0; i < subStageButtonList.Count; i++)
         {
             int index = i;
-            subStageButtonList[i].onClick.AddListener(() => OnClickStageButton(index + 1)); // 이게 왜 8이 나올까?
+            subStageButtonList[i].onClick.AddListener(() => OnClickStageButton(index + 1));
         }
     }
 
