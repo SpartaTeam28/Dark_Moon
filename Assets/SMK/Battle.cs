@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using TMPro;
 public enum Turn
 {
     start,
@@ -15,11 +15,11 @@ public enum Turn
 }
 public class Battle : MonoBehaviour
 {
-    //
+
     public Turn turn; // 턴 상태
     public bool isAlive; // 살아있는가
-    public Transform buttonPanel; // 버튼들이 위치할 UI 패널
-    public GameObject attackButtonPrefab; // 버튼 프리팹 (Inspector에서 설정
+  //  public Transform buttonPanel; // 버튼들이 위치할 UI 패널
+  //  public GameObject attackButtonPrefab; // 버튼 프리팹 (Inspector에서 설정
     public bool isLock; // 잠금
 
     public List<Character> players;
@@ -37,13 +37,13 @@ public class Battle : MonoBehaviour
 
     public Transform speedTextPanel; // UI에서 Speed 값을 표시할 Panel
     public GameObject speedTextPrefab; // Speed 값을 표시할 Text 프리팹
-    private Dictionary<Character, Text> speedTexts = new Dictionary<Character, Text>();
+    private Dictionary<Character, TextMeshProUGUI> speedTexts = new Dictionary<Character, TextMeshProUGUI>();
     private void Awake()
     {
         //players = new List<Character>(GameManager.Instance.friendlyCharacterList);
         LoadEnemies();
         turn = Turn.start; // 전투 시작
-        BattleStart();
+      
     }
     private void Start()
     {
@@ -54,7 +54,7 @@ public class Battle : MonoBehaviour
     {
         // 스피드 비교해서 턴 정하기
         SpeedCheck();
-        CreateAttackButtons();
+      //  CreateAttackButtons();
         NextTurn();
 
     }
@@ -165,6 +165,7 @@ public class Battle : MonoBehaviour
 
     private void DisplaySpeedTexts()
     {
+        int i = 1;
         foreach (var pair in speedTexts)
         {
             Destroy(pair.Value.gameObject); // 기존 UI 삭제
@@ -173,31 +174,36 @@ public class Battle : MonoBehaviour
 
         foreach (var character in turnOrder)
         {
+            
             GameObject newText = Instantiate(speedTextPrefab, speedTextPanel);
-            Text textComponent = newText.GetComponent<Text>();
-            textComponent.text = $" Speed {character.stat.speed.value}";
+            TextMeshProUGUI textComponent = newText.GetComponent<TextMeshProUGUI>();
+            //textComponent.text = $" Speed: {character.stat.speed.value}";
+            textComponent.text = $" Speed: {i}";
+            Vector3 screenPos = Camera.main.WorldToScreenPoint(character.transform.position);
+            newText.transform.position = screenPos + new Vector3(0, 100f, 0); // Y값 조정 (아래로 내리기)
 
             speedTexts[character] = textComponent;
+            i++;
         }
     }
-    private void CreateAttackButtons()
-    {
-        foreach (var btn in attackButtons)
-        {
-            Destroy(btn.gameObject); // 기존 버튼 삭제
-        }
-        attackButtons.Clear();
+    //private void CreateAttackButtons()
+    //{
+    //    foreach (var btn in attackButtons)
+    //    {
+    //        Destroy(btn.gameObject); // 기존 버튼 삭제
+    //    }
+    //    attackButtons.Clear();
 
-        for (int i = 0; i < players.Count; i++)
-        {
-            GameObject newButton = Instantiate(attackButtonPrefab, buttonPanel);
-            newButton.GetComponentInChildren<Text>().text = players[i].name;
-            int index = i; // 람다 캡처 방지
-            newButton.GetComponent<Button>().onClick.AddListener(() => PlayerAttack(index));
-            attackButtons.Add(newButton.GetComponent<Button>());
-        }
+    //    for (int i = 0; i < players.Count; i++)
+    //    {
+    //        GameObject newButton = Instantiate(attackButtonPrefab, buttonPanel);
+    //        newButton.GetComponentInChildren<Text>().text = players[i].name;
+    //        int index = i; // 람다 캡처 방지
+    //        newButton.GetComponent<Button>().onClick.AddListener(() => PlayerAttack(index));
+    //        attackButtons.Add(newButton.GetComponent<Button>());
+    //    }
     
-    }
+    //}
     public void EndBattle()
     {
         Debug.Log("전투 끝");

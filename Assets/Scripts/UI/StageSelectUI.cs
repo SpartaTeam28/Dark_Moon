@@ -66,4 +66,14 @@ public class StageSelectUI : BaseUI
         //deaguStage.gameObject.SetActive(false);
         //busanStage.gameObject.SetActive(false);
     }
+
+    public void EnableDaeguButton()
+    {
+        deaguButton.interactable = true;
+
+    }
+    public void EnableUlsanButton()
+    {
+        //deaguButton.interactable = true;
+    }
 }

@@ -20,6 +20,7 @@ public class StageManager : MonoBehaviour
 
     List<string> stage = new List<string> { "Busan", "Daegu", "Ulsan", "Daejeon", "Seoul" };
     private List<bool> unlockedStages = new List<bool>(); // 스테이지 해금 여부
+    public StageSelectUI stageSelectUI;
     void Awake()
     {
         if (instance == null)
@@ -28,6 +29,7 @@ public class StageManager : MonoBehaviour
             DontDestroyOnLoad(this);
             LoadUnlockData(); // 저장된 스테이지 해금 정보 불러오기
             SceneManager.sceneLoaded += OnSceneLoaded;
+            isMonsterDie =true;
         }
         else
         {
@@ -40,6 +42,21 @@ public class StageManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         LoadUnlockData(); // 씬 변경 후 스테이지 해금 정보 다시 불러오기
+        if (scene.name == "YGM_Scene" && stageSelectUI != null)
+        {
+            stageSelectUI.gameObject.SetActive(true); // UI 활성화
+
+            if (isMonsterDie && unlockedStages.Count > 1)
+            {
+                // 대구 스테이지 해금
+                UnlockStage(1); // 대구 스테이지 해금
+                stageSelectUI.EnableDaeguButton(); // 대구 버튼 활성화
+            }
+        }
+        else if (scene.name != "YGM_Scene" && stageSelectUI != null)
+        {
+            stageSelectUI.gameObject.SetActive(false); // UI 숨김
+        }
 
         if (scene.name == "Seoul" && !bossSpawned)
         {
@@ -60,6 +77,7 @@ public class StageManager : MonoBehaviour
                 bossSpawned = false;
                 SceneManager.LoadScene(stage[currentScene]);
                 Debug.Log(stage[currentScene] + "로 이동합니다.");
+              
             }
             else
             {
@@ -78,7 +96,7 @@ public class StageManager : MonoBehaviour
         isMonsterDie = false;
         bossSpawned = false;
       
-        SceneManager.LoadScene("MainScene"); // 게임 재시작, 메인씬 정해지면 이동
+        SceneManager.LoadScene("YGM_Scene"); // 게임 재시작, 메인씬 정해지면 이동
 
     }
 
@@ -107,10 +125,11 @@ public class StageManager : MonoBehaviour
 
     private void LoadUnlockData()
     {
-        unlockedStages.Clear();
+       // unlockedStages.Clear(); // 기존 해금 안된 정보 지움
+        unlockedStages = new List<bool>(new bool[stage.Count]); // 크기 맞추기
         for (int i = 0; i < stage.Count; i++)
         {
-            unlockedStages.Add(PlayerPrefs.GetInt("StageUnlocked" + i, i == 0 ? 1 : 0) == 1);
+            unlockedStages[i] = PlayerPrefs.GetInt("StageUnlocked" + i, i == 0 ? 1 : 0) == 1;
         }
     }
 
@@ -136,6 +155,14 @@ public class StageManager : MonoBehaviour
             unlockedStages[stageIndex] = true;
             SaveUnlockData();
             Debug.Log(stage[stageIndex] + " 스테이지가 해금되었습니다!");
+            if (stageIndex == 1) // 대구 스테이지 해금
+            {
+                stageSelectUI.EnableDaeguButton();
+            }
+            else if (stageIndex == 2) // 울산 스테이지 해금
+            {
+                stageSelectUI.EnableUlsanButton();
+            }
         }
     }
 }
