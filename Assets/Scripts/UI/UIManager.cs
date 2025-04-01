@@ -156,6 +156,7 @@ public class UIManager : MonoBehaviour
     {
         ChangeState(UIState.Training);
         trainingUI.npcTrainingWindow.SetActive(true);
+        trainingUI.characterSlotList[0].Onparty.SetActive(true);
         trainingUI.RandomJumagNPCScripts();
     }
 
