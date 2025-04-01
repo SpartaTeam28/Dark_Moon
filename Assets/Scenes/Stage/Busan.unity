@@ -565,7 +565,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6457997550647304601, guid: fa6a21a3f54717947a438accba685b76, type: 3}
       propertyPath: startSpeed
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6457997550647304601, guid: fa6a21a3f54717947a438accba685b76, type: 3}
       propertyPath: startMaxHealth
@@ -1208,7 +1208,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6457997550647304601, guid: fa6a21a3f54717947a438accba685b76, type: 3}
       propertyPath: startSpeed
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7054706052081781924, guid: fa6a21a3f54717947a438accba685b76, type: 3}
       propertyPath: sKilldatas.Array.size
@@ -2080,7 +2080,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6457997550647304601, guid: fa6a21a3f54717947a438accba685b76, type: 3}
       propertyPath: startSpeed
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7054706052081781924, guid: fa6a21a3f54717947a438accba685b76, type: 3}
       propertyPath: sKilldatas.Array.size
@@ -3050,7 +3050,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6457997550647304601, guid: fa6a21a3f54717947a438accba685b76, type: 3}
       propertyPath: startSpeed
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7054706052081781924, guid: fa6a21a3f54717947a438accba685b76, type: 3}
       propertyPath: sKilldatas.Array.size

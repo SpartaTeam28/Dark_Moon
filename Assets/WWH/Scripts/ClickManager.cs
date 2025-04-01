@@ -114,7 +114,7 @@ public class ClickManager : MonoBehaviour
 
     public void SetSkill(int index)
     {
-        skillData = skillBook.SilhumSkill[index];
+        skillData = skillBook.skillList[index];
         isAttacking = true;
         TargetDown();
         if (skillData.isBuff || skillData.isHeal)
@@ -385,7 +385,7 @@ public class ClickManager : MonoBehaviour
 
     public void ManaSub(SKilldata sKilldata)
     { 
-        if(skillData ==  null || skillData.isEnemySkill)
+        if(skillData.isEnemySkill)
         {
             return;
         }

@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class SkillBook : MonoBehaviour
 {
-    public SKilldata[] allSkillSet;
-    public SKilldata[] SilhumSkill;
+    private SKilldata[] allSkillSet;
+    public SKilldata[] skillList;
     private void Awake()
     {
-        SilhumSkill =  FourSkillSet("Dosa");
+        GetSkill();
+
+
     }
     public SKilldata[] FourSkillSet(string PlayerName)
     {
@@ -23,6 +25,33 @@ public class SkillBook : MonoBehaviour
             returnSkill[i] = allSkillSet[i];
         }
         return returnSkill;
+    }
+
+    public void GetSkill()
+    {
+        switch (transform.GetComponent<Player>().playerType)
+        {
+            case PlayerType.Dosa:
+                skillList = FourSkillSet("Dosa");
+                break;
+            case PlayerType.KiSeng:
+                skillList = FourSkillSet("GiSeng");
+                break;
+            case PlayerType.KumGeok:
+                skillList = FourSkillSet("GumGeok");
+                break;
+            case PlayerType.Confusianism:
+                skillList = FourSkillSet("Confucianism");
+                break;
+            case PlayerType.Buddhist:
+                skillList = FourSkillSet("Buddhist");
+                break;
+            case PlayerType.Hunter:
+                skillList = FourSkillSet("Hunter");
+                break;
+        }
+
+ 
     }
 
     public T[] Shuffle<T>(T[] Array)

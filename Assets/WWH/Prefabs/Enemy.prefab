@@ -115,7 +115,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4149619828575278128}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.92, y: 1.4, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
@@ -142,7 +142,7 @@ MonoBehaviour:
   startCritical: 0
   startAccurracy: 0
   startEvasion: 0
-  startSpeed: 0
+  startSpeed: 10
   attack: {fileID: 0}
   defence: {fileID: 0}
   health: {fileID: 0}
@@ -305,3 +305,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52766d3997ee95c40b975dd232d513ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sKilldatas:
+  - {fileID: 11400000, guid: 30f3dff67ebf6d042bc51a9ea3cc3f58, type: 2}
+  - {fileID: 11400000, guid: 6da85294ebc680d4988d972e9932c0be, type: 2}
+  - {fileID: 11400000, guid: 1764cfdbce4ddac4a81b6885960c5af7, type: 2}
+  - {fileID: 11400000, guid: 60a9abfc266b25d4780fa32ee35bd6ec, type: 2}
+  - {fileID: 11400000, guid: 82d19a36cd747374981d9d000e821845, type: 2}
+  - {fileID: 11400000, guid: 16fbd5c356e6a244a82326244bac8424, type: 2}
+  - {fileID: 11400000, guid: a741b517aabb4ea408a17ec84b5d815b, type: 2}
+  - {fileID: 11400000, guid: deed1c6a15261864a9ba3f2f36ca9eca, type: 2}

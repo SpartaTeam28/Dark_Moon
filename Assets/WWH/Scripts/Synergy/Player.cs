@@ -17,8 +17,8 @@ public enum PlayerType
 public class Player : MonoBehaviour 
 {
     public PlayerType playerType;
-    public SkillBook skillBook;
-    public CharacterStat characterStat;
+
+
 
 
 
@@ -47,11 +47,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        skillBook = GetComponent<SkillBook>();
-        characterStat = GetComponent<CharacterStat>();
-    }
 
 
 
