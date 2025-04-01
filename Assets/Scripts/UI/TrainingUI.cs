@@ -17,6 +17,7 @@ public class TrainingUI : BaseUI
 
     public CharacterSlot characterSlotPrefab;
     public List<CharacterSlot> characterSlotList;
+
     public Image[] BattleUnitImage;
     public Sprite nullImageSprite;
     public Image selectImageCharacter;

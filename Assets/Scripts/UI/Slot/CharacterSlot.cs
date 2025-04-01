@@ -56,7 +56,7 @@ public class CharacterSlot : MonoBehaviour
     {
         if (character == null) return;
 
-        characterIcon.sprite = character.info.job.icon;
+        characterIcon.sprite = character.icon;
     }
 
     public void InstatiateTraitSlot()

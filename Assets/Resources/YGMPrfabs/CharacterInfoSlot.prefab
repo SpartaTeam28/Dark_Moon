@@ -486,7 +486,7 @@ MonoBehaviour:
   nameText: {fileID: 2006837003679963219}
   jobText: {fileID: 7020683822144577770}
   LvText: {fileID: 3144687324855176103}
-  characterImage: {fileID: 227510841216340282}
+  characterIcon: {fileID: 227510841216340282}
   selectButton: {fileID: 344872619653235340}
   slotIndex: 0
   traitSlotsTransform: {fileID: 0}
