@@ -2,10 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class CommonBattleUI : MonoBehaviour
+public class CommonBattleUI : BaseUI
 {
     public static CommonBattleUI instance;
+
+
+    public TextMeshProUGUI nameText;
+    public TextMeshProUGUI jobText;
+    public TextMeshProUGUI lvText;
 
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI manaText;
@@ -16,11 +23,23 @@ public class CommonBattleUI : MonoBehaviour
     public TextMeshProUGUI evasionText;
     public TextMeshProUGUI speedText;
 
+
+
     public GameObject statPanel;
+    public GameObject clearPanel;
+    public GameObject defeatPanel;
 
     public List<Character> battleCharacters;
     //public List<Character> enemyCharacters;
 
+    public SelectStageName currentStageName;
+    public Button nextButton;
+    public int currentStagenumber = 0;
+
+    protected override UIState GetUIState()
+    {
+        return UIState.CommonBattle;
+    }
 
     private void Awake()
     {
@@ -41,6 +60,8 @@ public class CommonBattleUI : MonoBehaviour
 
     public void SetCharacterData(Character anonymouscharacter)
     {
+        nameText.text = anonymouscharacter.info.characterName;
+        jobText.text = anonymouscharacter.info.job.jobName;
         healthText.text = anonymouscharacter.stat.health.GetValueToString();
         manaText.text = anonymouscharacter.stat.mana.GetValueToString();
         attackText.text = anonymouscharacter.stat.attack.GetValueToString();
@@ -49,6 +70,7 @@ public class CommonBattleUI : MonoBehaviour
         accuracyText.text = anonymouscharacter.stat.accuracy.GetValueToString();
         evasionText.text = anonymouscharacter.stat.evasion.GetValueToString();
         speedText.text = anonymouscharacter.stat.speed.GetValueToString();
+
     }
 
     // UI Ç¥½Ã/¼û±è ±â´É Ãß°¡
@@ -59,5 +81,20 @@ public class CommonBattleUI : MonoBehaviour
             statPanel.SetActive(isVisible);
         }
     }
+
+    public void OnClickWinButton()
+    {
+        uiManager.OnEnableStageButton(currentStageName, currentStagenumber);
+        SceneManager.LoadScene("YGM_Scene");
+        uiManager.OnClickLobby();
+      
+    }
+
+    public void OnClickDefeatButton()
+    {
+        SceneManager.LoadScene("YGM_Scene");
+        uiManager.OnClickLobby();
+    }
+
 
 }

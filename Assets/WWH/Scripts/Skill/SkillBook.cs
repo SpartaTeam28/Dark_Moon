@@ -6,11 +6,9 @@ public class SkillBook : MonoBehaviour
 {
     private SKilldata[] allSkillSet;
     public SKilldata[] skillList;
-    private void Awake()
+    private void Start()
     {
         GetSkill();
-
-
     }
     public SKilldata[] FourSkillSet(string PlayerName)
     {

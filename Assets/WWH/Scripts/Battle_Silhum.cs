@@ -9,6 +9,9 @@ using UnityEngine.UI;
 public class Battle_Silhum : MonoBehaviour
 {
     //
+
+    private static Battle_Silhum instance;
+    public static Battle_Silhum Instance {  get { return instance; }  set { instance = value; } }
     public Turn turn; // 턴 상태
     public bool isAlive; // 살아있는가
     public Transform buttonPanel; // 버튼들이 위치할 UI 패널
@@ -27,15 +30,23 @@ public class Battle_Silhum : MonoBehaviour
     [SerializeField] private List<Character> BusanEnemies;
     [SerializeField] private List<Character> HanbatEnemies;
     [SerializeField] private List<Character> DeaguEnemies;
-
-    //Character[] Enemycharacters = GameManager.instance.EnemyCharacterList.ToArray();
-    //Character[] Playercharacter = GameManager.instance.friendlyCharacterList.ToArray();
+    [SerializeField] private List<Character> BattleScene;
+    private int playerDeathCount =  0;
+    private int enemyDeathCount = 0;
 
 
 
     private void Awake()
     {
-        //players = new List<Character>(GameManager.Instance.friendlyCharacterList);
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         LoadEnemies();
         turn = Turn.start; // 전투 시작
 
@@ -51,6 +62,9 @@ public class Battle_Silhum : MonoBehaviour
         //CreateAttackButtons();
         NextTurn();
         ClickManager.Instance.next = NextTurn;
+        playerDeathCount = GameManager.instance.friendlyCharacterList.Count;
+        enemyDeathCount = (int)(GameManager.instance.EnemyCharacterList?.Count);
+
     }
     public void LoadEnemies()
     {
@@ -80,7 +94,10 @@ public class Battle_Silhum : MonoBehaviour
                 enemies = new List<Character>(HanbatEnemies);
                 Debug.Log($"HanbatEnemies Count: {HanbatEnemies.Count}");
                 break;
-
+            case "Battle_Scene":
+                enemies = new List<Character>(BattleScene);
+                Debug.Log($"HanbatEnemies Count: {BattleScene.Count}");
+                break;
             default:
                 Debug.LogError($"적 리스트가 없습니다! 현재 씬: {currentScene}");
                 break;
@@ -100,6 +117,7 @@ public class Battle_Silhum : MonoBehaviour
     }
     public void NextTurn()
     {
+        EndGameTrigger();
         if (!isAlive)
         {
             turn = Turn.win;
@@ -107,15 +125,13 @@ public class Battle_Silhum : MonoBehaviour
             return;
         }
 
-        //EndGameTrigger();
-
         Debug.Log("Turn Change");
-        if(currentTurnIndex == 8)
+        if(currentTurnIndex == turnOrder.Count)
         {
             currentTurnIndex = 0;
         }
         Character currentCharacter = turnOrder[currentTurnIndex];
-        
+
         currentTurnIndex++;
                 
         Debug.Log(currentTurnIndex.ToString() + "지금 인덱스");
@@ -177,20 +193,34 @@ public class Battle_Silhum : MonoBehaviour
     }
 
 
-    //public void EndGameTrigger()
-    //{
-    //    Character[] ActiveEnemyList = Enemycharacters.Where(Ob => Ob.gameObject.activeSelf).ToArray();
-    //    Character[] ActivePlayerList = Playercharacter.Where(OB => OB.gameObject.activeSelf).ToArray();
-    //    if (ActivePlayerList == null)
-    //    {
-    //        turn = Turn.lose;
-    //        return;
-    //    }
-    //    if(ActiveEnemyList == null) 
-    //    {
-    //        isAlive = false;
-    //        turn = Turn.win;
-    //        return;
-    //    }
-    //}
+
+    public void PlayerDie(Character character)
+    {
+        if(character.CompareTag("Friends"))
+        {
+            playerDeathCount--;
+        }
+        else if(character.CompareTag("Enemy"))
+        {
+            enemyDeathCount--;
+        }
+
+
+        turnOrder.Remove(character);
+    }
+    public void EndGameTrigger()
+    {
+
+        if (playerDeathCount == 0)
+        {
+            turn = Turn.lose;
+            return;
+        }
+        if (enemyDeathCount == 0)
+        {
+            isAlive = false;
+            turn = Turn.win;
+            return;
+        }
+    }
 }

@@ -11,18 +11,13 @@ public class CharacterInfo : MonoBehaviour
     public int curExp = 0;
     private int addtotalExp = 15;
     
-    private void Awake()
+    private void Start()
     {
         character = GetComponent<Character>();
-
         character.spriteRenderer.sprite = job.sprite;
         character.icon = job.icon;
         character.animatorController = job.animatorController;
         character.animator.runtimeAnimatorController = character.animatorController;
-    }
-
-    private void Start()
-    {
         SetLevel();
         if (characterName == "")
         {
@@ -30,11 +25,11 @@ public class CharacterInfo : MonoBehaviour
         }
     }
 
-    private void SetLevel()
+    public void SetLevel()
     {
         for (int i = 1; i < level; i++) 
         {
-            LevelUp();
+            character.stat.LevelUp();
         }
     }
 

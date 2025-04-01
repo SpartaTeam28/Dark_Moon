@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class StageSelectUI : BaseUI
@@ -11,10 +12,10 @@ public class StageSelectUI : BaseUI
     public Button busanButton;
     public Button exitButton;
 
-    public BaseStageSelectUI seoulStage;
-    public BaseStageSelectUI deajonStage;
-    public BaseStageSelectUI deaguStage;
-    public BaseStageSelectUI busanStage;
+    //public BaseStageSelectUI seoulStage;
+    //public BaseStageSelectUI deajonStage;
+    //public BaseStageSelectUI deaguStage;
+    //public BaseStageSelectUI busanStage;
 
 
     private void Awake()
@@ -24,6 +25,7 @@ public class StageSelectUI : BaseUI
         deaguButton.interactable = false;
         
     }
+
     protected override UIState GetUIState()
     {
         return UIState.Stage;
@@ -32,16 +34,36 @@ public class StageSelectUI : BaseUI
     public override void Init(UIManager uiManager)
     {
         base.Init(uiManager);
+        seoulButton.onClick.AddListener(() => OnClickStageButton(SelectStageName.Seoul));
+        deajonButton.onClick.AddListener(() => OnClickStageButton(SelectStageName.Deajon));
+        deaguButton.onClick.AddListener(() => OnClickStageButton(SelectStageName.Deagu));
+        busanButton.onClick.AddListener(() => OnClickStageButton(SelectStageName.Busan));
         exitButton.onClick.AddListener(OnClickExit);
+    }
+
+
+    public void OnClickStageButton(SelectStageName stageName)
+    {
+        UIManager.instance.SetCurrentStageName(stageName, 7);
+        //if (stagenumeber == 7)
+        //{
+        //    SceneManager.LoadScene("Battle_Scene");
+        //}
+        //else
+        //{
+            SceneManager.LoadScene("Battle_Scene");
+        //}
+
+        UIManager.instance.OnClickCommonBattle();
     }
 
 
     public void OnClickExit()
     {
         uiManager.OnClickLobby();
-        seoulStage.gameObject.SetActive(false);
-        deajonStage.gameObject.SetActive(false);
-        deaguStage.gameObject.SetActive(false);
-        busanStage.gameObject.SetActive(false);
+        //seoulStage.gameObject.SetActive(false);
+        //deajonStage.gameObject.SetActive(false);
+        //deaguStage.gameObject.SetActive(false);
+        //busanStage.gameObject.SetActive(false);
     }
 }
