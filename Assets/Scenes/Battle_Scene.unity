@@ -483,7 +483,7 @@ PrefabInstance:
     - target: {fileID: 4868914253922456659, guid: b902cc2bb0ce1364296812d01f87337f, type: 3}
       propertyPath: job
       value: 
-      objectReference: {fileID: 11400000, guid: bb103ab2c62102a46af3c57f68036bb1, type: 2}
+      objectReference: {fileID: 11400000, guid: 781c5a2f0f541c540b8f202cb3462658, type: 2}
     - target: {fileID: 8043999831487063626, guid: b902cc2bb0ce1364296812d01f87337f, type: 3}
       propertyPath: m_Name
       value: Friend
@@ -1566,6 +1566,8 @@ MonoBehaviour:
   - {fileID: 1761236252}
   - {fileID: 372508199}
   - {fileID: 508767472}
+  Enemycharacters: []
+  Playercharacter: []
 --- !u!4 &754330037
 Transform:
   m_ObjectHideFlags: 0
@@ -1632,7 +1634,7 @@ PrefabInstance:
     - target: {fileID: 4868914253922456659, guid: b902cc2bb0ce1364296812d01f87337f, type: 3}
       propertyPath: job
       value: 
-      objectReference: {fileID: 11400000, guid: bb103ab2c62102a46af3c57f68036bb1, type: 2}
+      objectReference: {fileID: 11400000, guid: 781c5a2f0f541c540b8f202cb3462658, type: 2}
     - target: {fileID: 8043999831487063626, guid: b902cc2bb0ce1364296812d01f87337f, type: 3}
       propertyPath: m_Name
       value: Friend
@@ -2015,7 +2017,7 @@ PrefabInstance:
     - target: {fileID: 4868914253922456659, guid: b902cc2bb0ce1364296812d01f87337f, type: 3}
       propertyPath: job
       value: 
-      objectReference: {fileID: 11400000, guid: bb103ab2c62102a46af3c57f68036bb1, type: 2}
+      objectReference: {fileID: 11400000, guid: 781c5a2f0f541c540b8f202cb3462658, type: 2}
     - target: {fileID: 8043999831487063626, guid: b902cc2bb0ce1364296812d01f87337f, type: 3}
       propertyPath: m_Name
       value: Friend
@@ -2437,7 +2439,7 @@ PrefabInstance:
     - target: {fileID: 4868914253922456659, guid: b902cc2bb0ce1364296812d01f87337f, type: 3}
       propertyPath: job
       value: 
-      objectReference: {fileID: 11400000, guid: bb103ab2c62102a46af3c57f68036bb1, type: 2}
+      objectReference: {fileID: 11400000, guid: 781c5a2f0f541c540b8f202cb3462658, type: 2}
     - target: {fileID: 8043999831487063626, guid: b902cc2bb0ce1364296812d01f87337f, type: 3}
       propertyPath: m_Name
       value: Friend
@@ -2701,8 +2703,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1858726097}
+  - component: {fileID: 1858726098}
   m_Layer: 0
-  m_Name: Friends
+  m_Name: CharacterChanger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2727,6 +2730,18 @@ Transform:
   - {fileID: 922314496}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1858726098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858726096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca9b9def2ecd5ba48a4be3e43a7abd31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1992193506
 GameObject:
   m_ObjectHideFlags: 0

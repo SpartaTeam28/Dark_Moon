@@ -51,6 +51,7 @@ public class ClickManager : MonoBehaviour
                     {
                         if(skillData.isDebuff )
                         {
+                   
                             if(hit.transform.CompareTag("Friends"))
                             {
                                 return;
@@ -132,7 +133,8 @@ public class ClickManager : MonoBehaviour
     public void OnePersonAttack(Character stat, RaycastHit2D hit)
     {
         SKilldata skillData = this.skillData;
-        if(skillData.isDebuff && hit.transform.CompareTag("Enemy")) 
+        skillData.skillDamage = skillData.skillDamage + characterStat.attack.value;
+        if (skillData.isDebuff && hit.transform.CompareTag("Enemy")) 
         {
             Debuff(hit.transform.GetComponent<CharacterStat>());
             next.Invoke();
@@ -164,6 +166,7 @@ public class ClickManager : MonoBehaviour
     {
 
         SKilldata sKilldata = skillData;
+        sKilldata.skillDamage = skillData.skillDamage + characterStat.attack.value;
         if (skillData.isBuff)
         {
             IsBuff = false;
@@ -216,7 +219,7 @@ public class ClickManager : MonoBehaviour
             skillData = sKillData;
         }
         SKilldata sKilldata = skillData;
-        character.health.AddHealth(skillData.skillDamage);
+        character.health.AddHealth(skillData.skillDamage + this.characterStat.attack.value);
         ManaSub(sKilldata);
         //TargetDown();
      

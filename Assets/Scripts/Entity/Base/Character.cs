@@ -41,6 +41,6 @@ public class Character : MonoBehaviour
 
     private void OnDie()
     {
-
+        Battle_Silhum.Instance.PlayerDie(this);
     }
 }
