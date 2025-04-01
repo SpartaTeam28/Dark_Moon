@@ -49,6 +49,7 @@ public class Battle : MonoBehaviour
         SpeedCheck();
         CreateAttackButtons();
         NextTurn();
+
     }
     public void LoadEnemies()
     {

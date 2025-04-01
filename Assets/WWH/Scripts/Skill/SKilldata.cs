@@ -46,6 +46,7 @@ public class SKilldata : ScriptableObject
     public SkillType skillType;
     public SkillUsingType skillUsingType;
     public float UsingValue;
+    public bool isEnemySkill;
     [Header("Buff/Debuff Info")]
     public SkillStatType skillStatType;
     public bool isMulti;

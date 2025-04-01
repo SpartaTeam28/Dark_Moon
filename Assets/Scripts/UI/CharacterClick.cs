@@ -13,10 +13,9 @@ public class CharacterClick : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (CommonBattleUI.instance != null && characterData != null)
+        if (UIManager.instance != null && characterData != null)
         {
-            CommonBattleUI.instance.SetCharacterData(characterData);
-            CommonBattleUI.instance.ShowUI(true); // UI Ç¥½Ã
+            UIManager.instance.SetBattleCharacterOnData(characterData);
         }
     }
 

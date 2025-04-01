@@ -1,9 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DeajonSubStageUI : BaseStageSelectUI
 {
+    protected override void Awake()
+    {
+        base.Awake();
+        currentStageName = SelectStageName.Deajon;
+
+        for (int i = 0; i < subStageButtonList.Count; i++)
+        {
+            int index = i;
+            subStageButtonList[i].onClick.AddListener(() => OnClickStageButton(index + 1));
+        }
+    }
     protected override void InitializeStageConnections()
     {
         stageConnections = new Dictionary<int, List<int>>
@@ -31,5 +43,20 @@ public class DeajonSubStageUI : BaseStageSelectUI
     public override void CloseButton()
     {
         gameObject.SetActive(false);
+    }
+
+    public override void OnClickStageButton(int stagenumeber)
+    {
+        UIManager.instance.SetCurrentStageName(currentStageName, stagenumeber);
+        if (stagenumeber == 7)
+        {
+            SceneManager.LoadScene("Battle_Scene");
+        }
+        else
+        {
+            SceneManager.LoadScene("Battle_Scene");
+        }
+
+        UIManager.instance.OnClickCommonBattle();
     }
 }

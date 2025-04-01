@@ -8,7 +8,7 @@ public class CharacterSlot : MonoBehaviour
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI jobText;
     public TextMeshProUGUI LvText;
-    public Image characterImage;
+    public Image characterIcon;
     public Button selectButton;
     public int slotIndex;
 
@@ -47,12 +47,16 @@ public class CharacterSlot : MonoBehaviour
 
     public void SetLvText()
     {
+        if (character == null) return;
 
+        LvText.text = "·¹º§ : " + character.info.level;
     }
 
     public void SetCharacterImage()
     {
+        if (character == null) return;
 
+        characterIcon.sprite = character.icon;
     }
 
     public void InstatiateTraitSlot()
