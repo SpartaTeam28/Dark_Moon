@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   traitName: "\uB290\uB9BC\uBCF4"
   description: "\uBAB8\uC774 \uAD7C\uB5A0\uBCF4\uC778\uB2E4."
-  affectedStat: 7
+  affectedStat: 6
   valueModifier: -10
   multiplierModifier: 0
