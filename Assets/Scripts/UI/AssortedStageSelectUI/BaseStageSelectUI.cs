@@ -1,7 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
+
+public enum SelectStageName
+{
+    Seoul,
+    Deajon,
+    Deagu,
+    Busan
+}
+
 
 public abstract class BaseStageSelectUI : MonoBehaviour
 {
@@ -13,6 +23,7 @@ public abstract class BaseStageSelectUI : MonoBehaviour
     public Dictionary<int, List<int>> stageConnections; // 각 스테이지가 이동할 수 있는 스테이지 목록
     public HashSet<int> clearedStages = new HashSet<int>(); // 클리어한 스테이지 목록
     public int currentStage = 1; // 현재 스테이지 (예제)
+    public SelectStageName currentStageName;
 
     protected virtual void Awake()
     {
@@ -29,6 +40,7 @@ public abstract class BaseStageSelectUI : MonoBehaviour
         InitializeStageConnections(); // 스테이지 연결 정보 설정
         UpdateStageButtons(); // 초기 버튼 상태 업데이트
 
+       
     }
 
 
@@ -85,17 +97,18 @@ public abstract class BaseStageSelectUI : MonoBehaviour
         if (!clearedStages.Contains(stageNumber))
         {
             clearedStages.Add(stageNumber);
+            UIManager.instance.OnClickLobby();
             UpdateStageButtons(); // 버튼 상태 업데이트
         }
     }
 
    
-
-
     public abstract void OpenButton();
 
 
     public abstract void CloseButton();
+
+    public abstract void OnClickStageButton(int numeber);
 
 
 }

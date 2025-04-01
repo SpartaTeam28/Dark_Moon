@@ -21,9 +21,6 @@ EditorBuildSettings:
     path: Assets/Scenes/YGM_Scene.unity
     guid: db7f495d97bd6e64fabd0bec32892b0e
   - enabled: 1
-    path: Assets/Scenes/Stage/Ulsan.unity
-    guid: 451b6b3c29e42ee46a1bce28c45a8010
-  - enabled: 1
-    path: Assets/Scenes/Stage/Hanbat.unity
-    guid: fe281fb74756dd84592f8c73417b14b1
+    path: Assets/Scenes/Battle_Scene.unity
+    guid: 762d37c063f7c294d860f7034e8ebeb2
   m_configObjects: {}
