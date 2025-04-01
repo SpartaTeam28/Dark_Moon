@@ -1206,46 +1206,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 6457997550647304601, guid: fa6a21a3f54717947a438accba685b76, type: 3}
-      propertyPath: startSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7054706052081781924, guid: fa6a21a3f54717947a438accba685b76, type: 3}
-      propertyPath: sKilldatas.Array.size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7054706052081781924, guid: fa6a21a3f54717947a438accba685b76, type: 3}
-      propertyPath: sKilldatas.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 30f3dff67ebf6d042bc51a9ea3cc3f58, type: 2}
-    - target: {fileID: 7054706052081781924, guid: fa6a21a3f54717947a438accba685b76, type: 3}
-      propertyPath: sKilldatas.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 6da85294ebc680d4988d972e9932c0be, type: 2}
-    - target: {fileID: 7054706052081781924, guid: fa6a21a3f54717947a438accba685b76, type: 3}
-      propertyPath: sKilldatas.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: 1764cfdbce4ddac4a81b6885960c5af7, type: 2}
-    - target: {fileID: 7054706052081781924, guid: fa6a21a3f54717947a438accba685b76, type: 3}
-      propertyPath: sKilldatas.Array.data[3]
-      value: 
-      objectReference: {fileID: 11400000, guid: 60a9abfc266b25d4780fa32ee35bd6ec, type: 2}
-    - target: {fileID: 7054706052081781924, guid: fa6a21a3f54717947a438accba685b76, type: 3}
-      propertyPath: sKilldatas.Array.data[4]
-      value: 
-      objectReference: {fileID: 11400000, guid: 82d19a36cd747374981d9d000e821845, type: 2}
-    - target: {fileID: 7054706052081781924, guid: fa6a21a3f54717947a438accba685b76, type: 3}
-      propertyPath: sKilldatas.Array.data[5]
-      value: 
-      objectReference: {fileID: 11400000, guid: 16fbd5c356e6a244a82326244bac8424, type: 2}
-    - target: {fileID: 7054706052081781924, guid: fa6a21a3f54717947a438accba685b76, type: 3}
-      propertyPath: sKilldatas.Array.data[6]
-      value: 
-      objectReference: {fileID: 11400000, guid: a741b517aabb4ea408a17ec84b5d815b, type: 2}
-    - target: {fileID: 7054706052081781924, guid: fa6a21a3f54717947a438accba685b76, type: 3}
-      propertyPath: sKilldatas.Array.data[7]
-      value: 
-      objectReference: {fileID: 11400000, guid: deed1c6a15261864a9ba3f2f36ca9eca, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
