@@ -18,7 +18,7 @@ public class TrainingUI : BaseUI
     public CharacterSlot characterSlotPrefab;
     public List<CharacterSlot> characterSlotList;
 
-    public Image[] BattleUnitImage;
+    public List<Image> BattleUnitImage;
     public Sprite nullImageSprite;
     public Image selectImageCharacter;
 
@@ -86,8 +86,8 @@ public class TrainingUI : BaseUI
         if (selectCharacter == null) return; // 예외 방지
         if (GameManager.instance.friendlyCharacterList.Count >= 4) return;
         if (GameManager.instance.friendlyCharacterList.Contains(selectCharacter)) return; // 중복 방지
-
         GameManager.instance.friendlyCharacterList.Add(selectCharacter);
+        SetPartyListView();
         
         
     }
@@ -119,8 +119,9 @@ public class TrainingUI : BaseUI
         if (selectCharacter == null) return; // 예외 방지
         if (GameManager.instance.friendlyCharacterList.Count <= 1) return; // 최소 1명 유지
         if (!GameManager.instance.friendlyCharacterList.Contains(selectCharacter)) return; // 없는 캐릭터 삭제 방지
-
         GameManager.instance.friendlyCharacterList.Remove(selectCharacter);
+
+        SetPartyListView();
         ResetView();
     }
 
@@ -186,6 +187,7 @@ public class TrainingUI : BaseUI
 
     public void SetCharacterStats(Character character)
     {
+        selectImageCharacter.sprite = character.icon;
         attackText.text = character.stat.attack.GetValueToString();
         defenceText.text = character.stat.defence.GetValueToString();
         healthText.text = character.stat.health.GetValueToString();
@@ -226,6 +228,21 @@ public class TrainingUI : BaseUI
         }
 
     }
+
+    public void SetPartyListView()
+    {
+        for (int i = 0; i < BattleUnitImage.Count; i++)
+        {
+            BattleUnitImage[i].sprite = nullImageSprite;
+        }
+
+
+        for (int i = 0; i < BattleUnitImage.Count; i++)
+        {
+            BattleUnitImage[i].sprite = GameManager.instance.friendlyCharacterList[i].icon;
+        }
+    }
+
 
     public void OnClickCloseNpc()
     {

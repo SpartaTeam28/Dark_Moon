@@ -107,6 +107,7 @@ public class JumagUI : BaseUI
             if (i < partnerSelectList.Count)
             {
                 buttonGameObjects[i].gameObject.SetActive(true);
+                buttonGameObjects[i].GetComponent<Image>().sprite = partnerSelectList[i].spriteRenderer.sprite;
             }
             else
             {

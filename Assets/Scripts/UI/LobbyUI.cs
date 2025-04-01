@@ -74,6 +74,7 @@ public class LobbyUI : BaseUI
     public void OnClickTraining()
     {
         uiManager.OnClickTraining();
+        uiManager.SetFriendlyPartyListView();
     }
 
     public void OnClickSmith()

@@ -232,6 +232,12 @@ public class UIManager : MonoBehaviour
         jumagUI.GenerateNewPartners();
     }
 
+    public void SetFriendlyPartyListView()
+    {
+        trainingUI.SetPartyListView();
+    }
+
+
 
     public void SetCurrentStageName(SelectStageName currentStagaName, int currentNumber)
     {
