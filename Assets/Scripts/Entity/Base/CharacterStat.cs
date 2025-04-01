@@ -51,14 +51,14 @@ public class CharacterStat : MonoBehaviour
         var job = character.info.job;
         if (job != null)
         {
-            startAttck = job.startAttck;
-            startDefence = job.startDefence;
-            startMaxHealth = job.startMaxHealth;
-            startMaxMana = job.startMaxMana;
-            startCritical = job.startCritical;
-            startEvasion = job.startEvasion;
-            startAccurracy = job.startAccurracy;
-            startSpeed = job.startSpeed;
+            startAttck = job.attck;
+            startDefence = job.defence;
+            startMaxHealth = job.maxHealth;
+            startMaxMana = job.maxMana;
+            startCritical = job.critical;
+            startEvasion = job.evasion;
+            startAccurracy = job.accurracy;
+            startSpeed = job.speed;
         }
 
         attack = AddAndInit<AttackStat>(startAttck);
