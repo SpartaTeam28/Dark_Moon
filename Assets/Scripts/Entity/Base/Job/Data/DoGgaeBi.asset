@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cc24d930c512bd4787339c2f28453ae, type: 3}
+  m_Name: DoGgaeBi
+  m_EditorClassIdentifier: 
+  jobName: "\uB3C4\uAE68\uBE44"
+  isMale: 1
+  sprite: {fileID: 21300000, guid: ae9f42462970d62449ae980187c43145, type: 3}
+  icon: {fileID: 21300000, guid: c1063d0f838b0b846ae2421f31d07b20, type: 3}
+  animatorController: {fileID: 22100000, guid: bafe5d12c726070409f880fbf1b35f5d, type: 2}
+  attck: 15
+  defence: 5
+  maxHealth: 15
+  curHealth: 15
+  maxMana: 20
+  curMana: 20
+  critical: 10
+  accurracy: 85
+  evasion: 19
+  speed: 2
+  levelAttck: 5
+  levelDefence: 1
+  levelMaxHealth: 5
+  levelMaxMana: 10
+  levelCritical: 2
+  levelAccurracy: 0
+  leveltEvasion: 0
+  levelSpeed: 0.1

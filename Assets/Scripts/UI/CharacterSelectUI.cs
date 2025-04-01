@@ -25,7 +25,7 @@ public class CharacterSelectUI : BaseUI
     public NickNamePopupUI nickNamePopup;
     public AlamPopupUI alarmPopup;
 
-    public Character[] startCharacter = new Character[3];
+    public List<Character> startCharacter;
 
     public Outline jobOne;
     public Outline jobTwo;
@@ -64,7 +64,7 @@ public class CharacterSelectUI : BaseUI
 
     public void OnClickBack()
     {
-        uiManager.OnClickBack();
+        uiManager.OnClickTitle();
         jobOne.enabled = false;
         jobTwo.enabled = false;
         jobThree.enabled = false;
@@ -119,6 +119,4 @@ public class CharacterSelectUI : BaseUI
         GameManager.instance.friendlyCharacterList.Add(selectedCharacter);
         uiManager.AddPartnerSlotList(selectedCharacter);
     }
-
-
 }

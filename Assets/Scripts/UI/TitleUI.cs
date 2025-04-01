@@ -25,7 +25,7 @@ public class TitleUI : BaseUI
 
     public void OnClickSettingButton()
     {
-
+        uiManager.OnClickSettingButton();
     }
 
     public void OnClickStartButton()

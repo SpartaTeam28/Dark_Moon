@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             nameGenerator = gameObject.AddComponent<NameGenerator>();
+            DontDestroyOnLoad(this.gameObject);
         }
         else
         {
