@@ -26,7 +26,7 @@ public class Battle : MonoBehaviour
     public List<Character> enemies;  // 적 리스트
     public List<Character> turnOrder; // 턴 순서 리스트
     int currentTurnIndex = 0; // 현재 턴 진행 중인 캐릭터 인덱스
-
+    public StageSelectUI stageSelectUI;
     private List<Button> attackButtons = new List<Button>(); // 버튼 리스트
     
     [Header("스테이지별 적 리스트")]
@@ -206,7 +206,8 @@ public class Battle : MonoBehaviour
     //}
     public void EndBattle()
     {
-        Debug.Log("전투 끝");
+       
+        SceneManager.LoadScene("YGM_Scene");
     }
 
     private void UpdateButtonState(bool active)
@@ -217,4 +218,5 @@ public class Battle : MonoBehaviour
         }
     }
 
+    
 }
