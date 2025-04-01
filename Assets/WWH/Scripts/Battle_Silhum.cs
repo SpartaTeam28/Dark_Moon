@@ -126,7 +126,7 @@ public class Battle_Silhum : MonoBehaviour
         }
 
         Debug.Log("Turn Change");
-        if(currentTurnIndex == 8)
+        if(currentTurnIndex == turnOrder.Count)
         {
             currentTurnIndex = 0;
         }

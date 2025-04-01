@@ -25,11 +25,11 @@ public class CharacterInfo : MonoBehaviour
         }
     }
 
-    private void SetLevel()
+    public void SetLevel()
     {
         for (int i = 1; i < level; i++) 
         {
-            LevelUp();
+            character.stat.LevelUp();
         }
     }
 
