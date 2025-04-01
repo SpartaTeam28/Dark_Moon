@@ -20,6 +20,7 @@ public class EnemyGenerator : MonoBehaviour
         {
             enemyLists[i].info.job = jobs[Random.Range(0, jobs.Count)];
             enemyLists[i].info.level = Random.Range(minLevel, maxLevel);
+            GameManager.instance.EnemyCharacterList[i] = enemyLists[i];
         }
     }
 }
