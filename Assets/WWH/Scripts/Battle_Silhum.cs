@@ -27,7 +27,7 @@ public class Battle_Silhum : MonoBehaviour
     [SerializeField] private List<Character> BusanEnemies;
     [SerializeField] private List<Character> HanbatEnemies;
     [SerializeField] private List<Character> DeaguEnemies;
-
+    [SerializeField] private List<Character> BattleScene;
     //Character[] Enemycharacters = GameManager.instance.EnemyCharacterList.ToArray();
     //Character[] Playercharacter = GameManager.instance.friendlyCharacterList.ToArray();
 
@@ -80,7 +80,10 @@ public class Battle_Silhum : MonoBehaviour
                 enemies = new List<Character>(HanbatEnemies);
                 Debug.Log($"HanbatEnemies Count: {HanbatEnemies.Count}");
                 break;
-
+            case "Battle_Scene":
+                enemies = new List<Character>(BattleScene);
+                Debug.Log($"HanbatEnemies Count: {BattleScene.Count}");
+                break;
             default:
                 Debug.LogError($"적 리스트가 없습니다! 현재 씬: {currentScene}");
                 break;
@@ -123,6 +126,7 @@ public class Battle_Silhum : MonoBehaviour
         if (players.Contains(currentCharacter))
         {
             turn = Turn.playerTurn;
+            Debug.Log("??");
             ClickManager.Instance.SetSkillBook(currentCharacter.GetComponent<SkillBook>());
             ClickManager.Instance.SetCharecterStat(currentCharacter.stat);
         }
