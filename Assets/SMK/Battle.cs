@@ -35,6 +35,9 @@ public class Battle : MonoBehaviour
     [SerializeField] private List<Character> HanbatEnemies;
     [SerializeField] private List<Character> DeaguEnemies;
 
+    public Transform speedTextPanel; // UI에서 Speed 값을 표시할 Panel
+    public GameObject speedTextPrefab; // Speed 값을 표시할 Text 프리팹
+    private Dictionary<Character, Text> speedTexts = new Dictionary<Character, Text>();
     private void Awake()
     {
         //players = new List<Character>(GameManager.Instance.friendlyCharacterList);
@@ -42,7 +45,11 @@ public class Battle : MonoBehaviour
         turn = Turn.start; // 전투 시작
         BattleStart();
     }
+    private void Start()
+    {
+        BattleStart();
 
+    }
     public void BattleStart()
     {
         // 스피드 비교해서 턴 정하기
@@ -84,6 +91,9 @@ public class Battle : MonoBehaviour
                 break;
         }
         Debug.Log($"Enemies Count after LoadEnemies(): {enemies.Count}"); // enemies가 정상적으로 설정됐는지 확인
+        enemies = enemies.Where(e => e != null).ToList();
+
+        Debug.Log($"Enemies Count after LoadEnemies(): {enemies.Count}");
     }
 
     public void SpeedCheck()
@@ -95,6 +105,13 @@ public class Battle : MonoBehaviour
         // 수정? 고민
         turnOrder = turnOrder.OrderByDescending(c => c.stat.speed.value).ToList();
         currentTurnIndex = 0; // 첫 번째 캐릭터부터 시작
+        Debug.Log("=== 캐릭터 Speed 순서 ===");
+        foreach (var character in turnOrder)
+        {
+            Debug.Log($" Speed {character.stat.speed.value}");
+        }
+
+        DisplaySpeedTexts();
     }
     public void NextTurn()
     {
@@ -144,6 +161,24 @@ public class Battle : MonoBehaviour
 
         NextTurn();
     }
+
+    private void DisplaySpeedTexts()
+    {
+        foreach (var pair in speedTexts)
+        {
+            Destroy(pair.Value.gameObject); // 기존 UI 삭제
+        }
+        speedTexts.Clear();
+
+        foreach (var character in turnOrder)
+        {
+            GameObject newText = Instantiate(speedTextPrefab, speedTextPanel);
+            Text textComponent = newText.GetComponent<Text>();
+            textComponent.text = $" Speed {character.stat.speed.value}";
+
+            speedTexts[character] = textComponent;
+        }
+    }
     private void CreateAttackButtons()
     {
         foreach (var btn in attackButtons)
@@ -160,6 +195,7 @@ public class Battle : MonoBehaviour
             newButton.GetComponent<Button>().onClick.AddListener(() => PlayerAttack(index));
             attackButtons.Add(newButton.GetComponent<Button>());
         }
+    
     }
     public void EndBattle()
     {
@@ -173,4 +209,5 @@ public class Battle : MonoBehaviour
             btn.interactable = active;
         }
     }
+
 }
