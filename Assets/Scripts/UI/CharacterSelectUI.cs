@@ -64,7 +64,7 @@ public class CharacterSelectUI : BaseUI
 
     public void OnClickBack()
     {
-        uiManager.OnClickBack();
+        uiManager.OnClickTitle();
         jobOne.enabled = false;
         jobTwo.enabled = false;
         jobThree.enabled = false;

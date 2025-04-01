@@ -35,6 +35,8 @@ public class UIManager : MonoBehaviour
     StageSelectUI stageSelectUI = null;
     CommonBattleUI commonBattleUI = null;
 
+    public SettingPopupUI settingPopupUI = null;
+
     public List<Character> partnerCharacters;// 구매한 캐릭터 리스트
 
     public event Action<int> OnGoldChanged;
@@ -88,6 +90,8 @@ public class UIManager : MonoBehaviour
         stageSelectUI?.Init(this);
         commonBattleUI = GetComponentInChildren<CommonBattleUI>(true);
         commonBattleUI?.Init(this);
+
+        settingPopupUI = GetComponentInChildren<SettingPopupUI>(true);
     }
 
     private void Start()
@@ -124,7 +128,8 @@ public class UIManager : MonoBehaviour
         Application.Quit(); // 어플리케이션 종료
 #endif
     }
-
+    
+    
     public void OnClickLobby()
     {
         ChangeState(UIState.Lobby);
@@ -133,6 +138,8 @@ public class UIManager : MonoBehaviour
     public void OnClickJumag()
     {
         ChangeState(UIState.Jumag);
+        jumagUI.npcWindow.SetActive(true);
+        jumagUI.RandomJumagNPCScripts();
     }
 
     //public void OnClickHealStation()
@@ -148,6 +155,8 @@ public class UIManager : MonoBehaviour
     public void OnClickTraining()
     {
         ChangeState(UIState.Training);
+        trainingUI.npcTrainingWindow.SetActive(true);
+        trainingUI.RandomJumagNPCScripts();
     }
 
     public void OnClickStartStage()
@@ -160,9 +169,14 @@ public class UIManager : MonoBehaviour
         ChangeState(UIState.CommonBattle);
     }
 
-    public void OnClickBack()
+    public void OnClickTitle()
     {
-        ChangeState(prevState);
+        ChangeState(UIState.Title);
+    }
+    
+    public void OnClickSettingButton()
+    {
+        settingPopupUI.gameObject.SetActive(true);
     }
 
     public void SetPlayer(string name)

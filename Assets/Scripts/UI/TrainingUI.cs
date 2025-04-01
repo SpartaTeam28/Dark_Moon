@@ -38,6 +38,10 @@ public class TrainingUI : BaseUI
     public Character selectCharacter;
     int selectCharacterIndex;
 
+
+    public GameObject npcTrainingWindow;
+    public TextMeshProUGUI npcTrainingScriptsText;
+
     protected override UIState GetUIState()
     {
         return UIState.Training;
@@ -218,6 +222,36 @@ public class TrainingUI : BaseUI
         }
 
     }
+
+    public void OnClickCloseNpc()
+    {
+        npcTrainingWindow.SetActive(false);
+    }
+
+    public void RandomJumagNPCScripts()
+    {
+        int randomNuber = Random.Range(1, 5);
+
+        switch (randomNuber)
+        {
+            case 1:
+                npcTrainingScriptsText.text = "정신 똑바로 차리고! 훈련은 실전처럼! 실전은 훈련처럼!";
+                break;
+            case 2:
+                npcTrainingScriptsText.text = "기합이 부족하구나! 다시 한번! 전력을 다해 외쳐라!";
+                break;
+            case 3:
+                npcTrainingScriptsText.text = "무예는 단순히 힘만으로 되는 것이 아니다. 정신을 갈고 닦아 내면의 힘을 키워야 한다.";
+                break;
+            case 4:
+                npcTrainingScriptsText.text = "진정한 강함은 남을 지배하는 것이 아니라, 자신을 다스리는 것이다.";
+                break;
+            case 5:
+                npcTrainingScriptsText.text = "명예를 소중히 여기고, 약자를 보호하는 마음을 잊지 마라.";
+                break;
+        }
+    }
+
 
 
 }

@@ -15,6 +15,9 @@ public class JumagUI : BaseUI
 
     public TextMeshProUGUI goldText;
 
+    public GameObject npcWindow;
+    public TextMeshProUGUI npCScriptsText;
+
     protected override UIState GetUIState()
     {
         return UIState.Jumag;
@@ -139,6 +142,35 @@ public class JumagUI : BaseUI
     public void OnClickExitButton()
     {
         uiManager.OnClickLobby();
+    }
+
+    public void OnClickCloseNpc()
+    {
+        npcWindow.SetActive(false);
+    }
+
+    public void RandomJumagNPCScripts()
+    {
+        int randomNuber = Random.Range(1,5);
+
+        switch(randomNuber)
+        {
+            case 1:
+                npCScriptsText.text = "어이쿠, 어서 오시구려! 먼 길 오시느라 고생 많으셨소. 자, 이리 들어와 앉으시구려.";
+                break;
+            case 2:
+                npCScriptsText.text = "어서 오시게! 오늘따라 유난히 손님이 귀하구려. 뭘 드릴까?";
+                break;
+            case 3:
+                npCScriptsText.text = "우리 주막 술맛은 으뜸이라오. 한 번 맛보면 잊을 수 없을 거요.";
+                break;
+            case 4:
+                npCScriptsText.text = "따뜻한 국밥 한 그릇이면 추위가 싹 가실 거요. 어서 드시구려.";
+                break;
+            case 5:
+                npCScriptsText.text = "어디서 오셨소? 무슨 일로 이리 먼 길을 오셨는지...";
+                break;
+        }
     }
 
 

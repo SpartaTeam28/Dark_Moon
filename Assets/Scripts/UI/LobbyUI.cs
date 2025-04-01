@@ -32,6 +32,9 @@ public class LobbyUI : BaseUI
         trainingButton.onClick.AddListener(OnClickTraining);
         smithyButton.onClick.AddListener(OnClickSmith);
         stageSelectButton.onClick.AddListener(OnClickStage);
+
+        settingButton.onClick.AddListener(OnClickSetting);
+        infoButton.onClick.AddListener(OnClickInfo);
     }
 
     private void OnEnable()
@@ -81,6 +84,16 @@ public class LobbyUI : BaseUI
     public void OnClickStage()
     {
         uiManager.OnClickStartStage();
+    }
+
+    public void OnClickSetting()
+    {
+        uiManager.OnClickSettingButton();
+    }
+
+    public void OnClickInfo()
+    {
+
     }
 
 
