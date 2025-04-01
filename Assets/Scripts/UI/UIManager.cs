@@ -259,30 +259,36 @@ public class UIManager : MonoBehaviour
         switch (stageName)
         {
             case SelectStageName.Busan:
-                stageSelectUI.busanStage.OnStageClear(stageNumber);
-                if(stageSelectUI.busanStage.clearedStages.Contains(7))
-                {
+                //stageSelectUI.busanStage.OnStageClear(stageNumber);
+                //if(stageSelectUI.busanStage.clearedStages.Contains(7))
+                //{
                     stageSelectUI.deaguButton.interactable = true;
-                }
+                //}
                 break;
             case SelectStageName.Deagu:
-                stageSelectUI.deaguStage.OnStageClear(stageNumber);
-                if (stageSelectUI.deaguStage.clearedStages.Contains(7))
-                {
+                //stageSelectUI.deaguStage.OnStageClear(stageNumber);
+                //if (stageSelectUI.deaguStage.clearedStages.Contains(7))
+                //{
                     stageSelectUI.deajonButton.interactable = true;
-                }
+                //}
                 break;
             case SelectStageName.Deajon:
-                stageSelectUI.deajonStage.OnStageClear(stageNumber);
-                if (stageSelectUI.deajonStage.clearedStages.Contains(7))
-                {
-                    stageSelectUI.deajonButton.interactable = true;
-                }
+                //stageSelectUI.deajonStage.OnStageClear(stageNumber);
+                //if (stageSelectUI.deajonStage.clearedStages.Contains(7))
+                //{
+                stageSelectUI.seoulButton.interactable = true;
+                //}
                 break;
-            case SelectStageName.Seoul:
-                stageSelectUI.seoulStage.OnStageClear(stageNumber);
-                break;
+            //case SelectStageName.Seoul:
+            //    //stageSelectUI.seoulStage.OnStageClear(stageNumber);
+            //    stageSelectUI.seoulButton.interactable = true;
+            //    break;
         }
+    }
+
+    public CommonBattleUI SetBattlePanel()
+    {
+        return commonBattleUI;
     }
 
 }
