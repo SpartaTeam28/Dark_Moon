@@ -28,6 +28,11 @@ public class Battle_Silhum : MonoBehaviour
     [SerializeField] private List<Character> HanbatEnemies;
     [SerializeField] private List<Character> DeaguEnemies;
 
+    Character[] Enemycharacters = GameManager.instance.EnemyCharacterList.ToArray();
+    Character[] Playercharacter = GameManager.instance.friendlyCharacterList.ToArray();
+
+
+
     private void Awake()
     {
         //players = new List<Character>(GameManager.Instance.friendlyCharacterList);
@@ -38,6 +43,11 @@ public class Battle_Silhum : MonoBehaviour
     private void Start()
     {
         BattleStart();
+    }
+
+    private void Update()
+    {
+        
     }
 
     public void BattleStart()
@@ -103,6 +113,8 @@ public class Battle_Silhum : MonoBehaviour
             return;
         }
 
+        EndGameTrigger();
+
         Debug.Log("Turn Change");
         if(currentTurnIndex == 8)
         {
@@ -167,6 +179,24 @@ public class Battle_Silhum : MonoBehaviour
         foreach (var btn in attackButtons)
         {
             btn.interactable = active;
+        }
+    }
+
+
+    public void EndGameTrigger()
+    {
+        Character[] ActiveEnemyList = Enemycharacters.Where(Ob => Ob.gameObject.activeSelf).ToArray();
+        Character[] ActivePlayerList = Playercharacter.Where(OB => OB.gameObject.activeSelf).ToArray();
+        if (ActivePlayerList == null)
+        {
+            turn = Turn.lose;
+            return;
+        }
+        if(ActiveEnemyList == null) 
+        {
+            isAlive = false;
+            turn = Turn.win;
+            return;
         }
     }
 }
