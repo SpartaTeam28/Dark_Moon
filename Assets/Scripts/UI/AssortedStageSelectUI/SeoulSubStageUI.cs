@@ -1,9 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SeoulSubStageUI : BaseStageSelectUI
 {
+
+    protected override void Awake()
+    {
+        base.Awake();
+        currentStageName = SelectStageName.Seoul;
+
+        for (int i = 0; i < subStageButtonList.Count; i++)
+        {
+            int index = i;
+            subStageButtonList[i].onClick.AddListener(() => OnClickStageButton(index + 1));
+        }
+    }
 
     protected override void InitializeStageConnections()
     {
@@ -34,4 +47,18 @@ public class SeoulSubStageUI : BaseStageSelectUI
         gameObject.SetActive(false);
     }
 
+    public override void OnClickStageButton(int stagenumeber)
+    {
+        UIManager.instance.SetCurrentStageName(currentStageName, stagenumeber);
+        if (stagenumeber == 7)
+        {
+            SceneManager.LoadScene("메인 스테이지 이름");
+        }
+        else
+        {
+            SceneManager.LoadScene("YGM_TestBattle");
+        }
+
+        UIManager.instance.OnClickCommonBattle();
+    }
 }

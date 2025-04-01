@@ -24,6 +24,25 @@ public class StageSelectUI : BaseUI
         deaguButton.interactable = false;
         
     }
+
+    public void Update()
+    {
+        //if(busanStage.clearedStages.Contains(7))
+        //{
+        //    deaguButton.interactable = true;
+        //}
+        
+        //if(deaguStage.clearedStages.Contains(7))
+        //{
+        //    deajonButton.interactable = true;
+        //}
+
+        //if(deajonStage.clearedStages.Contains(7))
+        //{
+        //    seoulButton.interactable = true;
+        //}
+        
+    }
     protected override UIState GetUIState()
     {
         return UIState.Stage;

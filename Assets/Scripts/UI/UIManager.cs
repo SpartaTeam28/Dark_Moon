@@ -15,7 +15,7 @@ public enum UIState
     Training, //5
     Smith, //6
     Stage, //7
-    Battle //8
+    CommonBattle //8
 }
 
 
@@ -33,6 +33,7 @@ public class UIManager : MonoBehaviour
     TrainingUI trainingUI = null;
     SmithUI smithUI = null;
     StageSelectUI stageSelectUI = null;
+    CommonBattleUI commonBattleUI = null;
 
     public List<Character> partnerCharacters;// 구매한 캐릭터 리스트
 
@@ -85,7 +86,8 @@ public class UIManager : MonoBehaviour
         smithUI?.Init(this);
         stageSelectUI = GetComponentInChildren<StageSelectUI>(true);
         stageSelectUI?.Init(this);
-
+        commonBattleUI = GetComponentInChildren<CommonBattleUI>(true);
+        commonBattleUI?.Init(this);
     }
 
     private void Start()
@@ -106,6 +108,7 @@ public class UIManager : MonoBehaviour
         trainingUI?.SetActive(currentState);
         smithUI?.SetActive(currentState);
         stageSelectUI?.SetActive(currentState);
+        commonBattleUI?.SetActive(currentState);
     }
 
     public void OnClickStart() //시작하기를 누른경우
@@ -150,6 +153,11 @@ public class UIManager : MonoBehaviour
     public void OnClickStartStage()
     {
         ChangeState(UIState.Stage);
+    }
+
+    public void OnClickCommonBattle()
+    {
+        ChangeState(UIState.CommonBattle);
     }
 
     public void OnClickBack()
@@ -210,5 +218,49 @@ public class UIManager : MonoBehaviour
         jumagUI.GenerateNewPartners();
     }
 
+
+    public void SetCurrentStageName(SelectStageName currentStagaName, int currentNumber)
+    {
+        commonBattleUI.currentStageName = currentStagaName;
+        commonBattleUI.currentStagenumber = currentNumber;
+    }
+
+
+    public void SetBattleCharacterOnData(Character character)
+    {
+        commonBattleUI.SetCharacterData(character);
+        commonBattleUI.ShowUI(true);
+    }
+
+    public void OnEnableStageButton(SelectStageName stageName, int stageNumber)
+    {
+        switch (stageName)
+        {
+            case SelectStageName.Busan:
+                stageSelectUI.busanStage.OnStageClear(stageNumber);
+                if(stageSelectUI.busanStage.clearedStages.Contains(7))
+                {
+                    stageSelectUI.deaguButton.interactable = true;
+                }
+                break;
+            case SelectStageName.Deagu:
+                stageSelectUI.deaguStage.OnStageClear(stageNumber);
+                if (stageSelectUI.deaguStage.clearedStages.Contains(7))
+                {
+                    stageSelectUI.deajonButton.interactable = true;
+                }
+                break;
+            case SelectStageName.Deajon:
+                stageSelectUI.deajonStage.OnStageClear(stageNumber);
+                if (stageSelectUI.deajonStage.clearedStages.Contains(7))
+                {
+                    stageSelectUI.deajonButton.interactable = true;
+                }
+                break;
+            case SelectStageName.Seoul:
+                stageSelectUI.seoulStage.OnStageClear(stageNumber);
+                break;
+        }
+    }
 
 }
