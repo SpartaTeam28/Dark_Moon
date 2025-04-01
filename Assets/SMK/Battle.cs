@@ -165,6 +165,7 @@ public class Battle : MonoBehaviour
 
     private void DisplaySpeedTexts()
     {
+        int i = 1;
         foreach (var pair in speedTexts)
         {
             Destroy(pair.Value.gameObject); // 기존 UI 삭제
@@ -173,14 +174,16 @@ public class Battle : MonoBehaviour
 
         foreach (var character in turnOrder)
         {
+            
             GameObject newText = Instantiate(speedTextPrefab, speedTextPanel);
             TextMeshProUGUI textComponent = newText.GetComponent<TextMeshProUGUI>();
-            textComponent.text = $" Speed: {character.stat.speed.value}";
-
+            //textComponent.text = $" Speed: {character.stat.speed.value}";
+            textComponent.text = $" Speed: {i}";
             Vector3 screenPos = Camera.main.WorldToScreenPoint(character.transform.position);
             newText.transform.position = screenPos + new Vector3(0, 100f, 0); // Y값 조정 (아래로 내리기)
 
             speedTexts[character] = textComponent;
+            i++;
         }
     }
     //private void CreateAttackButtons()
