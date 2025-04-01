@@ -140,6 +140,8 @@ public class TrainingUI : BaseUI
         newCharacterSlot.character = character;
         newCharacterSlot.SetNameText();
         newCharacterSlot.SetJobText();
+        newCharacterSlot.SetLvText();
+        newCharacterSlot.SetCharacterImage();
         characterSlotList.Add(newCharacterSlot);
 
         for(int i = 0; i < characterSlotList.Count; i++)
@@ -190,6 +192,7 @@ public class TrainingUI : BaseUI
         criticalText.text = character.stat.critical.GetValueToString();
         accuracyText.text = character.stat.accuracy.GetValueToString();
         evasionText.text = character.stat.accuracy.GetValueToString();
+        expText.text = $"{character.info.curExp} / {character.info.totalExp}";
     }
 
     public void SelectCharacter(int index)
