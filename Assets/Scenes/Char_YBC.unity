@@ -1042,6 +1042,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d7710c416b2d8ff44835e0993595be41, type: 2}
   - {fileID: 11400000, guid: 72a7f286a3be3954c891bdadf3f1eb63, type: 2}
   - {fileID: 11400000, guid: 0f5c4a1922e4d614ba03c036511071b9, type: 2}
+  - {fileID: 11400000, guid: eb3ce66d14c54e645829555b0415f1b8, type: 2}
+  - {fileID: 11400000, guid: 63b73f70833fc984e9b6fce9ab80acff, type: 2}
   nameGenerator: {fileID: 0}
 --- !u!4 &1421025303
 Transform:
