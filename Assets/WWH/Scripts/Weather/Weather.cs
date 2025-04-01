@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class Weather : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
 
-    [SerializeField][Range(0f,50f)] float value;
+  
     protected GameObject TextUi;
 
     private void Start()

@@ -13,14 +13,18 @@ MonoBehaviour:
   m_Name: JeonUChi 8
   m_EditorClassIdentifier: 
   skillDamage: 0
-  skillTargetCount: 0
+  skillTargetCount: 1
   isCoolTimeSkill: 0
   skillCoolTime: 0
+  isHeal: 0
   skillType: 0
   skillUsingType: 0
   UsingValue: 0
+  skillStatType: 0
+  isMulti: 0
   isBuff: 0
   isDebuff: 1
+  multiValue: 0
   duration: 0
   skillText:
     skillNametext: 8

@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Unity.Jobs;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +25,7 @@ public class CharacterSelectUI : BaseUI
     public NickNamePopupUI nickNamePopup;
     public AlamPopupUI alarmPopup;
 
+    public Character[] startCharacter = new Character[3];
 
     public Outline jobOne;
     public Outline jobTwo;
@@ -71,7 +74,7 @@ public class CharacterSelectUI : BaseUI
 
     public void OnClickCharacterSelect()
     {
-        if(currentSelection == null)
+        if (currentSelection == null)
         {
             alarmPopup.gameObject.SetActive(true);
             return;
@@ -108,6 +111,14 @@ public class CharacterSelectUI : BaseUI
 
     }
 
+    public void SetPlayerCharacter(string name)
+    {
+        int index = (int)currentSelection; // Enum을 int로 변환
+        Character selectedCharacter = startCharacter[index];
+        selectedCharacter.info.characterName = name;
+        GameManager.instance.friendlyCharacterList.Add(selectedCharacter);
+        uiManager.AddPartnerSlotList(selectedCharacter);
+    }
 
 
 }
