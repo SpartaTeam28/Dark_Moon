@@ -207,6 +207,7 @@ public class UIManager : MonoBehaviour
     public void SpenGold(int amount)
     {
         gold -= amount;
+        if (gold <= 0) gold = 0;
         OnGoldChanged?.Invoke(gold);
     }
 
