@@ -207,6 +207,7 @@ public class Battle_Silhum : MonoBehaviour
 
 
         turnOrder.Remove(character);
+        character.gameObject.SetActive(false);
     }
     public void EndGameTrigger()
     {

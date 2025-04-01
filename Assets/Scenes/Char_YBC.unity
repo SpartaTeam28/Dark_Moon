@@ -994,11 +994,7 @@ MonoBehaviour:
   - {fileID: 1829798298}
   - {fileID: 265237697}
   - {fileID: 1957408004}
-  EnemyCharacterList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  EnemyCharacterList: []
   availableTraits:
   - {fileID: 11400000, guid: 357ffa8a048725e44b0c571d8c7e28fd, type: 2}
   - {fileID: 11400000, guid: 89283433faed22949a315596543960cc, type: 2}
