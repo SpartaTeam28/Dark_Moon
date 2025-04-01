@@ -53,12 +53,7 @@ public class Player : MonoBehaviour
         characterStat = GetComponent<CharacterStat>();
     }
 
-    private void OnMouseDown()
-    {
-        ClickManager.Instance.SetSkillBook(skillBook);
-        ClickManager.Instance.SetCharecterStat(characterStat);
-        
-    }
+
 
 
 }
