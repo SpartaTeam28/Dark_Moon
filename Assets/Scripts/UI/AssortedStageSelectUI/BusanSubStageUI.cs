@@ -54,11 +54,11 @@ public class BusanSubStageUI : BaseStageSelectUI
         UIManager.instance.SetCurrentStageName(currentStageName, stagenumeber);
         if(stagenumeber == 7)
         {
-            SceneManager.LoadScene("서브 보스 스테이지");
+            SceneManager.LoadScene("Battle_Scene");
         }
         else
         {
-            SceneManager.LoadScene("YGM_TestBattle");         
+            SceneManager.LoadScene("Battle_Scene");         
         }
 
         UIManager.instance.OnClickCommonBattle();

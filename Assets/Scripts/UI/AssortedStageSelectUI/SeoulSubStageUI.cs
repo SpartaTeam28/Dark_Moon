@@ -52,11 +52,11 @@ public class SeoulSubStageUI : BaseStageSelectUI
         UIManager.instance.SetCurrentStageName(currentStageName, stagenumeber);
         if (stagenumeber == 7)
         {
-            SceneManager.LoadScene("메인 스테이지 이름");
+            SceneManager.LoadScene("Battle_Scene");
         }
         else
         {
-            SceneManager.LoadScene("YGM_TestBattle");
+            SceneManager.LoadScene("Battle_Scene");
         }
 
         UIManager.instance.OnClickCommonBattle();

@@ -161,6 +161,16 @@ public class TrainingUI : BaseUI
     {
         if (selectCharacter == null) return;
 
+        for(int i = 0; i < GameManager.instance.friendlyCharacterList.Count; i++)
+        {
+            if (GameManager.instance.friendlyCharacterList[i] == selectCharacter)
+            {
+                Debug.Log("파티를 해제해주세요.");
+                return;
+            }
+
+        }
+
         if(selectCharacterIndex != 0)
         {
             Transform selectedCharacter = contentGamobject.GetChild(selectCharacterIndex);
@@ -214,6 +224,7 @@ public class TrainingUI : BaseUI
     public void ResetView()
     {
         selectCharacter = null;
+        selectImageCharacter.sprite = nullImageSprite;
         attackText.text = "";
         defenceText.text = "";
         healthText.text = "";
@@ -237,7 +248,7 @@ public class TrainingUI : BaseUI
         }
 
 
-        for (int i = 0; i < BattleUnitImage.Count; i++)
+        for (int i = 0; i < GameManager.instance.friendlyCharacterList.Count; i++)
         {
             BattleUnitImage[i].sprite = GameManager.instance.friendlyCharacterList[i].icon;
         }
