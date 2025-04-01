@@ -28,7 +28,7 @@ public class StageUI : MonoBehaviour
             for(int i = 0; i < images.Length; i++) 
             {
                 images[i].enabled = true;
-                images[i].sprite = ClickManager.Instance.skillBook.SilhumSkill[i].Icon;
+                images[i].sprite = ClickManager.Instance.skillBook.skillList[i].Icon;
             }
 
             for(int i = 0;i < buttons.Length; i++) 

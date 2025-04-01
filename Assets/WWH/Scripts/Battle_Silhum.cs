@@ -5,15 +5,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public enum Turn
-{
-    start,
-    enemyTurn,
-    playerTurn,
-    win,
-    lose
-}
-public class Battle : MonoBehaviour
+
+public class Battle_Silhum : MonoBehaviour
 {
     //
     public Turn turn; // 턴 상태
@@ -28,34 +21,42 @@ public class Battle : MonoBehaviour
     int currentTurnIndex = 0; // 현재 턴 진행 중인 캐릭터 인덱스
 
     private List<Button> attackButtons = new List<Button>(); // 버튼 리스트
-    
+
     [Header("스테이지별 적 리스트")]
     [SerializeField] public List<Character> UlsanEnemies;
     [SerializeField] private List<Character> BusanEnemies;
     [SerializeField] private List<Character> HanbatEnemies;
     [SerializeField] private List<Character> DeaguEnemies;
 
+    //Character[] Enemycharacters = GameManager.instance.EnemyCharacterList.ToArray();
+    //Character[] Playercharacter = GameManager.instance.friendlyCharacterList.ToArray();
+
+
+
     private void Awake()
     {
         //players = new List<Character>(GameManager.Instance.friendlyCharacterList);
         LoadEnemies();
         turn = Turn.start; // 전투 시작
+
+    }
+    private void Start()
+    {
         BattleStart();
     }
-
     public void BattleStart()
     {
         // 스피드 비교해서 턴 정하기
         SpeedCheck();
-        CreateAttackButtons();
+        //CreateAttackButtons();
         NextTurn();
-
+        ClickManager.Instance.next = NextTurn;
     }
     public void LoadEnemies()
     {
         // 스테이지에 맞는 적 리스트 로드
         Debug.Log($"UlsanEnemies Count: {DeaguEnemies.Count}"); // 몇 개의 적이 있는지 확인
-        
+
         string currentScene = SceneManager.GetActiveScene().name;
 
         switch (currentScene)
@@ -106,62 +107,62 @@ public class Battle : MonoBehaviour
             return;
         }
 
+        //EndGameTrigger();
+
+        Debug.Log("Turn Change");
+        if(currentTurnIndex == 8)
+        {
+            currentTurnIndex = 0;
+        }
         Character currentCharacter = turnOrder[currentTurnIndex];
+        
+        currentTurnIndex++;
+                
+        Debug.Log(currentTurnIndex.ToString() + "지금 인덱스");
 
         if (players.Contains(currentCharacter))
         {
             turn = Turn.playerTurn;
-            Debug.Log($"{currentCharacter.name}의 턴입니다. 공격 버튼을 눌러 공격하세요.");
-            UpdateButtonState(true);
+            ClickManager.Instance.SetSkillBook(currentCharacter.GetComponent<SkillBook>());
+            ClickManager.Instance.SetCharecterStat(currentCharacter.stat);
         }
         else
         {
             turn = Turn.enemyTurn;
+            ClickManager.Instance.SetSkillBook(null);
+            ClickManager.Instance.SetCharecterStat(null);
             UpdateButtonState(false);
             StartCoroutine(EnemyAttack(currentCharacter));
         }
     }
-
-    public void PlayerAttack(int playerIndex)
-    {
-        if (turn != Turn.playerTurn) return;
-
-        StartCoroutine(PlayerAttackCoroutine(players[playerIndex]));
-    }
-
-    IEnumerator PlayerAttackCoroutine(Character player)
-    {
-        yield return new WaitForSeconds(1f);
-        Debug.Log($"{player.name}이(가) 공격을 했습니다.");
-
-        NextTurn();
-
-    }
-
     IEnumerator EnemyAttack(Character enemy)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
+        enemy.GetComponent<Enemy>().
+            SkillActive(enemy.GetComponent<Enemy>().sKilldatas
+            [Random.Range(0, enemy.GetComponent<Enemy>().sKilldatas.Length)]);
         Debug.Log($"{enemy.name}이(가) 공격을 했습니다.");
-
+        yield return new WaitForSeconds(2f);
+        ClickManager.Instance.TargetDown();
         NextTurn();
     }
-    private void CreateAttackButtons()
-    {
-        foreach (var btn in attackButtons)
-        {
-            Destroy(btn.gameObject); // 기존 버튼 삭제
-        }
-        attackButtons.Clear();
+    //private void CreateAttackButtons()
+    //{
+    //    foreach (var btn in attackButtons)
+    //    {
+    //        Destroy(btn.gameObject); // 기존 버튼 삭제
+    //    }
+    //    attackButtons.Clear();
 
-        for (int i = 0; i < players.Count; i++)
-        {
-            GameObject newButton = Instantiate(attackButtonPrefab, buttonPanel);
-            newButton.GetComponentInChildren<Text>().text = players[i].name;
-            int index = i; // 람다 캡처 방지
-            newButton.GetComponent<Button>().onClick.AddListener(() => PlayerAttack(index));
-            attackButtons.Add(newButton.GetComponent<Button>());
-        }
-    }
+    //    for (int i = 0; i < players.Count; i++)
+    //    {
+    //        GameObject newButton = Instantiate(attackButtonPrefab, buttonPanel);
+    //        newButton.GetComponentInChildren<Text>().text = players[i].name;
+    //        int index = i; // 람다 캡처 방지
+    //        newButton.GetComponent<Button>().onClick.AddListener(() => PlayerAttack(index));
+    //        attackButtons.Add(newButton.GetComponent<Button>());
+    //    }
+    //}
     public void EndBattle()
     {
         Debug.Log("전투 끝");
@@ -174,4 +175,22 @@ public class Battle : MonoBehaviour
             btn.interactable = active;
         }
     }
+
+
+    //public void EndGameTrigger()
+    //{
+    //    Character[] ActiveEnemyList = Enemycharacters.Where(Ob => Ob.gameObject.activeSelf).ToArray();
+    //    Character[] ActivePlayerList = Playercharacter.Where(OB => OB.gameObject.activeSelf).ToArray();
+    //    if (ActivePlayerList == null)
+    //    {
+    //        turn = Turn.lose;
+    //        return;
+    //    }
+    //    if(ActiveEnemyList == null) 
+    //    {
+    //        isAlive = false;
+    //        turn = Turn.win;
+    //        return;
+    //    }
+    //}
 }

@@ -10,15 +10,19 @@ public class ClickManager : MonoBehaviour
     private static ClickManager instance;
     public static ClickManager Instance { get { return instance; } set { instance = value; } }
 
+
     public CharacterStat characterStat;
     public SkillBook skillBook;
     public SKilldata skillData;
     public bool IsBuff;
     public bool isAttacking;
     public bool IsSilhum = false;
+
+    public delegate void Next();
+    public Next next;
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -26,7 +30,7 @@ public class ClickManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
+}
 
     private void Update()
     {
@@ -45,6 +49,20 @@ public class ClickManager : MonoBehaviour
                 {
                     if (hit.transform != null)
                     {
+                        if(skillData.isDebuff )
+                        {
+                            if(hit.transform.CompareTag("Friends"))
+                            {
+                                return;
+                            }
+                        }
+                        else if (skillData.isBuff || skillData.isHeal )
+                        {
+                            if (hit.transform.CompareTag("Enemy"))
+                            {
+                                return;
+                            }
+                        }
                         if (skillData.skillTargetCount == 1)
                         {
                             OnePersonAttack(hit.transform.GetComponent<Character>(), hit);
@@ -53,7 +71,11 @@ public class ClickManager : MonoBehaviour
                         {
                             AllPersonAttack();
                         }
+                        AttackEnd();
 
+                    }
+                    else
+                    {
                         AttackEnd();
                     }
                 }
@@ -64,6 +86,7 @@ public class ClickManager : MonoBehaviour
                 }
             }
         }
+        
     }
 
 
@@ -91,7 +114,7 @@ public class ClickManager : MonoBehaviour
 
     public void SetSkill(int index)
     {
-        skillData = skillBook.SilhumSkill[index];
+        skillData = skillBook.skillList[index];
         isAttacking = true;
         TargetDown();
         if (skillData.isBuff || skillData.isHeal)
@@ -108,24 +131,31 @@ public class ClickManager : MonoBehaviour
 
     public void OnePersonAttack(Character stat, RaycastHit2D hit)
     {
+        SKilldata skillData = this.skillData;
         if(skillData.isDebuff && hit.transform.CompareTag("Enemy")) 
         {
             Debuff(hit.transform.GetComponent<CharacterStat>());
+            next.Invoke();
         }
         else if(skillData.isBuff)
         {
+            IsBuff = false;
             Buff(hit.transform.GetComponent<CharacterStat>());
+            next.Invoke();
         }
         else if(skillData.isHeal)
         {
+            IsBuff = false;
             Heal(hit.transform.GetComponent<CharacterStat>());
+            next.Invoke();
         }
         else
         {
             //Attack
             stat.TakeDamaged(skillData.skillDamage);
-            ManaSub();
+            ManaSub(skillData);
             TargetDown();
+            next.Invoke();
         }
 
     }
@@ -133,14 +163,17 @@ public class ClickManager : MonoBehaviour
     public void AllPersonAttack()
     {
 
+        SKilldata sKilldata = skillData;
         if (skillData.isBuff)
         {
+            IsBuff = false;
             foreach (Character character in GameManager.instance.friendlyCharacterList)
             {
            
                 Buff(character.stat);
                 
             }
+            next.Invoke();
         }
         else if (skillData.isDebuff)
         {
@@ -148,38 +181,52 @@ public class ClickManager : MonoBehaviour
             {
                 Debuff(character.stat);
             }
+            next.Invoke();
         }
         else if (skillData.isHeal)
         {
+            IsBuff = false;
             foreach (Character character in GameManager.instance.friendlyCharacterList)
             {
                 Heal(character.stat);
             }
+            next.Invoke();
         }
         else
         {
             foreach (Character character in GameManager.instance.EnemyCharacterList)
             {
-                //Attack
-                character.TakeDamaged(skillData.skillDamage);
-                ManaSub();
+             
+                character.TakeDamaged(sKilldata.skillDamage);
+                ManaSub(sKilldata);
                 TargetDown();
+        
             }
+            next.Invoke();
         }
 
-
    
+
     }
 
-    public void Heal(CharacterStat character)
+    public void Heal(CharacterStat character, SKilldata sKillData = null)
     {
+        if(sKillData != null)
+        {
+            skillData = sKillData;
+        }
+        SKilldata sKilldata = skillData;
         character.health.AddHealth(skillData.skillDamage);
-        ManaSub();
-        TargetDown();
+        ManaSub(sKilldata);
+        //TargetDown();
+     
     }
-    public void Debuff(CharacterStat stat)
+    public void Debuff(CharacterStat stat, SKilldata sKilldata = null)
     {
-        Debug.Log("Debuff");
+        if (sKilldata != null)
+        {
+            skillData = sKilldata;
+        }
         switch (skillData.skillStatType)
         {
             case SkillStatType.Attack:
@@ -198,13 +245,17 @@ public class ClickManager : MonoBehaviour
                 StartCoroutine(DeBuffStart(stat.speed));
                 break;
         }
-        TargetDown();
-
+        //TargetDown();
     }
 
-    public void Buff(CharacterStat stat)
-    {
+    public void Buff(CharacterStat stat , SKilldata sKilldata = null)
+    {    
      
+        if(sKilldata != null)
+        {
+            skillData = sKilldata;
+        }
+
         switch (skillData.skillStatType)
         {
             case SkillStatType.Attack:
@@ -226,13 +277,14 @@ public class ClickManager : MonoBehaviour
                 StartCoroutine(BuffStart(stat.speed));
                 break;
         }
-        TargetDown();
+        //TargetDown();
+       
     }
 
     public IEnumerator BuffStart(BaseStat stat)
     {
         SKilldata sKilldata = skillData;
-        ManaSub();
+        ManaSub(sKilldata);
         if (skillData.isMulti)
         {
             stat.AddMultiples(skillData.multiValue);
@@ -257,8 +309,8 @@ public class ClickManager : MonoBehaviour
     public IEnumerator DeBuffStart(BaseStat stat)
     {
         SKilldata sKilldata = skillData;
-        ManaSub();
-        if (skillData.isMulti)
+        ManaSub(sKilldata);
+        if (sKilldata.isMulti)
         {
             stat.AddMultiples(-skillData.multiValue);
         }
@@ -280,11 +332,8 @@ public class ClickManager : MonoBehaviour
     public void AttackEnd()
     {
         TargetDown();
-        characterStat = null;
-        skillBook = null;
         skillData = null;
         isAttacking =false;
-        IsBuff = false;
     }
     public bool IsEnoughMana(CharacterStat character)
     {
@@ -334,9 +383,13 @@ public class ClickManager : MonoBehaviour
         }
     }
 
-    public void ManaSub()
-    {
-        characterStat.mana.curMana -= skillData.UsingValue;
+    public void ManaSub(SKilldata sKilldata)
+    { 
+        if(skillData.isEnemySkill)
+        {
+            return;
+        }
+        characterStat.mana.curMana -= sKilldata.UsingValue;
     }
 
     //public void CoolTimeSet()
