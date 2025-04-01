@@ -14,6 +14,7 @@ public class Character : MonoBehaviour
 
     private void Awake()
     {
+
         stat = GetComponent<CharacterStat>();
         traitManager = GetComponent<CharacterTraitManager>();
         info = GetComponent<CharacterInfo>();
