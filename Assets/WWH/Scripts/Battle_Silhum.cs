@@ -28,8 +28,8 @@ public class Battle_Silhum : MonoBehaviour
     [SerializeField] private List<Character> HanbatEnemies;
     [SerializeField] private List<Character> DeaguEnemies;
     [SerializeField] private List<Character> BattleScene;
-    Character[] Enemycharacters = GameManager.instance.EnemyCharacterList.ToArray();
-    Character[] Playercharacter = GameManager.instance.friendlyCharacterList.ToArray();
+    //Character[] Enemycharacters;
+    //Character[] Playercharacter;
 
 
 
@@ -51,6 +51,9 @@ public class Battle_Silhum : MonoBehaviour
         //CreateAttackButtons();
         NextTurn();
         ClickManager.Instance.next = NextTurn;
+        //Character[] Enemycharacters = GameManager.instance.EnemyCharacterList.ToArray();
+        //Character[] Playercharacter = GameManager.instance.friendlyCharacterList.ToArray();
+
     }
     public void LoadEnemies()
     {
@@ -103,7 +106,7 @@ public class Battle_Silhum : MonoBehaviour
     }
     public void NextTurn()
     {
-        EndGameTrigger();
+        //EndGameTrigger();
         if (!isAlive)
         {
             turn = Turn.win;
@@ -179,20 +182,20 @@ public class Battle_Silhum : MonoBehaviour
     }
 
 
-    public void EndGameTrigger()
-    {
-        Character[] ActiveEnemyList = Enemycharacters.Where(Ob => Ob.gameObject.activeSelf).ToArray();
-        Character[] ActivePlayerList = Playercharacter.Where(OB => OB.gameObject.activeSelf).ToArray();
-        if (ActivePlayerList.Length == 0)
-        {
-            turn = Turn.lose;
-            return;
-        }
-        if (ActiveEnemyList.Length == 0)
-        {
-            isAlive = false;
-            turn = Turn.win;
-            return;
-        }
-    }
+    //public void EndGameTrigger()
+    //{
+    //    Character[] ActiveEnemyList = Enemycharacters?.Where(Ob => Ob.gameObject.activeSelf).ToArray();
+    //    Character[] ActivePlayerList = Playercharacter?.Where(OB => OB.gameObject.activeSelf).ToArray();
+    //    if (ActivePlayerList.Length == 0)
+    //    {
+    //        turn = Turn.lose;
+    //        return;
+    //    }
+    //    if (ActiveEnemyList.Length == 0)
+    //    {
+    //        isAlive = false;
+    //        turn = Turn.win;
+    //        return;
+    //    }
+    //}
 }
