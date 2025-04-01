@@ -87,6 +87,15 @@ public class TrainingUI : BaseUI
         if (GameManager.instance.friendlyCharacterList.Count >= 4) return;
         if (GameManager.instance.friendlyCharacterList.Contains(selectCharacter)) return; // 중복 방지
         GameManager.instance.friendlyCharacterList.Add(selectCharacter);
+
+        for(int i = 0; i < characterSlotList.Count; i++)
+        {
+            if (characterSlotList[i].character == selectCharacter)
+            {
+                characterSlotList[i].Onparty.SetActive(true);
+            }
+        }
+
         SetPartyListView();
         
         
@@ -121,6 +130,16 @@ public class TrainingUI : BaseUI
         if (!GameManager.instance.friendlyCharacterList.Contains(selectCharacter)) return; // 없는 캐릭터 삭제 방지
         GameManager.instance.friendlyCharacterList.Remove(selectCharacter);
 
+        for(int i = 0; i < characterSlotList.Count; i++)
+        {
+            if (characterSlotList[i].character == selectCharacter)
+            {
+                characterSlotList[i].Onparty.SetActive(false);
+            }
+
+            characterSlotList[i].selectImage.SetActive(false);
+        }
+        
         SetPartyListView();
         ResetView();
     }
@@ -197,6 +216,19 @@ public class TrainingUI : BaseUI
 
     public void SetCharacterStats(Character character)
     {
+        for (int i = 0; i < characterSlotList.Count; i++)
+        {
+            if (characterSlotList[i].character == character)
+            {
+                characterSlotList[i].selectImage.SetActive(true);
+            }
+            else
+            {
+                characterSlotList[i].selectImage.SetActive(false);
+            }
+
+        }
+
         selectImageCharacter.sprite = character.icon;
         attackText.text = character.stat.attack.GetValueToString();
         defenceText.text = character.stat.defence.GetValueToString();

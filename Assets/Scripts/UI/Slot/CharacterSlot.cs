@@ -15,10 +15,13 @@ public class CharacterSlot : MonoBehaviour
 
     public Transform traitSlotsTransform;
     public TraitSlot traitSlotPrefab;
+    public GameObject selectImage;
+    public GameObject Onparty;
 
     private void Awake()
     {
         traitSlotsTransform = UIManager.instance.SetTraitTransform();
+        selectImage.SetActive(false);
     }
 
     public void OnClickSelectUnit()
