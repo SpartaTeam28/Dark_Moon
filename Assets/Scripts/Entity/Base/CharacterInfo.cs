@@ -26,7 +26,7 @@ public class CharacterInfo : MonoBehaviour
         SetLevel();
         if (characterName == "")
         {
-            characterName = GameManager.Instance.nameGenerator.GetRandomName();
+            characterName = GameManager.Instance.nameGenerator.GetRandomName(job.isMale);
         }
     }
 
