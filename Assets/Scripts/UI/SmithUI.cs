@@ -19,10 +19,10 @@ public class SmithUI : BaseUI
     public TextMeshProUGUI statGoldText;
     public TextMeshProUGUI traitGoldText;
 
-    public int populationGold = 1000;
-    public int rewordGold = 3000;
-    public int statGold = 4000;
-    public int traitGold = 5000;
+    public int populationGold;
+    public int rewordGold;
+    public int statGold;
+    public int traitGold;
 
     protected override UIState GetUIState()
     {
@@ -70,25 +70,25 @@ public class SmithUI : BaseUI
 
     public void OnClickUpgradePopulation()
     {
-        UpgrageGold(populationGoldText, populationGold);
+        UpgrageGold(populationGoldText,ref populationGold);
   
     }
 
     public void OnClickUpgrageReword()
     {
-        UpgrageGold(rewordGoldText, rewordGold);
+        UpgrageGold(rewordGoldText, ref rewordGold);
 
     }
 
     public void OnClickStat()
     {
-        UpgrageGold(statGoldText, statGold);
+        UpgrageGold(statGoldText, ref statGold);
 
     }
 
     public void OnClickTraitButton()
     {
-        UpgrageGold(traitGoldText, traitGold);
+        UpgrageGold(traitGoldText, ref traitGold);
 
     }
 
@@ -97,7 +97,7 @@ public class SmithUI : BaseUI
         uiManager.OnClickLobby();
     }
 
-    public void UpgrageGold(TextMeshProUGUI menutext, int gold)
+    public void UpgrageGold(TextMeshProUGUI menutext, ref int gold)
     {
         uiManager.SpenGold(gold);
         gold += 2000;
