@@ -13,18 +13,20 @@ MonoBehaviour:
   m_Name: GiSang
   m_EditorClassIdentifier: 
   jobName: "\uAE30\uC0DD"
+  isMale: 0
   sprite: {fileID: 21300000, guid: 6c83506c9fb05154794ae398c3d244be, type: 3}
   icon: {fileID: 21300000, guid: 3242113d592027e4d9d38faff96d098a, type: 3}
   animatorController: {fileID: 22100000, guid: 4aa11014f5173bd4caa299d651a51101, type: 2}
-  skillBook: {fileID: 0}
-  startAttck: 15
-  startDefence: 5
-  startMaxHealth: 120
-  startMaxMana: 60
-  startCritical: 30
-  startAccurracy: 90
-  startEvasion: 20
-  startSpeed: 5
+  attck: 10
+  defence: 10
+  maxHealth: 20
+  curHealth: 20
+  maxMana: 20
+  curMana: 20
+  critical: 30
+  accurracy: 80
+  evasion: 30
+  speed: 4
   levelAttck: 3
   levelDefence: 3
   levelMaxHealth: 8
