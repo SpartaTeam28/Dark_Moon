@@ -156,6 +156,7 @@ public class UIManager : MonoBehaviour
     {
         ChangeState(UIState.Training);
         trainingUI.npcTrainingWindow.SetActive(true);
+        trainingUI.characterSlotList[0].Onparty.SetActive(true);
         trainingUI.RandomJumagNPCScripts();
     }
 
@@ -207,6 +208,7 @@ public class UIManager : MonoBehaviour
     public void SpenGold(int amount)
     {
         gold -= amount;
+        if (gold <= 0) gold = 0;
         OnGoldChanged?.Invoke(gold);
     }
 
