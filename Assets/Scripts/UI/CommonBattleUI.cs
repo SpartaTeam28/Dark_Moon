@@ -62,6 +62,7 @@ public class CommonBattleUI : BaseUI
     {
         nameText.text = anonymouscharacter.info.characterName;
         jobText.text = anonymouscharacter.info.job.jobName;
+        lvText.text = " " + anonymouscharacter.info.level.ToString();
         healthText.text = anonymouscharacter.stat.health.GetValueToString();
         manaText.text = anonymouscharacter.stat.mana.GetValueToString();
         attackText.text = anonymouscharacter.stat.attack.GetValueToString();

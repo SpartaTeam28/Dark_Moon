@@ -98,7 +98,7 @@ public class TrainingUI : BaseUI
 
         SetPartyListView();
        
-    }
+    } // 파티 추가
 
     public void OnClickRemoveButton()
     {
@@ -119,7 +119,7 @@ public class TrainingUI : BaseUI
         
         SetPartyListView();
         ResetView();
-    }
+    } // 파티 제거
 
     public void OnClickReRollButton()
     {
@@ -127,7 +127,7 @@ public class TrainingUI : BaseUI
         if (uiManager.gold < traitrerollGold) return;
 
         characterSlotList[selectCharacterIndex].RerollTrait();
-    }
+    }  // 특성 리롤
 
     public void OnClicklobbyButton()
     {
@@ -149,12 +149,12 @@ public class TrainingUI : BaseUI
         {
             characterSlotList[i].slotIndex = i;
         }
-    }
+    } // UI에 캐릭터 슬롯 생성
 
     public void OnClickDeleteButton()
     {
         DeleteCharacter();
-    }
+    } // 캐릭터 슬롯 제거
 
     public void DeleteCharacter()
     {
