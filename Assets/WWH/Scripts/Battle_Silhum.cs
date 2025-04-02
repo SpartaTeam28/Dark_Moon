@@ -21,7 +21,7 @@ public class Battle_Silhum : MonoBehaviour
     public int TurnCount = 0;
 
     
-    public List<Character> players;
+    public List<Character> players = new List<Character>();
     public List<Character> enemies;  // 적 리스트
     public List<Character> turnOrder; // 턴 순서 리스트
     int currentTurnIndex = 0; // 현재 턴 진행 중인 캐릭터 인덱스
@@ -29,11 +29,6 @@ public class Battle_Silhum : MonoBehaviour
     private List<Button> attackButtons = new List<Button>(); // 버튼 리스트
 
     [Header("스테이지별 적 리스트")]
-    [SerializeField] public List<Character> UlsanEnemies;
-    [SerializeField] private List<Character> BusanEnemies;
-    [SerializeField] private List<Character> HanbatEnemies;
-    [SerializeField] private List<Character> DeaguEnemies;
-    [SerializeField] private List<Character> BattleScene;
     [SerializeField] private int playerDeathCount;
     [SerializeField] private int enemyDeathCount;
 
@@ -67,10 +62,11 @@ public class Battle_Silhum : MonoBehaviour
     }
     public void BattleStart()
     {
+        players = GameManager.instance.friendlyCharacterList;
         // 스피드 비교해서 턴 정하기
         SpeedCheck();
         //CreateAttackButtons();
-       
+     
         ClickManager.Instance.next = NextTurn;
         playerDeathCount = GameManager.instance.friendlyCharacterList.Count;
         Debug.Log("Count"+playerDeathCount);
@@ -83,7 +79,7 @@ public class Battle_Silhum : MonoBehaviour
     public void LoadEnemies()
     {
         // 스테이지에 맞는 적 리스트 로드
-        Debug.Log($"UlsanEnemies Count: {DeaguEnemies.Count}"); // 몇 개의 적이 있는지 확인
+        //Debug.Log($"UlsanEnemies Count: {DeaguEnemies.Count}"); // 몇 개의 적이 있는지 확인
 
         //    string currentScene = SceneManager.GetActiveScene().name;
 
@@ -278,12 +274,12 @@ public class Battle_Silhum : MonoBehaviour
         foreach (var character in turnOrder)
         {
 
-           // GameObject newText = Instantiate(speedTextPrefab, speedTextPanel);
-            //TextMeshProUGUI textComponent = newText.GetComponent<TextMeshProUGUI>();
-            //textComponent.text = $" Speed: {character.stat.speed.value}";
-            //textComponent.text = $" Speed: {i}";
+           GameObject newText = Instantiate(speedTextPrefab, speedTextPanel);
+           TextMeshProUGUI textComponent = newText.GetComponent<TextMeshProUGUI>();
+           //textComponent.text = $" Speed: {character.stat.speed.value}";
+            textComponent.text = $" Order: {i}";
             Vector3 screenPos = Camera.main.WorldToScreenPoint(character.transform.position);
-            //newText.transform.position = screenPos + new Vector3(0, 100f, 0); // Y값 조정 (아래로 내리기)
+            newText.transform.position = screenPos + new Vector3(0, 150f, 0); // Y값 조정 (아래로 내리기)
 
            // speedTexts[character] = textComponent;
             i++;

@@ -40,6 +40,6 @@ public class BaseStat : MonoBehaviour
 
     public virtual string GetValueToString() 
     {
-        return (value * valueMultiples).ToString("F2");
+        return (value * valueMultiples).ToString("F0");
     }
 }

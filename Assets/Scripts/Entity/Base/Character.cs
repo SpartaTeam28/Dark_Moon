@@ -43,7 +43,7 @@ public class Character : MonoBehaviour
             Debug.Log($"{info.name}이(가) 회피 했습니다.");
             return;
         }
-        if (accuary < target_accuracy)
+        if (accuary > target_accuracy)
         {
             Debug.Log($"공격이 빗나갔습니다.");
             return;

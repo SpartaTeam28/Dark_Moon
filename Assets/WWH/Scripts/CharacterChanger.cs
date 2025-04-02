@@ -15,13 +15,16 @@ public class CharacterChanger : MonoBehaviour
 
     public void Set()
     {
-        for (int i = 0; i < transform.childCount; i++)
+
+        for(int i  = 0; i < transform.childCount; i++) 
         {
-            BattleCharacterList.Add(transform.GetChild(i).GetComponent<Character>());
+            transform.GetChild(i).gameObject.SetActive(false);
         }
 
-        for (int i = 0;i < BattleCharacterList.Count; i++)
+        for (int i = 0;i < GameManager.instance.friendlyCharacterList.Count; i++)
         {
+            transform.GetChild(i).gameObject.SetActive(true);
+            BattleCharacterList.Add(transform.GetChild(i).GetComponent<Character>());
             BattleCharacterList[i].info.job = GameManager.instance.friendlyCharacterList[i].info.job;
             BattleCharacterList[i].GetComponent<Player>().playerType = GameManager.instance.friendlyCharacterList[i].GetComponent<Player>().playerType;
         }

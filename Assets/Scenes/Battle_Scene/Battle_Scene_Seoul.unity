@@ -1401,17 +1401,9 @@ MonoBehaviour:
   - {fileID: 243686089}
   - {fileID: 774829633}
   - {fileID: 922314504}
-  enemies: []
-  turnOrder: []
-  UlsanEnemies: []
-  BusanEnemies: []
-  HanbatEnemies: []
-  DeaguEnemies: []
-  BattleScene:
+  enemies:
   - {fileID: 443081157}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  turnOrder: []
   playerDeathCount: 0
   enemyDeathCount: 0
   speedTextPanel: {fileID: 225429163}
