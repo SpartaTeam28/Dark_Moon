@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jobs:
-  - {fileID: 11400000, guid: 9deec3365a8c3054e8fa1d5da73a0537, type: 2}
+  - {fileID: 11400000, guid: bebd3b256be01b841a03f496a66d986a, type: 2}
   - {fileID: 11400000, guid: c678710171cefec46a20df8d98dd960d, type: 2}
   - {fileID: 11400000, guid: b29c0a645551d1d44aec5e4e602c2300, type: 2}
   enemyLists:
@@ -398,7 +398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 0}
-  job: {fileID: 11400000, guid: 0c9985509d5e7f242b08dc74b02af22e, type: 2}
+  job: {fileID: 11400000, guid: 0002c62a5d7f3964ea910e5970c8322c, type: 2}
   characterName: 
   level: 1
   totalExp: 15
@@ -994,7 +994,11 @@ MonoBehaviour:
   - {fileID: 1829798298}
   - {fileID: 265237697}
   - {fileID: 1957408004}
-  EnemyCharacterList: []
+  EnemyCharacterList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   availableTraits:
   - {fileID: 11400000, guid: 357ffa8a048725e44b0c571d8c7e28fd, type: 2}
   - {fileID: 11400000, guid: 89283433faed22949a315596543960cc, type: 2}
@@ -1006,6 +1010,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0f5c4a1922e4d614ba03c036511071b9, type: 2}
   - {fileID: 11400000, guid: eb3ce66d14c54e645829555b0415f1b8, type: 2}
   - {fileID: 11400000, guid: 63b73f70833fc984e9b6fce9ab80acff, type: 2}
+  - {fileID: 11400000, guid: 87c99714cdfff0541b0580d4384d1dd4, type: 2}
+  - {fileID: 11400000, guid: 8f6e0ed4ec964764bb020ceeca5e767d, type: 2}
   nameGenerator: {fileID: 0}
 --- !u!4 &1421025303
 Transform:
@@ -1158,7 +1164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 0}
-  job: {fileID: 11400000, guid: bb103ab2c62102a46af3c57f68036bb1, type: 2}
+  job: {fileID: 11400000, guid: 264b2f0c6259c5a4cbe5df64cc7d7705, type: 2}
   characterName: 
   level: 1
   totalExp: 15
@@ -1616,7 +1622,7 @@ PrefabInstance:
     - target: {fileID: 8458628401647530785, guid: b902cc2bb0ce1364296812d01f87337f, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 22100000, guid: bafe5d12c726070409f880fbf1b35f5d, type: 2}
+      objectReference: {fileID: 22100000, guid: 3b2332b5ab278b440ad94d9ba2fbc013, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: caa7aae40ca9ded489cd3631e9e6ae7f, type: 3}
-  m_Name: Slowness
+  m_Name: SlowReaction
   m_EditorClassIdentifier: 
-  traitName: "\uB290\uB9BC\uBCF4"
-  description: "\uBAB8\uC774 \uAD7C\uB5A0\uBCF4\uC778\uB2E4."
+  traitName: "\uB4B7\uBD81"
+  description: "\uBC18\uC751\uC774 \uB290\uB9AC\uB2E4."
   affectedStat: 6
   valueModifier: -10
   multiplierModifier: 0

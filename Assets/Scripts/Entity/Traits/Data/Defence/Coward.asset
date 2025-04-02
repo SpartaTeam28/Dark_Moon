@@ -15,5 +15,5 @@ MonoBehaviour:
   traitName: "\uAC81\uC7C1\uC774"
   description: "\uBAB8\uC774 \uC6C0\uCE20\uB824\uC788\uB2E4."
   affectedStat: 1
-  valueModifier: -10
+  valueModifier: -3
   multiplierModifier: 0
