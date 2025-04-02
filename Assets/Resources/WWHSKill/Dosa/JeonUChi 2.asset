@@ -16,12 +16,11 @@ MonoBehaviour:
   skillTargetCount: 1
   isHeal: 0
   skillType: 0
-  skillUsingType: 0
   UsingValue: 6
   isEnemySkill: 0
   skillStatType: 0
   isMulti: 1
-  isBuff: 0
+  isBuff: 1
   isDebuff: 0
   multiValue: 0.3
   duration: 4

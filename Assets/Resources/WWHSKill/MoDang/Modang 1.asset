@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43797c51a088d3b48ab4a8876a533138, type: 3}
-  m_Name: PoemWriting 4
+  m_Name: Modang 1
   m_EditorClassIdentifier: 
-  skillDamage: 0
+  skillDamage: 2
   skillTargetCount: 4
   isHeal: 0
-  skillType: 2
-  UsingValue: 6
+  skillType: 6
+  UsingValue: 0
   isEnemySkill: 0
-  skillStatType: 2
-  isMulti: 1
-  isBuff: 1
+  skillStatType: 0
+  isMulti: 0
+  isBuff: 0
   isDebuff: 0
-  multiValue: 0.3
-  duration: 5
+  multiValue: 0
+  duration: 0
   skillText:
-    skillNametext: "\uD765\uBCF4\uAC00"
-    skillDestext: "\uC544\uAD70 \uC804\uCCB4 \uBC29\uC5B4\uB825 \uC99D\uAC00"
-    skillAllAttactext: "30% \uC99D\uAC00 5\uD134 \uC9C0\uC18D"
-  Icon: {fileID: 21300000, guid: c584f782e9ce03444b6cd36893975997, type: 3}
+    skillNametext: "\uAE30\uBCF8 \uACF5\uACA9"
+    skillDestext: "\uC804\uCCB4 \uC801 \uACF5\uACA9"
+    skillAllAttactext: 
+  Icon: {fileID: 21300000, guid: 1f795c83ee1684c4eb53f09770a58985, type: 3}
