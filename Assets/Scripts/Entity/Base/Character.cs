@@ -40,7 +40,7 @@ public class Character : MonoBehaviour
         var evasion = Random.Range(0, 100);
         var accuary = Random.Range(0, 100);
         var critical = Random.Range(0, 100);
-        if (evasion < stat.evasion.value)
+        if (evasion > stat.evasion.value)
         {
             Debug.Log($"{info.name}이(가) 회피 했습니다.");
             return;
@@ -50,7 +50,7 @@ public class Character : MonoBehaviour
             Debug.Log($"공격이 빗나갔습니다.");
             return;
         }
-        if (critical < target_critical)
+        if (critical > target_critical)
         {
             amount *= 1.5f;
         }
