@@ -22,6 +22,7 @@ public class HealthStat : BaseStat
         {
             curHealth = value * valueMultiples;
         }
+        NotifyValueChanged(amount);
     }
 
     public void SetHealth(float amount)
@@ -34,6 +35,8 @@ public class HealthStat : BaseStat
         {
             curHealth = amount;
         }
+
+        NotifyValueChanged(amount);
     }
 
     public float GetHealth()
