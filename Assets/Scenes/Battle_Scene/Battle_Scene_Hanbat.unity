@@ -557,7 +557,7 @@ PrefabInstance:
     - target: {fileID: 4868914253922456659, guid: b902cc2bb0ce1364296812d01f87337f, type: 3}
       propertyPath: job
       value: 
-      objectReference: {fileID: 11400000, guid: 781c5a2f0f541c540b8f202cb3462658, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 5184613223605905220, guid: b902cc2bb0ce1364296812d01f87337f, type: 3}
       propertyPath: m_SortingOrder
       value: 5
@@ -2005,7 +2005,7 @@ PrefabInstance:
     - target: {fileID: 4868914253922456659, guid: b902cc2bb0ce1364296812d01f87337f, type: 3}
       propertyPath: job
       value: 
-      objectReference: {fileID: 11400000, guid: 781c5a2f0f541c540b8f202cb3462658, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 5184613223605905220, guid: b902cc2bb0ce1364296812d01f87337f, type: 3}
       propertyPath: m_SortingOrder
       value: 5
@@ -2273,7 +2273,7 @@ PrefabInstance:
     - target: {fileID: 4868914253922456659, guid: b902cc2bb0ce1364296812d01f87337f, type: 3}
       propertyPath: job
       value: 
-      objectReference: {fileID: 11400000, guid: 781c5a2f0f541c540b8f202cb3462658, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 5184613223605905220, guid: b902cc2bb0ce1364296812d01f87337f, type: 3}
       propertyPath: m_SortingOrder
       value: 5
@@ -2664,7 +2664,7 @@ PrefabInstance:
     - target: {fileID: 4868914253922456659, guid: b902cc2bb0ce1364296812d01f87337f, type: 3}
       propertyPath: job
       value: 
-      objectReference: {fileID: 11400000, guid: 781c5a2f0f541c540b8f202cb3462658, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 5184613223605905220, guid: b902cc2bb0ce1364296812d01f87337f, type: 3}
       propertyPath: m_SortingOrder
       value: 5
@@ -3054,11 +3054,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 130008018357194363, guid: 61ac82496b523184db1bce5821dae26d, type: 3}
       propertyPath: maxLevel
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 130008018357194363, guid: 61ac82496b523184db1bce5821dae26d, type: 3}
       propertyPath: minLevel
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 130008018357194363, guid: 61ac82496b523184db1bce5821dae26d, type: 3}
       propertyPath: enemyLists.Array.data[0]
