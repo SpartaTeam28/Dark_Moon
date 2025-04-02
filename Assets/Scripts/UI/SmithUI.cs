@@ -18,6 +18,7 @@ public class SmithUI : BaseUI
     public TextMeshProUGUI rewordGoldText;
     public TextMeshProUGUI statGoldText;
     public TextMeshProUGUI traitGoldText;
+    public TextMeshProUGUI partnerMaxText;
 
     public int populationGold;
     public int rewordGold;
@@ -43,6 +44,7 @@ public class SmithUI : BaseUI
         rewordGoldText.text = rewordGold.ToString();
         statGoldText.text = statGold.ToString();
         traitGoldText.text = traitGold.ToString();
+        partnerMaxText.text = uiManager.partnerMax.ToString();
     }
 
     private void OnEnable()
@@ -71,6 +73,7 @@ public class SmithUI : BaseUI
     public void OnClickUpgradePopulation()
     {
         UpgrageGold(populationGoldText,ref populationGold);
+        uiManager.partnerMax += 1;
   
     }
 
@@ -83,6 +86,10 @@ public class SmithUI : BaseUI
     public void OnClickStat()
     {
         UpgrageGold(statGoldText, ref statGold);
+        
+        for(int i =0; i< uiManager.partnerCharacters.Count; i++)
+        {
+        }
 
     }
 

@@ -42,9 +42,7 @@ public class UIManager : MonoBehaviour
 
     public event Action<int> OnGoldChanged;
     public int gold;
-
-   
-
+    public int partnerMax;
 
     private static UIManager _instance;
 
@@ -298,9 +296,9 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public CommonBattleUI SetBattlePanel()
+    public void SetBattlePanel()
     {
-        return commonBattleUI;
+        commonBattleUI.clearPanel.SetActive(true);
     }
 
 }
