@@ -278,12 +278,12 @@ public class Battle_Silhum : MonoBehaviour
         foreach (var character in turnOrder)
         {
 
-           // GameObject newText = Instantiate(speedTextPrefab, speedTextPanel);
-            //TextMeshProUGUI textComponent = newText.GetComponent<TextMeshProUGUI>();
-            //textComponent.text = $" Speed: {character.stat.speed.value}";
-            //textComponent.text = $" Speed: {i}";
+           GameObject newText = Instantiate(speedTextPrefab, speedTextPanel);
+           TextMeshProUGUI textComponent = newText.GetComponent<TextMeshProUGUI>();
+           //textComponent.text = $" Speed: {character.stat.speed.value}";
+            textComponent.text = $" Order: {i}";
             Vector3 screenPos = Camera.main.WorldToScreenPoint(character.transform.position);
-            //newText.transform.position = screenPos + new Vector3(0, 100f, 0); // Y값 조정 (아래로 내리기)
+            newText.transform.position = screenPos + new Vector3(0, 150f, 0); // Y값 조정 (아래로 내리기)
 
            // speedTexts[character] = textComponent;
             i++;
