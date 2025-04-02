@@ -89,6 +89,26 @@ public class SmithUI : BaseUI
         
         for(int i =0; i< uiManager.partnerCharacters.Count; i++)
         {
+            uiManager.partnerCharacters[i].stat.attack.AddStat(uiManager.statUpgrade);
+            uiManager.partnerCharacters[i].stat.defence.AddStat(uiManager.statUpgrade);
+            uiManager.partnerCharacters[i].stat.health.AddStat(uiManager.statUpgrade);
+            uiManager.partnerCharacters[i].stat.mana.AddStat(uiManager.statUpgrade);
+            uiManager.partnerCharacters[i].stat.critical.AddStat(uiManager.statUpgrade);
+            uiManager.partnerCharacters[i].stat.evasion.AddStat(uiManager.statUpgrade);
+            uiManager.partnerCharacters[i].stat.accuracy.AddStat(uiManager.statUpgrade);
+        }
+
+        List<Character> allPartnerLists = uiManager.SetAllPartnerList();
+
+        for(int  i = 0; i < allPartnerLists.Count; i++)
+        {
+            allPartnerLists[i].stat.attack.AddStat(uiManager.statUpgrade);
+            allPartnerLists[i].stat.defence.AddStat(uiManager.statUpgrade);
+            allPartnerLists[i].stat.health.AddStat(uiManager.statUpgrade);
+            allPartnerLists[i].stat.mana.AddStat(uiManager.statUpgrade);
+            allPartnerLists[i].stat.critical.AddStat(uiManager.statUpgrade);
+            allPartnerLists[i].stat.evasion.AddStat(uiManager.statUpgrade);
+            allPartnerLists[i].stat.accuracy.AddStat(uiManager.statUpgrade);
         }
 
     }
