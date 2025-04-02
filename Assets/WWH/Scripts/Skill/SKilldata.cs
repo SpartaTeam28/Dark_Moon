@@ -28,14 +28,6 @@ public enum SkillStatType
 }
 
 
-public enum SkillUsingType
-{
-    Mana,
-    Ki,
-    Blood
-
-}
-
 [CreateAssetMenu(fileName ="New SKill", menuName ="Scriptable/Skill")]
 public class SKilldata : ScriptableObject
 {
@@ -44,7 +36,6 @@ public class SKilldata : ScriptableObject
     public int skillTargetCount;
     public bool isHeal;
     public SkillType skillType;
-    public SkillUsingType skillUsingType;
     public float UsingValue;
     public bool isEnemySkill;
     [Header("Buff/Debuff Info")]

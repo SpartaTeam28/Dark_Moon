@@ -13,19 +13,20 @@ MonoBehaviour:
   m_Name: PoemWriting 4
   m_EditorClassIdentifier: 
   skillDamage: 0
-  skillTargetCount: 0
-  isHeal: 1
+  skillTargetCount: 4
+  isHeal: 0
   skillType: 2
   skillUsingType: 0
-  UsingValue: 0
-  skillStatType: 0
-  isMulti: 0
-  isBuff: 0
+  UsingValue: 6
+  isEnemySkill: 0
+  skillStatType: 2
+  isMulti: 1
+  isBuff: 1
   isDebuff: 0
-  multiValue: 0
-  duration: 0
+  multiValue: 0.3
+  duration: 5
   skillText:
-    skillNametext: 
-    skillDestext: 
-    skillAllAttactext: 
+    skillNametext: "\uD765\uBCF4\uAC00"
+    skillDestext: "\uC544\uAD70 \uC804\uCCB4 \uBC29\uC5B4\uB825 \uC99D\uAC00"
+    skillAllAttactext: "30% \uC99D\uAC00 5\uD134 \uC9C0\uC18D"
   Icon: {fileID: 0}

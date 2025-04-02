@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43797c51a088d3b48ab4a8876a533138, type: 3}
   m_Name: 1 1
   m_EditorClassIdentifier: 
-  skillDamage: 0
+  skillDamage: 10
   skillTargetCount: 1
   isHeal: 0
   skillType: 0
@@ -26,7 +26,7 @@ MonoBehaviour:
   multiValue: 0
   duration: 0
   skillText:
-    skillNametext: Enemy1
-    skillDestext: "\uC77C\uBC18\uACF5\uACA9"
-    skillAllAttactext: 
+    skillNametext: "\uC694\uAD34 \uD380\uCE58"
+    skillDestext: "\uB2E8\uC77C \uC544\uAD70 \uACF5\uACA9"
+    skillAllAttactext: "10 + \uACF5\uACA9\uB825"
   Icon: {fileID: 0}
