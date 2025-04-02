@@ -73,7 +73,7 @@ public class Enemy : MonoBehaviour
                 transform.GetComponent<AnimationHandler>().Attack();
                 ClickManager.Instance.SetSkilldata(sKilldata);
                 RandomPlayer.transform.GetChild(0).gameObject.SetActive(true);
-                RandomPlayer.TakeDamaged(sKilldata.skillDamage);
+                RandomPlayer.TakeDamaged(sKilldata.skillDamage,0,0,0);
             }
         }
         else
@@ -112,7 +112,7 @@ public class Enemy : MonoBehaviour
                 ClickManager.Instance.SetSkilldata(sKilldata);
                 foreach (Character stat in ActivePlayerList)
                 {
-                    stat.TakeDamaged(sKilldata.skillDamage);
+                    stat.TakeDamaged(sKilldata.skillDamage, 0, 0, 0);
                     stat.transform.GetChild(0).gameObject.SetActive(true);
                 }
             }

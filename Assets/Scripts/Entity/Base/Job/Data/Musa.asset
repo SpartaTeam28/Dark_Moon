@@ -17,21 +17,21 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 82f5d1f3e7ea1db43a7d1fc44430452e, type: 3}
   icon: {fileID: 21300000, guid: 547da8de82f4d5e48a2703a2ab9ec21a, type: 3}
   animatorController: {fileID: 22100000, guid: a47a6afe3e01da446a74195a1e84d66f, type: 2}
-  attck: 15
-  defence: 10
+  attck: 13
+  defence: 12
   maxHealth: 30
   curHealth: 30
   maxMana: 10
-  curMana: 10
-  critical: 10
-  accurracy: 90
+  curMana: 15
+  critical: 20
+  accurracy: 80
   evasion: 10
-  speed: 1
-  levelAttck: 7
-  levelDefence: 3
-  levelMaxHealth: 8
-  levelMaxMana: 3
-  levelCritical: 2
+  speed: 3
+  levelAttck: 4
+  levelDefence: 4
+  levelMaxHealth: 4
+  levelMaxMana: 1
+  levelCritical: 3
   levelAccurracy: 1
   leveltEvasion: 1
-  levelSpeed: 0.2
+  levelSpeed: 0.1

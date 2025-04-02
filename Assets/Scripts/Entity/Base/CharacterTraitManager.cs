@@ -36,6 +36,12 @@ public class CharacterTraitManager : MonoBehaviour
     {
         foreach (var trait in appliedTraits)
         {
+            BaseStat oldStat = stat.StatusDictionary[trait.affectedStat];
+            if (trait.valueModifier != 0f)
+                oldStat.AddStat(trait.valueModifier * -1);
+
+            if (trait.multiplierModifier != 0f)
+                oldStat.AddStat(trait.multiplierModifier * -1);
             availableTraits.Add(trait);
         }
         appliedTraits.Clear();

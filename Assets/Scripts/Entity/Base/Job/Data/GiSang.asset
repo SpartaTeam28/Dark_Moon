@@ -19,19 +19,19 @@ MonoBehaviour:
   animatorController: {fileID: 22100000, guid: 4aa11014f5173bd4caa299d651a51101, type: 2}
   attck: 10
   defence: 10
-  maxHealth: 20
-  curHealth: 20
-  maxMana: 20
-  curMana: 20
-  critical: 30
+  maxHealth: 28
+  curHealth: 30
+  maxMana: 15
+  curMana: 15
+  critical: 20
   accurracy: 80
-  evasion: 30
-  speed: 4
+  evasion: 50
+  speed: 3
   levelAttck: 3
   levelDefence: 3
-  levelMaxHealth: 8
-  levelMaxMana: 3
-  levelCritical: 10
-  levelAccurracy: 0
+  levelMaxHealth: 5
+  levelMaxMana: 2
+  levelCritical: 3
+  levelAccurracy: 1
   leveltEvasion: 5
-  levelSpeed: 0
+  levelSpeed: 0.1

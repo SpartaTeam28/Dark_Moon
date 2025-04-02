@@ -147,7 +147,7 @@ public class ClickManager : MonoBehaviour
         else
         {
             //Attack
-            stat.TakeDamaged(skillData.skillDamage);
+            stat.TakeDamaged(skillData.skillDamage, 0, 0, 0);
             ManaSub(skillData);
             TargetDown();
             next.Invoke();
@@ -194,7 +194,7 @@ public class ClickManager : MonoBehaviour
             foreach (Character character in GameManager.instance.EnemyCharacterList)
             {
              
-                character.TakeDamaged(sKilldata.skillDamage);
+                character.TakeDamaged(sKilldata.skillDamage, 0, 0, 0);
                 ManaSub(sKilldata);
                 TargetDown();
         
