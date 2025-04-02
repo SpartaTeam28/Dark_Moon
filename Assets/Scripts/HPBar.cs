@@ -12,14 +12,18 @@ public class HPBar : MonoBehaviour
         originalScale = hpForeground.localScale;
     }
 
-    //void Update()
-    //{
-    //    SetHpBar();
-    //}
+    void Update()
+    {
+        SetHpBar();
+    }
 
     public void SetHpBar()
     {
-        float ratio = Mathf.Clamp01(stat.health.curHealth / stat.health.value);
+        float maxHealth = stat.health.value;
+        float currentHealth = stat.health.curHealth;
+
+        float ratio = maxHealth > 0 ? Mathf.Clamp01(currentHealth / maxHealth) : 0f;
+
         hpForeground.localScale = new Vector3(originalScale.x * ratio, originalScale.y, originalScale.z);
 
         // 왼쪽 기준으로 줄어들게 위치도 같이 보정

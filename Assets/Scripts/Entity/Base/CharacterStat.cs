@@ -33,6 +33,8 @@ public class CharacterStat : MonoBehaviour
 
     private void Awake()
     {
+        hpBar = GetComponentInChildren<HPBar>();
+        hpBar.stat = this;
         Init();
         StatusDictionary = new Dictionary<StatType, BaseStat>
         {
@@ -45,9 +47,6 @@ public class CharacterStat : MonoBehaviour
             { StatType.Evasion, evasion },
             { StatType.Speed, speed },
         };
-
-        hpBar = GetComponentInChildren<HPBar>();
-        hpBar.stat = this;
     }
 
     public void Init()
@@ -74,8 +73,6 @@ public class CharacterStat : MonoBehaviour
         evasion = AddAndInit<EvasionStat>(startEvasion);
         accuracy = AddAndInit<AccuracyStat>(startAccurracy);
         speed = AddAndInit<SpeedStat>(startSpeed);
-
-        health.OnValueChanged += health.SetStat;
     }
 
     private T AddAndInit<T>(float initValue) where T : BaseStat//컴퍼넌트를 추가 하고 초기화
