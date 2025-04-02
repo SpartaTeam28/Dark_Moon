@@ -12,6 +12,8 @@ public class Character : MonoBehaviour
     public Sprite icon;
     public AnimatorOverrideController animatorController;
 
+    public GameObject turn;
+
     private void Awake()
     {
 
@@ -24,7 +26,7 @@ public class Character : MonoBehaviour
         info.character = this;
     }
 
-    public void TakeDamaged(float amount)
+    public void TakeDamaged(float amount, float target_attack, float target_critical, float target_accuracy)
     {
         var health = stat.health;
         if(health == null)
@@ -49,5 +51,15 @@ public class Character : MonoBehaviour
     private void OnDie()
     {
         Battle_Silhum.Instance.PlayerDie(this);
+    }
+
+    public void StartTurn()
+    {
+        turn.SetActive(true);
+    }
+
+    public void EndTurn()
+    {
+        turn.SetActive(false);
     }
 }
