@@ -87,6 +87,7 @@ public class CommonBattleUI : BaseUI
         uiManager.OnEnableStageButton(currentStageName, currentStagenumber);
         SceneManager.LoadScene("YGM_Scene");
         uiManager.OnClickLobby();
+        clearPanel.SetActive(false);
       
     }
 
@@ -94,6 +95,7 @@ public class CommonBattleUI : BaseUI
     {
         SceneManager.LoadScene("YGM_Scene");
         uiManager.OnClickLobby();
+        defeatPanel.SetActive(false);
     }
 
 
