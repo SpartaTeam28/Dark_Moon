@@ -11,7 +11,8 @@ public enum SkillType
     KiSeng,
     Buddhist,
     Hunter,
-    Confucianism
+    Confucianism,
+    MoDang
 
 }
 

@@ -47,6 +47,9 @@ public class SkillBook : MonoBehaviour
             case PlayerType.Hunter:
                 skillList = FourSkillSet("Hunter");
                 break;
+            case PlayerType.MoDang:
+                skillList = FourSkillSet("MoDang");
+                break;
         }
 
  

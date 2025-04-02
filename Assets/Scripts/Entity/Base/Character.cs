@@ -24,6 +24,7 @@ public class Character : MonoBehaviour
 
         stat.character = this;
         info.character = this;
+        turn = transform.GetChild(2).gameObject;
     }
 
     public void TakeDamaged(float amount, float target_attack, float target_critical, float target_accuracy)

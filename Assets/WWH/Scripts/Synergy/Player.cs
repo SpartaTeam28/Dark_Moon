@@ -11,7 +11,8 @@ public enum PlayerType
     KiSeng,
     Buddhist,
     Hunter,
-    Confusianism
+    Confusianism,
+    MoDang
 }
 
 public class Player : MonoBehaviour 
