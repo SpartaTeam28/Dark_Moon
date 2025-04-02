@@ -8,6 +8,10 @@ public class Enemy : MonoBehaviour
     public SKilldata[] sKilldatas;
 
 
+    private void Awake()
+    {
+        sKilldatas = Resources.LoadAll<SKilldata>($"WWHSkill/Enemy");
+    }
     private void OnMouseOver()
     {
         if(ClickManager.Instance.isAttacking)
