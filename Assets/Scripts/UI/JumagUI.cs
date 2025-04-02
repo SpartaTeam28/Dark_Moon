@@ -118,6 +118,13 @@ public class JumagUI : BaseUI
 
     public void OnClickPartnerSelect(int index)
     {
+        if (uiManager.partnerCharacters.Count >= uiManager.partnerMax)
+        {
+            uiManager.alarmPopupUI.gameObject.SetActive(true);
+            uiManager.alarmPopupUI.ChangeAlarmText("최대 인원수를 초과했습니다.");
+            return;
+        }
+
         if (partnerSelectList.TryGetValue(index, out Character selectedPartner))
         {
             uiManager.SpenGold(100);
