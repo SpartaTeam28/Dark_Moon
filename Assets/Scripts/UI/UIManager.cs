@@ -35,12 +35,15 @@ public class UIManager : MonoBehaviour
     StageSelectUI stageSelectUI = null;
     CommonBattleUI commonBattleUI = null;
 
-    public SettingPopupUI settingPopupUI = null;
+    SettingPopupUI settingPopupUI = null;
+    public AlamPopupUI alarmPopupUI = null;
 
     public List<Character> partnerCharacters;// 구매한 캐릭터 리스트
 
     public event Action<int> OnGoldChanged;
-    private int gold = 10000;
+    public int gold;
+
+   
 
 
     private static UIManager _instance;
@@ -207,8 +210,17 @@ public class UIManager : MonoBehaviour
 
     public void SpenGold(int amount)
     {
-        gold -= amount;
+        if(gold < amount)
+        {
+            alarmPopupUI.gameObject.SetActive(true);
+            alarmPopupUI.ChangeAlarmText("돈이 부족합니다.");
+            return;
+        }
+
+        gold -= amount;      
+
         if (gold <= 0) gold = 0;
+        
         OnGoldChanged?.Invoke(gold);
     }
 
