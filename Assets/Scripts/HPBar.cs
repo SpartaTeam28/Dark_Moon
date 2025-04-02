@@ -22,6 +22,11 @@ public class HPBar : MonoBehaviour
         float maxHealth = stat.health.value;
         float currentHealth = stat.health.curHealth;
 
+        if (currentHealth > maxHealth) 
+        { 
+            currentHealth = maxHealth;
+        }
+
         float ratio = maxHealth > 0 ? Mathf.Clamp01(currentHealth / maxHealth) : 0f;
 
         hpForeground.localScale = new Vector3(originalScale.x * ratio, originalScale.y, originalScale.z);

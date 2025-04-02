@@ -33,5 +33,5 @@ MonoBehaviour:
   levelMaxMana: 7
   levelCritical: 0
   levelAccurracy: 0
-  leveltEvasion: 9
+  leveltEvasion: 0
   levelSpeed: 0
