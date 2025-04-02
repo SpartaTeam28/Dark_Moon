@@ -18,7 +18,9 @@ public class Battle_Silhum : MonoBehaviour
     public Transform buttonPanel; // 버튼들이 위치할 UI 패널
     public GameObject attackButtonPrefab; // 버튼 프리팹 (Inspector에서 설정
     public bool isLock; // 잠금
+    public int TurnCount = 0;
 
+    
     public List<Character> players;
     public List<Character> enemies;  // 적 리스트
     public List<Character> turnOrder; // 턴 순서 리스트
@@ -38,6 +40,7 @@ public class Battle_Silhum : MonoBehaviour
 
     public Transform speedTextPanel; // UI에서 Speed 값을 표시할 Panel
     public GameObject speedTextPrefab; // Speed 값을 표시할 Text 프리팹
+    private StageWeather StageWeather;
     private Dictionary<Character, TextMeshProUGUI> speedTexts = new Dictionary<Character, TextMeshProUGUI>();
     private void Awake()
     {
@@ -67,6 +70,8 @@ public class Battle_Silhum : MonoBehaviour
         ClickManager.Instance.next = NextTurn;
         playerDeathCount = GameManager.instance.friendlyCharacterList.Count;
         enemyDeathCount = (int)(GameManager.instance.EnemyCharacterList?.Count);
+        StageWeather = FindAnyObjectByType<StageWeather>();
+        StageWeather.WeatherRandomStart();
 
     }
     public void LoadEnemies()
@@ -127,6 +132,7 @@ public class Battle_Silhum : MonoBehaviour
     }
     public void NextTurn()
     {
+        TurnCount++;
         EndGameTrigger();
         if (!isAlive)
         {
@@ -134,6 +140,7 @@ public class Battle_Silhum : MonoBehaviour
             EndBattle();
             return;
         }
+        WeatherChange();
 
         Debug.Log("Turn Change");
         if(currentTurnIndex == turnOrder.Count)
@@ -156,7 +163,7 @@ public class Battle_Silhum : MonoBehaviour
         {
             turn = Turn.enemyTurn;
             ClickManager.Instance.SetSkillBook(null);
-            ClickManager.Instance.SetCharecterStat(null);
+            ClickManager.Instance.SetCharecterStat(currentCharacter.GetComponent<CharacterStat>());
             UpdateButtonState(false);
             StartCoroutine(EnemyAttack(currentCharacter));
         }
@@ -263,5 +270,13 @@ public class Battle_Silhum : MonoBehaviour
     public void EndGame()
     {
         
+    }
+
+    public void WeatherChange()
+    {
+        if(TurnCount % 5 == 0)
+        {
+            StageWeather.WeatherChange();
+        }
     }
 }

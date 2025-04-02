@@ -6,14 +6,9 @@ using UnityEngine;
 public class TextSet : MonoBehaviour
 {
 
-    private HUD hud;
 
     public TextMeshProUGUI[] textMeshes;
 
-    private void Awake()
-    {
-        hud = GetComponentInParent<HUD>();
-    }
     private void Start()
     {
         textMeshes = GetComponentsInChildren<TextMeshProUGUI>();

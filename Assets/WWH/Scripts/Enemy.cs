@@ -47,22 +47,26 @@ public class Enemy : MonoBehaviour
 
             if (sKilldata.isHeal)
             {
+                transform.GetComponent<AnimationHandler>().Attack();
                 RandomEnemy.transform.GetChild(0).gameObject.SetActive(true) ;
                 ClickManager.Instance.Heal(RandomEnemy.stat, sKilldata);
 
             }
             else if (sKilldata.isBuff)
             {
+                transform.GetComponent<AnimationHandler>().Attack();
                 RandomEnemy.transform.GetChild(0).gameObject.SetActive(true);
                 ClickManager.Instance.Buff(RandomEnemy.GetComponent<CharacterStat>(), sKilldata);
             }
             else if (sKilldata.isDebuff)
             {
+                transform.GetComponent<AnimationHandler>().Attack();
                 RandomPlayer.transform.GetChild(0).gameObject.SetActive(true);
                 ClickManager.Instance.Debuff(RandomPlayer.GetComponent<CharacterStat>(), sKilldata);
             }
             else
             {
+                transform.GetComponent<AnimationHandler>().Attack();
                 ClickManager.Instance.skillData = sKilldata;
                 RandomPlayer.transform.GetChild(0).gameObject.SetActive(true);
                 RandomPlayer.TakeDamaged(sKilldata.skillDamage);
@@ -73,7 +77,8 @@ public class Enemy : MonoBehaviour
 
             if(sKilldata.isHeal)
             {
-                foreach(Character stat in ActiveEnemyList) 
+                transform.GetComponent<AnimationHandler>().Attack();
+                foreach (Character stat in ActiveEnemyList) 
                 {
                     ClickManager.Instance.Heal(stat.stat, sKilldata);
                     stat.transform.GetChild(0).gameObject.SetActive(true);
@@ -81,6 +86,7 @@ public class Enemy : MonoBehaviour
             }
             else if(sKilldata.isBuff)
             {
+                transform.GetComponent<AnimationHandler>().Attack();
                 foreach (Character stat in ActiveEnemyList)
                 {
                     ClickManager.Instance.Buff(stat.GetComponent<CharacterStat>(), sKilldata);
@@ -89,6 +95,7 @@ public class Enemy : MonoBehaviour
             }
             else if( sKilldata.isDebuff)
             {
+                transform.GetComponent<AnimationHandler>().Attack();
                 foreach (Character stat in ActivePlayerList)
                 {
                     ClickManager.Instance.Debuff(stat.GetComponent<CharacterStat>(), sKilldata);
@@ -97,6 +104,7 @@ public class Enemy : MonoBehaviour
             }
             else
             {
+                transform.GetComponent<AnimationHandler>().Attack();
                 ClickManager.Instance.skillData = sKilldata;
                 foreach (Character stat in ActivePlayerList)
                 {

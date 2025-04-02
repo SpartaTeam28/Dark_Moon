@@ -16,7 +16,6 @@ public class ClickManager : MonoBehaviour
     public SKilldata skillData;
     public bool IsBuff;
     public bool isAttacking;
-    public bool IsSilhum = false;
 
     public delegate void Next();
     public Next next;
@@ -66,10 +65,12 @@ public class ClickManager : MonoBehaviour
                         }
                         if (skillData.skillTargetCount == 1)
                         {
+                            characterStat.GetComponent<AnimationHandler>().Attack();
                             OnePersonAttack(hit.transform.GetComponent<Character>(), hit);
                         }
                         else if(skillData.skillTargetCount>1)
                         {
+                            characterStat.GetComponent<AnimationHandler>().Attack();
                             AllPersonAttack();
                         }
                         AttackEnd();
@@ -134,6 +135,7 @@ public class ClickManager : MonoBehaviour
     {
         SKilldata skillData = this.skillData;
         skillData.skillDamage = skillData.skillDamage + characterStat.attack.value;
+
         if (skillData.isDebuff && hit.transform.CompareTag("Enemy")) 
         {
             Debuff(hit.transform.GetComponent<CharacterStat>());
@@ -167,6 +169,7 @@ public class ClickManager : MonoBehaviour
 
         SKilldata sKilldata = skillData;
         sKilldata.skillDamage = skillData.skillDamage + characterStat.attack.value;
+
         if (skillData.isBuff)
         {
             IsBuff = false;
@@ -219,7 +222,7 @@ public class ClickManager : MonoBehaviour
             skillData = sKillData;
         }
         SKilldata sKilldata = skillData;
-        character.health.AddHealth(skillData.skillDamage + this.characterStat.attack.value);
+        character.health.AddHealth(skillData.skillDamage);
         ManaSub(sKilldata);
         //TargetDown();
      
@@ -233,19 +236,19 @@ public class ClickManager : MonoBehaviour
         switch (skillData.skillStatType)
         {
             case SkillStatType.Attack:
-                StartCoroutine(DeBuffStart(stat.attack));
+                StartCoroutine(DeBuffStart(stat.attack, skillData));
                 break;
             case SkillStatType.Critical:
-                StartCoroutine(DeBuffStart(stat.critical));
+                StartCoroutine(DeBuffStart(stat.critical, skillData));
                 break;
             case SkillStatType.Defense:
-                StartCoroutine(DeBuffStart(stat.defence));
+                StartCoroutine(DeBuffStart(stat.defence, skillData));
                 break;
             case SkillStatType.Evasion:
-                StartCoroutine(DeBuffStart(stat.evasion));
+                StartCoroutine(DeBuffStart(stat.evasion, skillData));
                 break;
             case SkillStatType.Speed:
-                StartCoroutine(DeBuffStart(stat.speed));
+                StartCoroutine(DeBuffStart(stat.speed, skillData));
                 break;
         }
         //TargetDown();
@@ -262,32 +265,33 @@ public class ClickManager : MonoBehaviour
         switch (skillData.skillStatType)
         {
             case SkillStatType.Attack:
-                StartCoroutine(BuffStart(stat.attack));
+                StartCoroutine(BuffStart(stat.attack, skillData));
                 break;
             case SkillStatType.Critical:
-                StartCoroutine(BuffStart(stat.critical));
+                StartCoroutine(BuffStart(stat.critical, skillData));
                 break;
             case SkillStatType.Defense:
-                StartCoroutine(BuffStart(stat.defence));
+                StartCoroutine(BuffStart(stat.defence, skillData));
                 break;
             case SkillStatType.Evasion:
-                StartCoroutine(BuffStart(stat.evasion));
+                StartCoroutine(BuffStart(stat.evasion, skillData));
                 break;
             case SkillStatType.Health:
-                StartCoroutine(BuffStart(stat.health));
+                StartCoroutine(BuffStart(stat.health, skillData));
                 break;
             case SkillStatType.Speed:
-                StartCoroutine(BuffStart(stat.speed));
+                StartCoroutine(BuffStart(stat.speed, skillData));
                 break;
         }
         //TargetDown();
        
     }
 
-    public IEnumerator BuffStart(BaseStat stat)
+    public IEnumerator BuffStart(BaseStat stat , SKilldata sKilldata)
     {
-        SKilldata sKilldata = skillData;
         ManaSub(sKilldata);
+
+        int curTurn = Battle_Silhum.Instance.TurnCount;
         if (skillData.isMulti)
         {
             stat.AddMultiples(skillData.multiValue);
@@ -297,7 +301,7 @@ public class ClickManager : MonoBehaviour
             stat.AddStat(skillData.skillDamage);
         }
         
-        yield return new WaitUntil(() => IsSilhum) ;
+        yield return new WaitUntil(() => curTurn + sKilldata.duration < Battle_Silhum.Instance.TurnCount) ;
         if (sKilldata.isMulti)
         {
             stat.AddMultiples(-sKilldata.multiValue);
@@ -309,9 +313,9 @@ public class ClickManager : MonoBehaviour
 
     }
 
-    public IEnumerator DeBuffStart(BaseStat stat)
+    public IEnumerator DeBuffStart(BaseStat stat, SKilldata sKilldata)
     {
-        SKilldata sKilldata = skillData;
+        int curTurn = Battle_Silhum.Instance.TurnCount;
         ManaSub(sKilldata);
         if (sKilldata.isMulti)
         {
@@ -321,7 +325,7 @@ public class ClickManager : MonoBehaviour
         {
             stat.AddStat(-skillData.skillDamage);
         }
-        yield return new WaitUntil(() => IsSilhum);
+        yield return new WaitUntil(() => curTurn + sKilldata.duration < Battle_Silhum.Instance.TurnCount);
         if (sKilldata.isMulti)
         {
             stat.AddMultiples(sKilldata.multiValue);
