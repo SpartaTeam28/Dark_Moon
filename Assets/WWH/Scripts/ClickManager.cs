@@ -11,10 +11,10 @@ public class ClickManager : MonoBehaviour
     public static ClickManager Instance { get { return instance; } set { instance = value; } }
 
 
-    public CharacterStat characterStat;
-    public SkillBook skillBook;
-    public SKilldata skillData;
-    public bool IsBuff;
+    private CharacterStat characterStat;
+    private SkillBook skillBook;
+    private SKilldata skillData;
+    private bool IsBuff;
     public bool isAttacking;
 
     public delegate void Next();
@@ -36,7 +36,6 @@ public class ClickManager : MonoBehaviour
 
         if (isAttacking)
         {
-
             TargetSet();
             if (Input.GetMouseButtonDown(0))
             {
@@ -50,18 +49,13 @@ public class ClickManager : MonoBehaviour
                     {
                         if(skillData.isDebuff )
                         {
-                   
                             if(hit.transform.CompareTag("Friends"))
-                            {
-                                return;
-                            }
+                            {return;}
                         }
                         else if (skillData.isBuff || skillData.isHeal )
                         {
                             if (hit.transform.CompareTag("Enemy"))
-                            {
-                                return;
-                            }
+                            {return;}
                         }
                         if (skillData.skillTargetCount == 1)
                         {
@@ -74,7 +68,6 @@ public class ClickManager : MonoBehaviour
                             AllPersonAttack();
                         }
                         AttackEnd();
-
                     }
                     else
                     {
@@ -84,7 +77,6 @@ public class ClickManager : MonoBehaviour
                 else
                 {
                     AttackEnd();
-                    Debug.Log("Not Enough Mana");
                 }
             }
         }
@@ -110,8 +102,6 @@ public class ClickManager : MonoBehaviour
             isAttacking = false;
             TargetDown();
         }
-
-
     }
 
     public void SetSkill(int index)
@@ -128,6 +118,7 @@ public class ClickManager : MonoBehaviour
             IsBuff = false;
         }
     }
+
 
 
 
@@ -224,7 +215,7 @@ public class ClickManager : MonoBehaviour
         SKilldata sKilldata = skillData;
         character.health.AddHealth(skillData.skillDamage);
         ManaSub(sKilldata);
-        //TargetDown();
+
      
     }
     public void Debuff(CharacterStat stat, SKilldata sKilldata = null)
@@ -251,7 +242,7 @@ public class ClickManager : MonoBehaviour
                 StartCoroutine(DeBuffStart(stat.speed, skillData));
                 break;
         }
-        //TargetDown();
+
     }
 
     public void Buff(CharacterStat stat , SKilldata sKilldata = null)
@@ -283,7 +274,7 @@ public class ClickManager : MonoBehaviour
                 StartCoroutine(BuffStart(stat.speed, skillData));
                 break;
         }
-        //TargetDown();
+
        
     }
 
@@ -399,10 +390,19 @@ public class ClickManager : MonoBehaviour
         characterStat.mana.curMana -= sKilldata.UsingValue;
     }
 
-    //public void CoolTimeSet()
-    //{
-        
-    //}
+    public void SetSkilldata(SKilldata sKilldata)
+    {
+        skillData = sKilldata;
+
+    }
+    public SKilldata GetSkilldata()
+    {
+        return skillData;
+    }
+    public SkillBook GetSkillBook()
+    {
+        return skillBook;
+    }
 
 
 

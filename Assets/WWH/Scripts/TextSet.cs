@@ -21,11 +21,11 @@ public class TextSet : MonoBehaviour
 
     private void Set()
     {
-        if(ClickManager.Instance.skillData != null)
+        if(ClickManager.Instance.GetSkilldata() != null)
         {
-            textMeshes[0].text = ClickManager.Instance.skillData.skillText.skillNametext;
-            textMeshes[1].text = ClickManager.Instance.skillData.skillText.skillDestext;
-            textMeshes[2].text = ClickManager.Instance.skillData.skillText.skillAllAttactext;
+            textMeshes[0].text = ClickManager.Instance.GetSkilldata().skillText.skillNametext;
+            textMeshes[1].text = ClickManager.Instance.GetSkilldata().skillText.skillDestext;
+            textMeshes[2].text = ClickManager.Instance.GetSkilldata().skillText.skillAllAttactext;
         }else
         {
             textMeshes[0].text = string.Empty;

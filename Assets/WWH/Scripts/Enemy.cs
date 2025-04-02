@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     {
         if(ClickManager.Instance.isAttacking)
         {
-            if(!ClickManager.Instance.skillData.isBuff && !ClickManager.Instance.skillData.isHeal)
+            if(!ClickManager.Instance.GetSkilldata().isBuff && !ClickManager.Instance.GetSkilldata().isHeal)
             {
                 transform.GetChild(0).gameObject.SetActive(true);
             }
@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     {
         if (ClickManager.Instance.isAttacking)
         {
-            if (!ClickManager.Instance.skillData.isBuff && !ClickManager.Instance.skillData.isHeal)
+            if (!ClickManager.Instance.GetSkilldata().isBuff && !ClickManager.Instance.GetSkilldata().isHeal)
             {
                 transform.GetChild(0).gameObject.SetActive(false);
             }
@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour
             else
             {
                 transform.GetComponent<AnimationHandler>().Attack();
-                ClickManager.Instance.skillData = sKilldata;
+                ClickManager.Instance.SetSkilldata(sKilldata);
                 RandomPlayer.transform.GetChild(0).gameObject.SetActive(true);
                 RandomPlayer.TakeDamaged(sKilldata.skillDamage);
             }
@@ -105,7 +105,7 @@ public class Enemy : MonoBehaviour
             else
             {
                 transform.GetComponent<AnimationHandler>().Attack();
-                ClickManager.Instance.skillData = sKilldata;
+                ClickManager.Instance.SetSkilldata(sKilldata);
                 foreach (Character stat in ActivePlayerList)
                 {
                     stat.TakeDamaged(sKilldata.skillDamage);
