@@ -44,8 +44,7 @@ public class StageSelectUI : BaseUI
 
     public void OnClickStageButton(SelectStageName stageName)
     {
-        UIManager.instance.SetCurrentStageName(stageName, 7);
-
+        UIManager.instance.SetCurrentStageName(stageName, 0);
 
         switch(stageName)
         {

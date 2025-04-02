@@ -17,6 +17,7 @@ public class JumagUI : BaseUI
 
     public GameObject npcWindow;
     public TextMeshProUGUI npCScriptsText;
+    public int reollGold;
 
     protected override UIState GetUIState()
     {
@@ -70,7 +71,6 @@ public class JumagUI : BaseUI
         {
             return;
         }
-
 
         partnerSelectList.Clear();
 
@@ -127,8 +127,8 @@ public class JumagUI : BaseUI
 
         if (partnerSelectList.TryGetValue(index, out Character selectedPartner))
         {
-            uiManager.SpenGold(100);
             if (uiManager.gold < 100) return;
+            uiManager.SpenGold(100);
             // 영입된 동료 리스트
             //addList.Add(partnerSelectList[index]);
             uiManager.AddPartnerSlotList(partnerSelectList[index]);
@@ -145,6 +145,8 @@ public class JumagUI : BaseUI
 
     public void OnClickReroll()
     {
+        if (uiManager.gold < reollGold) return;
+        uiManager.SpenGold(100);
         GenerateNewPartners();
     }
 

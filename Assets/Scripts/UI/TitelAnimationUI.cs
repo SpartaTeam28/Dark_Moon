@@ -44,7 +44,6 @@ public class TitleAnimation : MonoBehaviour
 
         yield return scene1.DOFade(0, 1f).WaitForCompletion();
 
-
         //두 번째 텍스트 등장
         text2.DOFade(1, 1f);
         yield return new WaitForSeconds(1.5f);

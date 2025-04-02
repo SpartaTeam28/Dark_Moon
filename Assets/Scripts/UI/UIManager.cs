@@ -29,11 +29,13 @@ public class UIManager : MonoBehaviour
     CharacterSelectUI characterSelectUI = null;
     LobbyUI lobbyUI = null;
     JumagUI jumagUI = null;
-    //HealStationUI healStationUI = null;
     TrainingUI trainingUI = null;
     SmithUI smithUI = null;
     StageSelectUI stageSelectUI = null;
     CommonBattleUI commonBattleUI = null;
+
+
+
 
     SettingPopupUI settingPopupUI = null;
     public AlamPopupUI alarmPopupUI = null;
