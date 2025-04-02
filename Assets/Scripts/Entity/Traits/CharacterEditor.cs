@@ -22,13 +22,10 @@ public class CharacterEditor : EditorWindow
             characters.Add(character);
         }
 
-        // Create a two-pane view with the left pane being fixed with
         var splitView = new TwoPaneSplitView(0, 250, TwoPaneSplitViewOrientation.Horizontal);
 
-        // Add the view to the visual tree by adding it as a child to the root element
         rootVisualElement.Add(splitView);
 
-        // A TwoPaneSplitView always needs exactly two child elements
         var leftPane = new ListView();
         splitView.Add(leftPane);
         m_RightPane = new VisualElement();
@@ -38,7 +35,6 @@ public class CharacterEditor : EditorWindow
         leftPane.bindItem = (item, index) => { (item as Label).text = characters[index].name; };
         leftPane.itemsSource = characters;
 
-        // React to the user's selection
         leftPane.selectionChanged += OnSpriteSelectionChange;
     }
 
@@ -53,10 +49,6 @@ public class CharacterEditor : EditorWindow
 
             var traits = character.traitManager.appliedTraits;
 
-            //캐릭터 스탯
-
-
-            // 캐릭터 이름
             var title = new Label($"[{character.info.characterName}]:");
             title.style.unityFontStyleAndWeight = FontStyle.Bold;
             title.style.marginBottom = 8;

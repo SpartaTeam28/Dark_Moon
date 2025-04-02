@@ -22,7 +22,7 @@ MonoBehaviour:
   maxHealth: 30
   curHealth: 30
   maxMana: 10
-  curMana: 15
+  curMana: 10
   critical: 20
   accurracy: 80
   evasion: 10
