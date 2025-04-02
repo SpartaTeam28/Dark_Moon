@@ -4424,11 +4424,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4802456437776250969, guid: 9032c19a4354934469882c9e64c44571, type: 3}
       propertyPath: gold
-      value: 1000
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 4802456437776250969, guid: 9032c19a4354934469882c9e64c44571, type: 3}
       propertyPath: partnerMax
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4802456437776250969, guid: 9032c19a4354934469882c9e64c44571, type: 3}
+      propertyPath: statUpgrade
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4802456437776250969, guid: 9032c19a4354934469882c9e64c44571, type: 3}
       propertyPath: alarmPopupUI
