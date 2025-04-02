@@ -32,6 +32,12 @@ public class Character : MonoBehaviour
             Debug.LogError("Character dose not have Health Component.");
             return;
         }
+        var evasion = Random.Range(0, 100);
+        if (evasion < stat.evasion.value)
+        {
+            Debug.Log($"{info.name}이(가) 회피 했습니다.");
+            return;
+        }
         health.AddHealth(amount * -1);
         if(health.curHealth <= 0)
         {
