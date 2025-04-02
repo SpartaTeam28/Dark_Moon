@@ -6,8 +6,8 @@ using DG.Tweening;  // DOTween 사용
 
 public class TitleAnimation : MonoBehaviour
 {
-    public Image scene1, scene2, scene3, scene4;
-    public TextMeshProUGUI text1, text2, text3, text4, text5, title;
+    public Image scene1, scene2, scene3, scene4, title;
+    public TextMeshProUGUI text1, text2, text3, text4, text5;
 
     void Start()
     {
@@ -18,7 +18,6 @@ public class TitleAnimation : MonoBehaviour
         SetTextAlpha(text3, 0);
         SetTextAlpha(text4, 0);
         SetTextAlpha(text5, 0);
-        SetTextAlpha(title, 0);
 
 
         StartCoroutine(PlayAnimation());
@@ -31,6 +30,7 @@ public class TitleAnimation : MonoBehaviour
         scene2.color = new Color(1, 1, 1, 0);
         scene3.color = new Color(1, 1, 1, 0);
         scene4.color = new Color(1,1,1,0);
+        title.color = new Color(1, 1, 1, 0);
 
         // 첫 번째 텍스트 등장
         text1.DOFade(1, 1f);
