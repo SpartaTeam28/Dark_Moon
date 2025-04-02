@@ -13,35 +13,39 @@ public class Battle_Silhum : MonoBehaviour
 
     private static Battle_Silhum instance;
     public static Battle_Silhum Instance {  get { return instance; }  set { instance = value; } }
-    public Turn turn; // ÅÏ »óÅÂ
-    public bool isAlive; // »ì¾ÆÀÖ´Â°¡
-    public Transform buttonPanel; // ¹öÆ°µéÀÌ À§Ä¡ÇÒ UI ÆĞ³Î
-    public GameObject attackButtonPrefab; // ¹öÆ° ÇÁ¸®ÆÕ (Inspector¿¡¼­ ¼³Á¤
-    public bool isLock; // Àá±İ
+    public Turn turn; // í„´ ìƒíƒœ
+    public bool isAlive; // ì‚´ì•„ìˆëŠ”ê°€
+    public Transform buttonPanel; // ë²„íŠ¼ë“¤ì´ ìœ„ì¹˜í•  UI íŒ¨ë„
+    public GameObject attackButtonPrefab; // ë²„íŠ¼ í”„ë¦¬íŒ¹ (Inspectorì—ì„œ ì„¤ì •
+    public bool isLock; // ì ê¸ˆ
     public int TurnCount = 0;
 
     
     public List<Character> players;
-    public List<Character> enemies;  // Àû ¸®½ºÆ®
-    public List<Character> turnOrder; // ÅÏ ¼ø¼­ ¸®½ºÆ®
-    int currentTurnIndex = 0; // ÇöÀç ÅÏ ÁøÇà ÁßÀÎ Ä³¸¯ÅÍ ÀÎµ¦½º
+    public List<Character> enemies;  // ì  ë¦¬ìŠ¤íŠ¸
+    public List<Character> turnOrder; // í„´ ìˆœì„œ ë¦¬ìŠ¤íŠ¸
+    int currentTurnIndex = 0; // í˜„ì¬ í„´ ì§„í–‰ ì¤‘ì¸ ìºë¦­í„° ì¸ë±ìŠ¤
 
-    private List<Button> attackButtons = new List<Button>(); // ¹öÆ° ¸®½ºÆ®
+    private List<Button> attackButtons = new List<Button>(); // ë²„íŠ¼ ë¦¬ìŠ¤íŠ¸
 
-    [Header("½ºÅ×ÀÌÁöº° Àû ¸®½ºÆ®")]
+    [Header("ìŠ¤í…Œì´ì§€ë³„ ì  ë¦¬ìŠ¤íŠ¸")]
     [SerializeField] public List<Character> UlsanEnemies;
     [SerializeField] private List<Character> BusanEnemies;
     [SerializeField] private List<Character> HanbatEnemies;
     [SerializeField] private List<Character> DeaguEnemies;
     [SerializeField] private List<Character> BattleScene;
-    private int playerDeathCount =  0;
-    private int enemyDeathCount = 0;
+    [SerializeField] private int playerDeathCount;
+    [SerializeField] private int enemyDeathCount;
 
 
-    public Transform speedTextPanel; // UI¿¡¼­ Speed °ªÀ» Ç¥½ÃÇÒ Panel
-    public GameObject speedTextPrefab; // Speed °ªÀ» Ç¥½ÃÇÒ Text ÇÁ¸®ÆÕ
+    public Transform speedTextPanel; // UIì—ì„œ Speed ê°’ì„ í‘œì‹œí•  Panel
+    public GameObject speedTextPrefab; // Speed ê°’ì„ í‘œì‹œí•  Text í”„ë¦¬íŒ¹
     private StageWeather StageWeather;
     private Dictionary<Character, TextMeshProUGUI> speedTexts = new Dictionary<Character, TextMeshProUGUI>();
+    public TextMeshProUGUI cleartText;
+    public Button button;
+
+    int equipGold = 500;
     private void Awake()
     {
         if(instance == null)
@@ -53,8 +57,8 @@ public class Battle_Silhum : MonoBehaviour
             Destroy(gameObject);
         }
 
-        //LoadEnemies();
-        turn = Turn.start; // ÀüÅõ ½ÃÀÛ
+        LoadEnemies();
+        turn = Turn.start; // ì „íˆ¬ ì‹œì‘
 
     }
     private void Start()
@@ -63,21 +67,23 @@ public class Battle_Silhum : MonoBehaviour
     }
     public void BattleStart()
     {
-        // ½ºÇÇµå ºñ±³ÇØ¼­ ÅÏ Á¤ÇÏ±â
+        // ìŠ¤í”¼ë“œ ë¹„êµí•´ì„œ í„´ ì •í•˜ê¸°
         SpeedCheck();
         //CreateAttackButtons();
-        NextTurn();
+       
         ClickManager.Instance.next = NextTurn;
         playerDeathCount = GameManager.instance.friendlyCharacterList.Count;
+        Debug.Log("Count"+playerDeathCount);
         enemyDeathCount = (int)(GameManager.instance.EnemyCharacterList?.Count);
+        NextTurn();
         StageWeather = FindAnyObjectByType<StageWeather>();
         StageWeather.WeatherRandomStart();
 
     }
-    //public void LoadEnemies()
-    //{
-    //    // ½ºÅ×ÀÌÁö¿¡ ¸Â´Â Àû ¸®½ºÆ® ·Îµå
-    //    Debug.Log($"UlsanEnemies Count: {DeaguEnemies.Count}"); // ¸î °³ÀÇ ÀûÀÌ ÀÖ´ÂÁö È®ÀÎ
+    public void LoadEnemies()
+    {
+        // ìŠ¤í…Œì´ì§€ì— ë§ëŠ” ì  ë¦¬ìŠ¤íŠ¸ ë¡œë“œ
+        Debug.Log($"UlsanEnemies Count: {DeaguEnemies.Count}"); // ëª‡ ê°œì˜ ì ì´ ìˆëŠ”ì§€ í™•ì¸
 
     //    string currentScene = SceneManager.GetActiveScene().name;
 
@@ -107,23 +113,23 @@ public class Battle_Silhum : MonoBehaviour
     //            Debug.Log($"HanbatEnemies Count: {BattleScene.Count}");
     //            break;
     //        default:
-    //            Debug.LogError($"Àû ¸®½ºÆ®°¡ ¾ø½À´Ï´Ù! ÇöÀç ¾À: {currentScene}");
+    //            Debug.LogError($"ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½! ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½: {currentScene}");
     //            break;
     //    }
-    //    Debug.Log($"Enemies Count after LoadEnemies(): {enemies.Count}"); // enemies°¡ Á¤»óÀûÀ¸·Î ¼³Á¤µÆ´ÂÁö È®ÀÎ
+    //    Debug.Log($"Enemies Count after LoadEnemies(): {enemies.Count}"); // enemiesï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Æ´ï¿½ï¿½ï¿½ È®ï¿½ï¿½
     //}
 
     public void SpeedCheck()
     {
-        // ÇÃ·¹ÀÌ¾î¿Í Àû ¸®½ºÆ®¸¦ ÇÏ³ªÀÇ ¸®½ºÆ®·Î ÇÕÄ£ ÈÄ ¼Óµµ ¼ø Á¤·Ä
+        // í”Œë ˆì´ì–´ì™€ ì  ë¦¬ìŠ¤íŠ¸ë¥¼ í•˜ë‚˜ì˜ ë¦¬ìŠ¤íŠ¸ë¡œ í•©ì¹œ í›„ ì†ë„ ìˆœ ì •ë ¬
         turnOrder = new List<Character>();
         turnOrder.AddRange(players);
         turnOrder.AddRange(enemies);
-        // ¼öÁ¤? °í¹Î
+        // ìˆ˜ì •? ê³ ë¯¼
         turnOrder = turnOrder.OrderByDescending(c => c.stat.speed.value).ToList();
-        currentTurnIndex = 0; // Ã¹ ¹øÂ° Ä³¸¯ÅÍºÎÅÍ ½ÃÀÛ
+        currentTurnIndex = 0; // ì²« ë²ˆì§¸ ìºë¦­í„°ë¶€í„° ì‹œì‘
 
-        Debug.Log("=== Ä³¸¯ÅÍ Speed ¼ø¼­ ===");
+        Debug.Log("=== ìºë¦­í„° Speed ìˆœì„œ ===");
         foreach (var character in turnOrder)
         {
             Debug.Log($" Speed {character.stat.speed.value}");
@@ -151,7 +157,7 @@ public class Battle_Silhum : MonoBehaviour
 
         currentTurnIndex++;
                 
-        Debug.Log(currentTurnIndex.ToString() + "Áö±İ ÀÎµ¦½º");
+        Debug.Log(currentTurnIndex.ToString() + "ì§€ê¸ˆ ì¸ë±ìŠ¤");
 
         if (players.Contains(currentCharacter))
         {
@@ -176,7 +182,7 @@ public class Battle_Silhum : MonoBehaviour
         enemy.GetComponent<Enemy>().
             SkillActive(enemy.GetComponent<Enemy>().sKilldatas
             [Random.Range(0, enemy.GetComponent<Enemy>().sKilldatas.Length)]);
-        Debug.Log($"{enemy.name}ÀÌ(°¡) °ø°İÀ» Çß½À´Ï´Ù.");
+        Debug.Log($"{enemy.name}ì´(ê°€) ê³µê²©ì„ í–ˆìŠµë‹ˆë‹¤.");
         yield return new WaitForSeconds(2f);
         ClickManager.Instance.TargetDown();
         NextTurn();
@@ -185,7 +191,7 @@ public class Battle_Silhum : MonoBehaviour
     //{
     //    foreach (var btn in attackButtons)
     //    {
-    //        Destroy(btn.gameObject); // ±âÁ¸ ¹öÆ° »èÁ¦
+    //        Destroy(btn.gameObject); // ê¸°ì¡´ ë²„íŠ¼ ì‚­ì œ
     //    }
     //    attackButtons.Clear();
 
@@ -193,14 +199,14 @@ public class Battle_Silhum : MonoBehaviour
     //    {
     //        GameObject newButton = Instantiate(attackButtonPrefab, buttonPanel);
     //        newButton.GetComponentInChildren<Text>().text = players[i].name;
-    //        int index = i; // ¶÷´Ù Ä¸Ã³ ¹æÁö
+    //        int index = i; // ëŒë‹¤ ìº¡ì²˜ ë°©ì§€
     //        newButton.GetComponent<Button>().onClick.AddListener(() => PlayerAttack(index));
     //        attackButtons.Add(newButton.GetComponent<Button>());
     //    }
     //}
     public void EndBattle()
     {
-        Debug.Log("ÀüÅõ ³¡");
+        Debug.Log("ì „íˆ¬ ë");
     }
 
     private void UpdateButtonState(bool active)
@@ -234,14 +240,28 @@ public class Battle_Silhum : MonoBehaviour
         if (playerDeathCount == 0)
         {
             turn = Turn.lose;
+            // //StartCoroutine(LoseGame());
+            UIManager.instance.SetBattlePanel();
+            //cleartText.text = $"ì „íˆ¬ì—ì„œ íŒ¨ë°°í•˜ì˜€ìŠµë‹ˆë‹¤";
             return;
         }
         if (enemyDeathCount == 0)
         {
             isAlive = false;
             turn = Turn.win;
+            for (int i = 0; i < GameManager.Instance.friendlyCharacterList.Count; i++)
+            {
+                GameManager.Instance.friendlyCharacterList[i].info.AddExp(15);
+            }
+            UIManager.instance.AddGold(500);
+            
+           
+            Debug.Log("í˜¸ì¶œ");
+            UIManager.instance.SetBattlePanel();
+           // cleartText.text = $"ì¶•í•˜í•©ë‹ˆë‹¤. ì „íˆ¬ì—ì„œ ìŠ¹ë¦¬í•˜ì…¨ìŠµë‹ˆë‹¤! ê²½í—˜ì¹˜ 15ì™€ Gold {equipGold}ì„ ì–»ìœ¼ì…¨ìŠµë‹ˆë‹¤!";
             return;
         }
+        equipGold += 500;
       
     }
 
@@ -251,27 +271,34 @@ public class Battle_Silhum : MonoBehaviour
         int i = 1;
         foreach (var pair in speedTexts)
         {
-            Destroy(pair.Value.gameObject); // ±âÁ¸ UI »èÁ¦
+            Destroy(pair.Value.gameObject); // ê¸°ì¡´ UI ì‚­ì œ
         }
         speedTexts.Clear();
 
         foreach (var character in turnOrder)
         {
 
-            GameObject newText = Instantiate(speedTextPrefab, speedTextPanel);
-            TextMeshProUGUI textComponent = newText.GetComponent<TextMeshProUGUI>();
+           // GameObject newText = Instantiate(speedTextPrefab, speedTextPanel);
+            //TextMeshProUGUI textComponent = newText.GetComponent<TextMeshProUGUI>();
             //textComponent.text = $" Speed: {character.stat.speed.value}";
-            textComponent.text = $" Speed: {i}";
+            //textComponent.text = $" Speed: {i}";
             Vector3 screenPos = Camera.main.WorldToScreenPoint(character.transform.position);
-            newText.transform.position = screenPos + new Vector3(0, 100f, 0); // Y°ª Á¶Á¤ (¾Æ·¡·Î ³»¸®±â)
+            //newText.transform.position = screenPos + new Vector3(0, 100f, 0); // Yê°’ ì¡°ì • (ì•„ë˜ë¡œ ë‚´ë¦¬ê¸°)
 
-            speedTexts[character] = textComponent;
+           // speedTexts[character] = textComponent;
             i++;
         }
     }
-    public void EndGame()
+    public IEnumerator ClearGame()
     {
-        
+        yield return new WaitForSeconds(2f);
+        CommonBattleUI.instance.OnClickWinButton();
+    }
+
+    public IEnumerator LoseGame()
+    {
+        yield return new WaitForSeconds(2f);
+        CommonBattleUI.instance.OnClickDefeatButton();
     }
 
     public void WeatherChange()
@@ -281,4 +308,10 @@ public class Battle_Silhum : MonoBehaviour
             StageWeather.WeatherChange();
         }
     }
+
+    public void OnSceneChange()
+    {
+        SceneManager.LoadScene("YGM_Scene");
+        
+;   }
 }
