@@ -86,7 +86,15 @@ public class CommonBattleUI : BaseUI
     public void OnClickWinButton()
     {
         uiManager.OnEnableStageButton(currentStageName, currentStagenumber);
-        SceneManager.LoadScene("YGM_Scene");
+        if(currentStageName == SelectStageName.Seoul)
+        {
+            SceneManager.LoadScene("ClearScene");
+        }
+        else
+        {
+            SceneManager.LoadScene("YGM_Scene");
+        }
+
         uiManager.OnClickLobby();
 
         clearPanel.SetActive(false);
@@ -95,8 +103,7 @@ public class CommonBattleUI : BaseUI
 
     public void OnClickDefeatButton()
     {
-        SceneManager.LoadScene("YGM_Scene");
-        uiManager.OnClickLobby();
+        SceneManager.LoadScene("DefeatScene");
         defeatPanel.SetActive(false);
     }
 

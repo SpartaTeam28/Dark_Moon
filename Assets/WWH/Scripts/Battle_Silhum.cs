@@ -237,7 +237,7 @@ public class Battle_Silhum : MonoBehaviour
         {
             turn = Turn.lose;
             // //StartCoroutine(LoseGame());
-            UIManager.instance.SetBattlePanel();
+            UIManager.instance.SetBattleDefeatPanel();
             //cleartText.text = $"전투에서 패배하였습니다";
             return;
         }
