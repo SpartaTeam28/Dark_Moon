@@ -70,11 +70,12 @@ public class Battle_Silhum : MonoBehaviour
         // 스피드 비교해서 턴 정하기
         SpeedCheck();
         //CreateAttackButtons();
-        NextTurn();
+       
         ClickManager.Instance.next = NextTurn;
         playerDeathCount = GameManager.instance.friendlyCharacterList.Count;
         Debug.Log("Count"+playerDeathCount);
         enemyDeathCount = (int)(GameManager.instance.EnemyCharacterList?.Count);
+        NextTurn();
         StageWeather = FindAnyObjectByType<StageWeather>();
         StageWeather.WeatherRandomStart();
 
@@ -241,7 +242,7 @@ public class Battle_Silhum : MonoBehaviour
             turn = Turn.lose;
             // //StartCoroutine(LoseGame());
             UIManager.instance.SetBattlePanel();
-            cleartText.text = $"전투에서 패배하였습니다";
+            //cleartText.text = $"전투에서 패배하였습니다";
             return;
         }
         if (enemyDeathCount == 0)
@@ -254,10 +255,10 @@ public class Battle_Silhum : MonoBehaviour
             }
             UIManager.instance.AddGold(500);
             
-            //button.gameObject.SetActive(true);
+           
             Debug.Log("호출");
             UIManager.instance.SetBattlePanel();
-            cleartText.text = $"축하합니다. 전투에서 승리하셨습니다! 경험치 15와 Gold {equipGold}을 얻으셨습니다!";
+           // cleartText.text = $"축하합니다. 전투에서 승리하셨습니다! 경험치 15와 Gold {equipGold}을 얻으셨습니다!";
             return;
         }
         equipGold += 500;
