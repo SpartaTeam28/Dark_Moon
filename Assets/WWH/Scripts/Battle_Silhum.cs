@@ -239,22 +239,25 @@ public class Battle_Silhum : MonoBehaviour
         if (playerDeathCount == 0)
         {
             turn = Turn.lose;
-           // //StartCoroutine(LoseGame());
-           cleartText.text = $"전투에서 패배하였습니다";
+            // //StartCoroutine(LoseGame());
+            UIManager.instance.SetBattlePanel();
+            cleartText.text = $"전투에서 패배하였습니다";
             return;
         }
         if (enemyDeathCount == 0)
         {
             isAlive = false;
             turn = Turn.win;
-            GameManager.Instance.friendlyCharacterList[0].info.AddExp(15);
-            GameManager.Instance.friendlyCharacterList[0].info.SetLevel();
+            for (int i = 0; i < GameManager.Instance.friendlyCharacterList.Count; i++)
+            {
+                GameManager.Instance.friendlyCharacterList[i].info.AddExp(15);
+            }
+            UIManager.instance.AddGold(500);
             
-        
-            //UIManager.instance.AddGold(500);
+            //button.gameObject.SetActive(true);
+            Debug.Log("호출");
+            UIManager.instance.SetBattlePanel();
             cleartText.text = $"축하합니다. 전투에서 승리하셨습니다! 경험치 15와 Gold {equipGold}을 얻으셨습니다!";
-            button.gameObject.SetActive(true);
-
             return;
         }
         equipGold += 500;
