@@ -30,6 +30,7 @@ public class Character : MonoBehaviour
     public void TakeDamaged(float amount, float target_attack, float target_critical, float target_accuracy)
     {
         var health = stat.health;
+        if (health.value <= 0) return;
         if(health == null)
         {
             Debug.LogError("Character dose not have Health Component.");
