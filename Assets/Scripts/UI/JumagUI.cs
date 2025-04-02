@@ -120,12 +120,13 @@ public class JumagUI : BaseUI
     {
         if (partnerSelectList.TryGetValue(index, out Character selectedPartner))
         {
+            uiManager.SpenGold(100);
+            if (uiManager.gold < 100) return;
             // 영입된 동료 리스트
             //addList.Add(partnerSelectList[index]);
             uiManager.AddPartnerSlotList(partnerSelectList[index]);
 
             buttonGameObjects[index].gameObject.SetActive(false);
-            uiManager.SpenGold(100);
 
             allPartnerList.Remove(selectedPartner);
 
