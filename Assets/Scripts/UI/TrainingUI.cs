@@ -97,31 +97,8 @@ public class TrainingUI : BaseUI
         }
 
         SetPartyListView();
-        
-        
+       
     }
-
-
-    // 이미지 업데이트
-    /**
-    private void UpdatePartyUI()
-    {
-        for (int i = 0; i < BattleUnitImage.Length; i++)
-        {
-            if (i < GameManager.instance.friendlyCharacterList.Count)
-            {
-                BattleUnitImage[i].sprite = GameManager.instance.friendlyCharacterList[i].characterSprite;
-                BattleUnitImage[i].enabled = true; // 이미지 활성화
-            }
-            else
-            {
-                BattleUnitImage[i].sprite = null; // 빈 슬롯
-                BattleUnitImage[i].enabled = false; // 비활성화
-            }
-        }
-    }
-    **/
-
 
     public void OnClickRemoveButton()
     {
