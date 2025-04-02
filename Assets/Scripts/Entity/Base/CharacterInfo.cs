@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CharacterInfo : MonoBehaviour
 {
-    public static CharacterInfo instance;
+  
     public Character character;
     public JobData job;
 
@@ -14,14 +14,6 @@ public class CharacterInfo : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject );
-        }
     }
     private void Start()
     {
