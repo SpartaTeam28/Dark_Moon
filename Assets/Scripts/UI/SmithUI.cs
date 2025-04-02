@@ -92,7 +92,9 @@ public class SmithUI : BaseUI
             uiManager.partnerCharacters[i].stat.attack.AddStat(uiManager.statUpgrade);
             uiManager.partnerCharacters[i].stat.defence.AddStat(uiManager.statUpgrade);
             uiManager.partnerCharacters[i].stat.health.AddStat(uiManager.statUpgrade);
+            uiManager.partnerCharacters[i].stat.health.FullHealth();
             uiManager.partnerCharacters[i].stat.mana.AddStat(uiManager.statUpgrade);
+            uiManager.partnerCharacters[i].stat.mana.FullMana();
             uiManager.partnerCharacters[i].stat.critical.AddStat(uiManager.statUpgrade);
             uiManager.partnerCharacters[i].stat.evasion.AddStat(uiManager.statUpgrade);
             uiManager.partnerCharacters[i].stat.accuracy.AddStat(uiManager.statUpgrade);
@@ -105,7 +107,9 @@ public class SmithUI : BaseUI
             allPartnerLists[i].stat.attack.AddStat(uiManager.statUpgrade);
             allPartnerLists[i].stat.defence.AddStat(uiManager.statUpgrade);
             allPartnerLists[i].stat.health.AddStat(uiManager.statUpgrade);
+            allPartnerLists[i].stat.health.FullHealth();
             allPartnerLists[i].stat.mana.AddStat(uiManager.statUpgrade);
+            allPartnerLists[i].stat.mana.FullMana();
             allPartnerLists[i].stat.critical.AddStat(uiManager.statUpgrade);
             allPartnerLists[i].stat.evasion.AddStat(uiManager.statUpgrade);
             allPartnerLists[i].stat.accuracy.AddStat(uiManager.statUpgrade);
