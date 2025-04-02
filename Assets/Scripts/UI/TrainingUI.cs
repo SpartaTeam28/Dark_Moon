@@ -35,7 +35,7 @@ public class TrainingUI : BaseUI
     public TextMeshProUGUI expText;
 
     public TextMeshProUGUI goldText;
-
+    public int traitrerollGold;
     public Character selectCharacter;
     int selectCharacterIndex;
 
@@ -146,6 +146,9 @@ public class TrainingUI : BaseUI
 
     public void OnClickReRollButton()
     {
+        uiManager.SpenGold(traitrerollGold);
+        if (uiManager.gold < traitrerollGold) return;
+
         characterSlotList[selectCharacterIndex].RerollTrait();
     }
 

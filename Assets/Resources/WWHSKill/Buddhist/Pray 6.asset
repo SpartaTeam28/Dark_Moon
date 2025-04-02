@@ -13,10 +13,20 @@ MonoBehaviour:
   m_Name: Pray 6
   m_EditorClassIdentifier: 
   skillDamage: 0
-  skillTargetCount: 0
-  isCoolTimeSkill: 0
-  skillCoolTime: 0
+  skillTargetCount: 1
+  isHeal: 0
   skillType: 3
-  isBuff: 0
+  skillUsingType: 0
+  UsingValue: 6
+  isEnemySkill: 0
+  skillStatType: 2
+  isMulti: 1
+  isBuff: 1
   isDebuff: 0
-  duration: 0
+  multiValue: 0.3
+  duration: 5
+  skillText:
+    skillNametext: "\uAE08\uAC15\uBD88\uAD34"
+    skillDestext: "\uB2E8\uC77C \uC544\uAD70 \uBC29\uC5B4\uB825 \uBC84\uD504"
+    skillAllAttactext: "30% 5\uD134 \uC9C0\uC18D"
+  Icon: {fileID: 21300000, guid: 05e2d6af00483bc42a42f768f4505213, type: 3}

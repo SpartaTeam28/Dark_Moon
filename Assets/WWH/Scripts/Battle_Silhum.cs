@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -17,7 +18,9 @@ public class Battle_Silhum : MonoBehaviour
     public Transform buttonPanel; // 버튼들이 위치할 UI 패널
     public GameObject attackButtonPrefab; // 버튼 프리팹 (Inspector에서 설정
     public bool isLock; // 잠금
+    public int TurnCount = 0;
 
+    
     public List<Character> players;
     public List<Character> enemies;  // 적 리스트
     public List<Character> turnOrder; // 턴 순서 리스트
@@ -35,7 +38,10 @@ public class Battle_Silhum : MonoBehaviour
     private int enemyDeathCount = 0;
 
 
-
+    public Transform speedTextPanel; // UI에서 Speed 값을 표시할 Panel
+    public GameObject speedTextPrefab; // Speed 값을 표시할 Text 프리팹
+    private StageWeather StageWeather;
+    private Dictionary<Character, TextMeshProUGUI> speedTexts = new Dictionary<Character, TextMeshProUGUI>();
     private void Awake()
     {
         if(instance == null)
@@ -64,6 +70,8 @@ public class Battle_Silhum : MonoBehaviour
         ClickManager.Instance.next = NextTurn;
         playerDeathCount = GameManager.instance.friendlyCharacterList.Count;
         enemyDeathCount = (int)(GameManager.instance.EnemyCharacterList?.Count);
+        StageWeather = FindAnyObjectByType<StageWeather>();
+        StageWeather.WeatherRandomStart();
 
     }
     public void LoadEnemies()
@@ -114,9 +122,17 @@ public class Battle_Silhum : MonoBehaviour
         // 수정? 고민
         turnOrder = turnOrder.OrderByDescending(c => c.stat.speed.value).ToList();
         currentTurnIndex = 0; // 첫 번째 캐릭터부터 시작
+
+        Debug.Log("=== 캐릭터 Speed 순서 ===");
+        foreach (var character in turnOrder)
+        {
+            Debug.Log($" Speed {character.stat.speed.value}");
+        }
+        DisplaySpeedTexts();
     }
     public void NextTurn()
     {
+        TurnCount++;
         EndGameTrigger();
         if (!isAlive)
         {
@@ -124,6 +140,7 @@ public class Battle_Silhum : MonoBehaviour
             EndBattle();
             return;
         }
+        WeatherChange();
 
         Debug.Log("Turn Change");
         if(currentTurnIndex == turnOrder.Count)
@@ -146,7 +163,7 @@ public class Battle_Silhum : MonoBehaviour
         {
             turn = Turn.enemyTurn;
             ClickManager.Instance.SetSkillBook(null);
-            ClickManager.Instance.SetCharecterStat(null);
+            ClickManager.Instance.SetCharecterStat(currentCharacter.GetComponent<CharacterStat>());
             UpdateButtonState(false);
             StartCoroutine(EnemyAttack(currentCharacter));
         }
@@ -222,6 +239,44 @@ public class Battle_Silhum : MonoBehaviour
             isAlive = false;
             turn = Turn.win;
             return;
+        }
+      
+    }
+
+
+    private void DisplaySpeedTexts()
+    {
+        int i = 1;
+        foreach (var pair in speedTexts)
+        {
+            Destroy(pair.Value.gameObject); // 기존 UI 삭제
+        }
+        speedTexts.Clear();
+
+        foreach (var character in turnOrder)
+        {
+
+            GameObject newText = Instantiate(speedTextPrefab, speedTextPanel);
+            TextMeshProUGUI textComponent = newText.GetComponent<TextMeshProUGUI>();
+            //textComponent.text = $" Speed: {character.stat.speed.value}";
+            textComponent.text = $" Speed: {i}";
+            Vector3 screenPos = Camera.main.WorldToScreenPoint(character.transform.position);
+            newText.transform.position = screenPos + new Vector3(0, 100f, 0); // Y값 조정 (아래로 내리기)
+
+            speedTexts[character] = textComponent;
+            i++;
+        }
+    }
+    public void EndGame()
+    {
+        
+    }
+
+    public void WeatherChange()
+    {
+        if(TurnCount % 5 == 0)
+        {
+            StageWeather.WeatherChange();
         }
     }
 }

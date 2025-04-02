@@ -23,12 +23,12 @@ public class StageUI : MonoBehaviour
     {
 
 
-        if(ClickManager.Instance.skillBook != null)
+        if(ClickManager.Instance.GetSkillBook() != null)
         {
             for(int i = 0; i < images.Length; i++) 
             {
                 images[i].enabled = true;
-                images[i].sprite = ClickManager.Instance.skillBook.skillList[i].Icon;
+                images[i].sprite = ClickManager.Instance.GetSkillBook().skillList[i].Icon;
             }
 
             for(int i = 0;i < buttons.Length; i++) 

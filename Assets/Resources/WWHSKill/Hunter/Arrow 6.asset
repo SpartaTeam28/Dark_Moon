@@ -12,11 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43797c51a088d3b48ab4a8876a533138, type: 3}
   m_Name: Arrow 6
   m_EditorClassIdentifier: 
-  skillDamage: 0
+  skillDamage: 6
   skillTargetCount: 0
-  isCoolTimeSkill: 0
-  skillCoolTime: 0
+  isHeal: 0
   skillType: 4
+  skillUsingType: 0
+  UsingValue: 3
+  isEnemySkill: 0
+  skillStatType: 0
+  isMulti: 0
   isBuff: 0
   isDebuff: 0
+  multiValue: 0
   duration: 0
+  skillText:
+    skillNametext: "\uACAC\uC81C \uC0AC\uACA9"
+    skillDestext: "\uB2E8\uC77C \uC801 \uACF5\uACA9"
+    skillAllAttactext: "6 + \uACF5\uACA9\uB825"
+  Icon: {fileID: 21300000, guid: dd25e00ba744112468a156138bf652ae, type: 3}
