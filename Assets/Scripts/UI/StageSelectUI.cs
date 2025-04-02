@@ -45,14 +45,23 @@ public class StageSelectUI : BaseUI
     public void OnClickStageButton(SelectStageName stageName)
     {
         UIManager.instance.SetCurrentStageName(stageName, 7);
-        //if (stagenumeber == 7)
-        //{
-        //    SceneManager.LoadScene("Battle_Scene");
-        //}
-        //else
-        //{
-            SceneManager.LoadScene("Battle_Scene");
-        //}
+
+
+        switch(stageName)
+        {
+            case SelectStageName.Busan:
+                SceneManager.LoadScene("Battle_Scene_Busan");
+                break;
+            case SelectStageName.Deagu:
+                SceneManager.LoadScene("Battle_Scene_Dague");
+                break;
+            case SelectStageName.Deajon:
+                SceneManager.LoadScene("Battle_Scene_Hanbat");
+                break;
+            case SelectStageName.Seoul:
+                SceneManager.LoadScene("Battle_Scene_Seoul");
+                break;
+        }
 
         UIManager.instance.OnClickCommonBattle();
     }
