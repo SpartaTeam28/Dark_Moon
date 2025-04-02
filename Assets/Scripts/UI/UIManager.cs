@@ -309,6 +309,11 @@ public class UIManager : MonoBehaviour
         commonBattleUI.clearPanel.SetActive(true);
     }
 
+    public void SetBattleDefeatPanel()
+    {
+        commonBattleUI.defeatPanel.SetActive(true);
+    }
+
 
     public List<Character> SetAllPartnerList()
     {
