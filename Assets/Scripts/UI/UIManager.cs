@@ -43,6 +43,7 @@ public class UIManager : MonoBehaviour
     public event Action<int> OnGoldChanged;
     public int gold;
     public int partnerMax;
+    public int statUpgrade;
 
     private static UIManager _instance;
 
@@ -249,6 +250,11 @@ public class UIManager : MonoBehaviour
         trainingUI.SetPartyListView();
     }
 
+    public void UpgreadTrainingUI()
+    {
+        trainingUI.UpdateTrainingSlotUI();
+    }
+
 
 
     public void SetCurrentStageName(SelectStageName currentStagaName, int currentNumber)
@@ -301,4 +307,9 @@ public class UIManager : MonoBehaviour
         commonBattleUI.clearPanel.SetActive(true);
     }
 
+
+    public List<Character> SetAllPartnerList()
+    {
+        return jumagUI.allPartnerList;
+    }
 }
