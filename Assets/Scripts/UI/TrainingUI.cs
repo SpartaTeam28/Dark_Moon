@@ -289,6 +289,16 @@ public class TrainingUI : BaseUI
         }
     }
 
+    public void UpdateTrainingSlotUI()
+    {
+        for (int i = 0; i < characterSlotList.Count; i++)
+        {
+            characterSlotList[i].SetNameText();
+            characterSlotList[i].SetJobText();
+            characterSlotList[i].SetLvText();
+        }     
+    }
+
 
     public void OnClickCloseNpc()
     {

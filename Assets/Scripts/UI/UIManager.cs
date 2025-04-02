@@ -250,6 +250,11 @@ public class UIManager : MonoBehaviour
         trainingUI.SetPartyListView();
     }
 
+    public void UpgreadTrainingUI()
+    {
+        trainingUI.UpdateTrainingSlotUI();
+    }
+
 
 
     public void SetCurrentStageName(SelectStageName currentStagaName, int currentNumber)
