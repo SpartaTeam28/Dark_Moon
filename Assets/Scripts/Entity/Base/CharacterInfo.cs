@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CharacterInfo : MonoBehaviour
 {
+    public static CharacterInfo instance;
     public Character character;
     public JobData job;
 
@@ -10,7 +11,18 @@ public class CharacterInfo : MonoBehaviour
     public int totalExp = 15;
     public int curExp = 0;
     private int addtotalExp = 15;
-    
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject );
+        }
+    }
     private void Start()
     {
         character = GetComponent<Character>();
@@ -39,8 +51,8 @@ public class CharacterInfo : MonoBehaviour
         while (curExp >= totalExp)
         {
             LevelUp();
-            curExp = curExp - totalExp;
-            totalExp += addtotalExp;
+            curExp = curExp - totalExp; // ·¹º§ ¾÷ ÈÄ ÇöÀç exp¿¡¼­ ÃÑexp¸¦ »­
+            totalExp += addtotalExp; // ÃÑexp¸¦ 15¾¿ ´Ã¸®°ÔÇÔ
         }
     }
 

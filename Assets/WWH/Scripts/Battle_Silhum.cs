@@ -39,6 +39,7 @@ public class Battle_Silhum : MonoBehaviour
     public Transform speedTextPanel; // UI에서 Speed 값을 표시할 Panel
     public GameObject speedTextPrefab; // Speed 값을 표시할 Text 프리팹
     private Dictionary<Character, TextMeshProUGUI> speedTexts = new Dictionary<Character, TextMeshProUGUI>();
+    public TextMeshProUGUI cleartText;
     private void Awake()
     {
         if(instance == null)
@@ -225,12 +226,19 @@ public class Battle_Silhum : MonoBehaviour
         if (playerDeathCount == 0)
         {
             turn = Turn.lose;
+            StartCoroutine(LoseGame());
+            cleartText.text = $"전투에서 패배하였습니다";
             return;
         }
         if (enemyDeathCount == 0)
         {
             isAlive = false;
             turn = Turn.win;
+            CharacterInfo.instance.AddExp(15); // 경험치 레벨업
+            CharacterInfo.instance.SetLevel(); // 스텟 레벨업
+            cleartText.text = $"축하합니다. 전투에서 승리하셨습니다! 경험치 15를 얻으셨습니다!";
+            StartCoroutine(ClearGame());
+           
             return;
         }
       
@@ -260,8 +268,15 @@ public class Battle_Silhum : MonoBehaviour
             i++;
         }
     }
-    public void EndGame()
+    public IEnumerator ClearGame()
     {
-        
+        yield return new WaitForSeconds(2f);
+        CommonBattleUI.instance.OnClickWinButton();
+    }
+
+    public IEnumerator LoseGame()
+    {
+        yield return new WaitForSeconds(2f);
+        CommonBattleUI.instance.OnClickDefeatButton();
     }
 }
