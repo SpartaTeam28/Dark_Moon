@@ -26,7 +26,7 @@ public class HealthStat : BaseStat
 
     public void SetHealth(float amount)
     {
-        if (value * valueMultiples < curHealth)
+        if (value * valueMultiples < amount)
         {
             curHealth = value * valueMultiples;
         }
