@@ -85,7 +85,7 @@ public class SynergyChecker : MonoBehaviour
         //µµ»ç , °Ë°´, À¯»ý, ½º´Ô, »ç³É²Û, ±â»ý
         int number = SynergyCheaker.Where(element => element == true).Count();
         Debug.Log(number);
-        if(number == 1)
+        if(number == 1 && GameManager.instance.friendlyCharacterList.Count >1)
         {
             for (int i = 0; i< GameManager.instance.friendlyCharacterList.Count; i++) 
             {
