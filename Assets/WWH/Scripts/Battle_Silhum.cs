@@ -53,7 +53,7 @@ public class Battle_Silhum : MonoBehaviour
             Destroy(gameObject);
         }
 
-        LoadEnemies();
+        //LoadEnemies();
         turn = Turn.start; // 전투 시작
 
     }
@@ -74,44 +74,44 @@ public class Battle_Silhum : MonoBehaviour
         StageWeather.WeatherRandomStart();
 
     }
-    public void LoadEnemies()
-    {
-        // 스테이지에 맞는 적 리스트 로드
-        Debug.Log($"UlsanEnemies Count: {DeaguEnemies.Count}"); // 몇 개의 적이 있는지 확인
+    //public void LoadEnemies()
+    //{
+    //    // 스테이지에 맞는 적 리스트 로드
+    //    Debug.Log($"UlsanEnemies Count: {DeaguEnemies.Count}"); // 몇 개의 적이 있는지 확인
 
-        string currentScene = SceneManager.GetActiveScene().name;
+    //    string currentScene = SceneManager.GetActiveScene().name;
 
-        switch (currentScene)
-        {
-            case "Ulsan":
-                enemies = new List<Character>(UlsanEnemies);
-                Debug.Log($"UlsanEnemies Count: {UlsanEnemies.Count}");
-                break;
+    //    switch (currentScene)
+    //    {
+    //        case "Ulsan":
+    //            enemies = new List<Character>(UlsanEnemies);
+    //            Debug.Log($"UlsanEnemies Count: {UlsanEnemies.Count}");
+    //            break;
 
-            case "Daegu":
-                enemies = new List<Character>(DeaguEnemies);
-                Debug.Log($"DeaguEnemies Count: {DeaguEnemies.Count}");
-                break;
+    //        case "Daegu":
+    //            enemies = new List<Character>(DeaguEnemies);
+    //            Debug.Log($"DeaguEnemies Count: {DeaguEnemies.Count}");
+    //            break;
 
-            case "Busan":
-                enemies = new List<Character>(BusanEnemies);
-                Debug.Log($"BusanEnemies Count: {BusanEnemies.Count}");
-                break;
+    //        case "Busan":
+    //            enemies = new List<Character>(BusanEnemies);
+    //            Debug.Log($"BusanEnemies Count: {BusanEnemies.Count}");
+    //            break;
 
-            case "Hanbat":
-                enemies = new List<Character>(HanbatEnemies);
-                Debug.Log($"HanbatEnemies Count: {HanbatEnemies.Count}");
-                break;
-            case "Battle_Scene":
-                enemies = new List<Character>(BattleScene);
-                Debug.Log($"HanbatEnemies Count: {BattleScene.Count}");
-                break;
-            default:
-                Debug.LogError($"적 리스트가 없습니다! 현재 씬: {currentScene}");
-                break;
-        }
-        Debug.Log($"Enemies Count after LoadEnemies(): {enemies.Count}"); // enemies가 정상적으로 설정됐는지 확인
-    }
+    //        case "Hanbat":
+    //            enemies = new List<Character>(HanbatEnemies);
+    //            Debug.Log($"HanbatEnemies Count: {HanbatEnemies.Count}");
+    //            break;
+    //        case "Battle_Scene":
+    //            enemies = new List<Character>(BattleScene);
+    //            Debug.Log($"HanbatEnemies Count: {BattleScene.Count}");
+    //            break;
+    //        default:
+    //            Debug.LogError($"적 리스트가 없습니다! 현재 씬: {currentScene}");
+    //            break;
+    //    }
+    //    Debug.Log($"Enemies Count after LoadEnemies(): {enemies.Count}"); // enemies가 정상적으로 설정됐는지 확인
+    //}
 
     public void SpeedCheck()
     {

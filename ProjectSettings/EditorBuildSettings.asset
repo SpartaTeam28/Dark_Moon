@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stage/Daegu.unity
     guid: 045f2e6f2a3233c4bba7b220827ad99a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/YGM_TestBattle.unity
     guid: aaa7a147bef58594fac84b0dd9b051af
   - enabled: 1
@@ -23,4 +23,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Battle_Scene.unity
     guid: 762d37c063f7c294d860f7034e8ebeb2
+  - enabled: 1
+    path: Assets/Scenes/Battle_Scene/Battle_Scene_Busan.unity
+    guid: 93d376395bd86964c873e723123d7ae6
+  - enabled: 1
+    path: Assets/Scenes/Battle_Scene/Battle_Scene_Dague.unity
+    guid: 05401972c82736941808ae26197142c5
+  - enabled: 1
+    path: Assets/Scenes/Battle_Scene/Battle_Scene_Hanbat.unity
+    guid: d2741bb4470d8ae4f8c0f5bec7730600
+  - enabled: 1
+    path: Assets/Scenes/Battle_Scene/Battle_Scene_Seoul.unity
+    guid: 5a89cadac9f8f0149903b09310880ce3
   m_configObjects: {}
