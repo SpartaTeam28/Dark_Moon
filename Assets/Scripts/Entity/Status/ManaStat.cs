@@ -52,6 +52,6 @@ public class ManaStat : BaseStat
 
     public override string GetValueToString()
     {
-        return curMana.ToString("F2") + "/" + base.GetValueToString();
+        return curMana.ToString("F0") + "/" + base.GetValueToString();
     }
 }

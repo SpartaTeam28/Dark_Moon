@@ -20,11 +20,11 @@ public class CharacterStat : MonoBehaviour
     public AttackStat attack;//공격력
     public DefenseStat defence;//방어력
     public HealthStat health;//체력
-    public ManaStat mana;
+    public ManaStat mana;//마나
     public CriticalStat critical;//치명타
-    public EvasionStat evasion;
-    public AccuracyStat accuracy;
-    public SpeedStat speed;
+    public EvasionStat evasion;//회피
+    public AccuracyStat accuracy;//정확도
+    public SpeedStat speed;//속도
 
     public Dictionary<StatType, BaseStat> StatusDictionary { get; private set; }//StatType과 BaseStatus연결
 
@@ -53,7 +53,7 @@ public class CharacterStat : MonoBehaviour
     {
         
         var job = character.info.job;
-        if (job != null)
+        if (job != null)//시작값 초기화
         {
             startAttck = job.attck;
             startDefence = job.defence;
@@ -65,6 +65,7 @@ public class CharacterStat : MonoBehaviour
             startSpeed = job.speed;
         }
 
+        //스탯 초기화
         attack = AddAndInit<AttackStat>(startAttck);
         defence = AddAndInit<DefenseStat>(startDefence);
         health = AddAndInit<HealthStat>(startMaxHealth);
