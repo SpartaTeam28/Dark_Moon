@@ -84,9 +84,9 @@ public class CommonBattleUI : BaseUI
 
     public void OnClickWinButton()
     {
-        uiManager.OnEnableStageButton(currentStageName, currentStagenumber);
+       // uiManager.OnEnableStageButton(currentStageName, currentStagenumber);
         SceneManager.LoadScene("YGM_Scene");
-        uiManager.OnClickLobby();
+        uiManager.OnClickStartStage();
       
     }
 

@@ -34,8 +34,8 @@ public class Battle_Silhum : MonoBehaviour
     [SerializeField] private List<Character> HanbatEnemies;
     [SerializeField] private List<Character> DeaguEnemies;
     [SerializeField] private List<Character> BattleScene;
-    private int playerDeathCount =  0;
-    private int enemyDeathCount = 0;
+    [SerializeField] private int playerDeathCount;
+    [SerializeField] private int enemyDeathCount;
 
 
     public Transform speedTextPanel; // UI에서 Speed 값을 표시할 Panel
@@ -43,6 +43,9 @@ public class Battle_Silhum : MonoBehaviour
     private StageWeather StageWeather;
     private Dictionary<Character, TextMeshProUGUI> speedTexts = new Dictionary<Character, TextMeshProUGUI>();
     public TextMeshProUGUI cleartText;
+    public Button button;
+
+    int equipGold = 500;
     private void Awake()
     {
         if(instance == null)
@@ -70,6 +73,7 @@ public class Battle_Silhum : MonoBehaviour
         NextTurn();
         ClickManager.Instance.next = NextTurn;
         playerDeathCount = GameManager.instance.friendlyCharacterList.Count;
+        Debug.Log("Count"+playerDeathCount);
         enemyDeathCount = (int)(GameManager.instance.EnemyCharacterList?.Count);
         StageWeather = FindAnyObjectByType<StageWeather>();
         StageWeather.WeatherRandomStart();
@@ -233,22 +237,25 @@ public class Battle_Silhum : MonoBehaviour
         if (playerDeathCount == 0)
         {
             turn = Turn.lose;
-           // StartCoroutine(LoseGame());
-           // cleartText.text = $"전투에서 패배하였습니다";
+           // //StartCoroutine(LoseGame());
+           cleartText.text = $"전투에서 패배하였습니다";
             return;
         }
         if (enemyDeathCount == 0)
         {
             isAlive = false;
             turn = Turn.win;
-           // CharacterInfo.instance.AddExp(15); // 경험치 레벨업
-            //CharacterInfo.instance.SetLevel(); // 스텟 레벨업
+            GameManager.Instance.friendlyCharacterList[0].info.AddExp(15);
+            GameManager.Instance.friendlyCharacterList[0].info.SetLevel();
+            
+        
             //UIManager.instance.AddGold(500);
-          //  cleartText.text = $"축하합니다. 전투에서 승리하셨습니다! 경험치 15와 Gold 500을 얻으셨습니다!";
-            //StartCoroutine(ClearGame());
-           
+            cleartText.text = $"축하합니다. 전투에서 승리하셨습니다! 경험치 15와 Gold {equipGold}을 얻으셨습니다!";
+            button.gameObject.SetActive(true);
+
             return;
         }
+        equipGold += 500;
       
     }
 
@@ -265,14 +272,14 @@ public class Battle_Silhum : MonoBehaviour
         foreach (var character in turnOrder)
         {
 
-            GameObject newText = Instantiate(speedTextPrefab, speedTextPanel);
-            TextMeshProUGUI textComponent = newText.GetComponent<TextMeshProUGUI>();
+           // GameObject newText = Instantiate(speedTextPrefab, speedTextPanel);
+            //TextMeshProUGUI textComponent = newText.GetComponent<TextMeshProUGUI>();
             //textComponent.text = $" Speed: {character.stat.speed.value}";
-            textComponent.text = $" Speed: {i}";
+            //textComponent.text = $" Speed: {i}";
             Vector3 screenPos = Camera.main.WorldToScreenPoint(character.transform.position);
-            newText.transform.position = screenPos + new Vector3(0, 100f, 0); // Y값 조정 (아래로 내리기)
+            //newText.transform.position = screenPos + new Vector3(0, 100f, 0); // Y값 조정 (아래로 내리기)
 
-            speedTexts[character] = textComponent;
+           // speedTexts[character] = textComponent;
             i++;
         }
     }
@@ -295,4 +302,10 @@ public class Battle_Silhum : MonoBehaviour
             StageWeather.WeatherChange();
         }
     }
+
+    public void OnSceneChange()
+    {
+        SceneManager.LoadScene("YGM_Scene");
+        
+;   }
 }

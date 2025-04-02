@@ -2457,12 +2457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f34da99ef06fa54ba9f98fb8835aaef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterStat: {fileID: 0}
-  skillBook: {fileID: 0}
-  skillData: {fileID: 0}
-  IsBuff: 0
   isAttacking: 0
-  IsSilhum: 0
 --- !u!4 &2045973207
 Transform:
   m_ObjectHideFlags: 0
