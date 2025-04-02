@@ -12,22 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43797c51a088d3b48ab4a8876a533138, type: 3}
   m_Name: JeonUChi 4
   m_EditorClassIdentifier: 
-  skillDamage: 0
-  skillTargetCount: 1
-  isCoolTimeSkill: 0
-  skillCoolTime: 0
+  skillDamage: 3
+  skillTargetCount: 4
   isHeal: 0
   skillType: 0
   skillUsingType: 0
-  UsingValue: 0
-  skillStatType: 0
+  UsingValue: 6
+  isEnemySkill: 0
+  skillStatType: 6
   isMulti: 0
-  isBuff: 1
-  isDebuff: 0
+  isBuff: 0
+  isDebuff: 1
   multiValue: 0
-  duration: 0
+  duration: 3
   skillText:
-    skillNametext: 4
-    skillDestext: Buff
-    skillAllAttactext: 4
-  Icon: {fileID: 21300000, guid: aa9220a4630dfef45adbd0c6f1be9d0a, type: 3}
+    skillNametext: "\uB9C8\uB978 \uD558\uB298\uC5D0 \uBE44\uB97C \uB0B4\uB9AC\uACE0"
+    skillDestext: "\uC801 \uC804\uCCB4 \uC18D\uB3C4 \uAC10\uC18C"
+    skillAllAttactext: "3 \uAC10\uC18C 3\uD134 \uC9C0\uC18D"
+  Icon: {fileID: 21300000, guid: 9f922002032136c4687b8dced9bc624c, type: 3}

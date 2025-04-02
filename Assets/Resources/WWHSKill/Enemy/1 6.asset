@@ -23,10 +23,10 @@ MonoBehaviour:
   isMulti: 0
   isBuff: 0
   isDebuff: 1
-  multiValue: 0
-  duration: 0
+  multiValue: 0.2
+  duration: 4
   skillText:
-    skillNametext: "\uC801 \uC804\uCCB4 \uB514\uBC84\uD504"
-    skillDestext: "\uC804\uCCB4 \uB514\uBC84\uD504\uC784"
-    skillAllAttactext: 
+    skillNametext: "\uC694\uC220 \uBD80\uB9AC\uAE30"
+    skillDestext: "\uC804\uCCB4 \uC544\uAD70 \uD68C\uD53C\uC728 \uAC10\uC18C"
+    skillAllAttactext: "20% 4\uD134 \uC9C0\uC18D"
   Icon: {fileID: 0}

@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     {
         if (ClickManager.Instance.isAttacking)
         {
-            if (ClickManager.Instance.skillData.isBuff)
+            if (ClickManager.Instance.GetSkilldata().isBuff)
             {
                 transform.GetChild(0).gameObject.SetActive(true);
             }
@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
     {
         if (ClickManager.Instance.isAttacking)
         {
-            if (ClickManager.Instance.skillData.isBuff)
+            if (ClickManager.Instance.GetSkilldata().isBuff)
             {
                 transform.GetChild(0).gameObject.SetActive(false);
             }

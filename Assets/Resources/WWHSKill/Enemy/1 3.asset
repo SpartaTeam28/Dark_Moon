@@ -20,13 +20,13 @@ MonoBehaviour:
   UsingValue: 0
   isEnemySkill: 1
   skillStatType: 2
-  isMulti: 0
+  isMulti: 1
   isBuff: 1
   isDebuff: 0
-  multiValue: 0
-  duration: 0
+  multiValue: 0.3
+  duration: 5
   skillText:
-    skillNametext: "\uC801 \uBC84\uD504"
-    skillDestext: "\uBC84\uD504"
-    skillAllAttactext: 
+    skillNametext: "\uC694\uAE30 \uB118\uACA8\uC8FC\uAE30"
+    skillDestext: "\uB2E8\uC77C \uC801 \uACF5\uACA9\uB825 \uC0C1\uC2B9"
+    skillAllAttactext: "30% 5\uD134 \uC9C0\uC18D"
   Icon: {fileID: 0}

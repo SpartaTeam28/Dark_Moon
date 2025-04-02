@@ -16,6 +16,7 @@ public class EnemyGenerator : MonoBehaviour
     }
     public void CreateEnemy()
     {
+        GameManager.instance.EnemyCharacterList.Clear();
         for (int i = 0; i < enemyLists.Count; i++)
         {
             enemyLists[i].info.job = jobs[Random.Range(0, jobs.Count)];

@@ -12,26 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cc24d930c512bd4787339c2f28453ae, type: 3}
   m_Name: Archor
   m_EditorClassIdentifier: 
-  jobName: "\uB3C4\uC0AC"
+  jobName: "\uAD81\uC218"
   isMale: 1
   sprite: {fileID: 21300000, guid: 74aec4c711dea8649b924a0079a95f88, type: 3}
   icon: {fileID: 21300000, guid: 2dc34ac2a915fa94cab61d6181ee6899, type: 3}
   animatorController: {fileID: 22100000, guid: 84f71b9599930fc49957ad7be6bdb21c, type: 2}
-  attck: 15
-  defence: 5
-  maxHealth: 15
-  curHealth: 15
-  maxMana: 20
-  curMana: 20
-  critical: 10
+  attck: 12
+  defence: 8
+  maxHealth: 25
+  curHealth: 25
+  maxMana: 15
+  curMana: 15
+  critical: 40
   accurracy: 85
-  evasion: 19
-  speed: 2
-  levelAttck: 5
+  evasion: 20
+  speed: 5
+  levelAttck: 2
   levelDefence: 1
-  levelMaxHealth: 5
-  levelMaxMana: 10
-  levelCritical: 2
-  levelAccurracy: 0
-  leveltEvasion: 0
-  levelSpeed: 0.1
+  levelMaxHealth: 3
+  levelMaxMana: 2
+  levelCritical: 5
+  levelAccurracy: 2
+  leveltEvasion: 5
+  levelSpeed: 0.2

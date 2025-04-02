@@ -12,11 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43797c51a088d3b48ab4a8876a533138, type: 3}
   m_Name: Gesa 5
   m_EditorClassIdentifier: 
-  skillDamage: 0
-  skillTargetCount: 0
-  isCoolTimeSkill: 0
-  skillCoolTime: 0
+  skillDamage: 3
+  skillTargetCount: 4
+  isHeal: 1
   skillType: 5
+  skillUsingType: 0
+  UsingValue: 6
+  isEnemySkill: 0
+  skillStatType: 0
+  isMulti: 0
   isBuff: 0
   isDebuff: 0
+  multiValue: 0
   duration: 0
+  skillText:
+    skillNametext: "\uC2E0\uCCB4\uBC1C\uBD80\uC218\uC9C0\uBD80\uBAA8"
+    skillDestext: "\uC544\uAD70 \uC804\uCCB4 \uD790"
+    skillAllAttactext: "3 \uD68C\uBCF5"
+  Icon: {fileID: 21300000, guid: c8db1b0a9c81ccd4b8dba349465e89b8, type: 3}

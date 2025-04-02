@@ -14,9 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillDamage: 0
   skillTargetCount: 0
-  isCoolTimeSkill: 0
-  skillCoolTime: 0
+  isHeal: 0
   skillType: 5
+  skillUsingType: 0
+  UsingValue: 6
+  isEnemySkill: 0
+  skillStatType: 4
+  isMulti: 1
   isBuff: 0
-  isDebuff: 0
-  duration: 0
+  isDebuff: 1
+  multiValue: 0.3
+  duration: 3
+  skillText:
+    skillNametext: "\uC591\uBC18\uC758 \uC9C0\uC870"
+    skillDestext: "\uC801 \uC804\uCCB4 \uD68C\uD53C\uC728 \uAC10\uC18C"
+    skillAllAttactext: "30% 3\uD134 \uC9C0\uC18D"
+  Icon: {fileID: 21300000, guid: eeff49e051316944dad15296f8e68e1b, type: 3}

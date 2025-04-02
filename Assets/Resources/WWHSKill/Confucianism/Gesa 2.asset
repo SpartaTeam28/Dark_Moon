@@ -13,10 +13,20 @@ MonoBehaviour:
   m_Name: Gesa 2
   m_EditorClassIdentifier: 
   skillDamage: 0
-  skillTargetCount: 0
-  isCoolTimeSkill: 0
-  skillCoolTime: 0
+  skillTargetCount: 4
+  isHeal: 0
   skillType: 5
+  skillUsingType: 0
+  UsingValue: 4
+  isEnemySkill: 0
+  skillStatType: 1
+  isMulti: 1
   isBuff: 0
-  isDebuff: 0
-  duration: 0
+  isDebuff: 1
+  multiValue: 0.2
+  duration: 3
+  skillText:
+    skillNametext: "\uAC00\uB974\uCE68 \uC124\uD30C"
+    skillDestext: "\uC801 \uC804\uCCB4 \uACF5\uACA9\uB825 \uB2E4\uC6B4"
+    skillAllAttactext: "20% 3\uD134 \uC9C0\uC18D"
+  Icon: {fileID: 21300000, guid: b3199ae29bf246642875fc68fab4595b, type: 3}

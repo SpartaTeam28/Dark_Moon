@@ -17,15 +17,16 @@ MonoBehaviour:
   isHeal: 0
   skillType: 2
   skillUsingType: 0
-  UsingValue: 0
-  skillStatType: 0
-  isMulti: 0
-  isBuff: 0
-  isDebuff: 1
-  multiValue: 0
-  duration: 0
+  UsingValue: 6
+  isEnemySkill: 0
+  skillStatType: 1
+  isMulti: 1
+  isBuff: 1
+  isDebuff: 0
+  multiValue: 0.3
+  duration: 5
   skillText:
-    skillNametext: 
-    skillDestext: 
-    skillAllAttactext: 
-  Icon: {fileID: 0}
+    skillNametext: "\uC801\uBCBD\uAC00"
+    skillDestext: "\uC544\uAD70 \uC804\uCCB4 \uACF5\uACA9\uB825 \uC0C1\uC2B9"
+    skillAllAttactext: "30% 5\uD134 \uC9C0\uC18D"
+  Icon: {fileID: 21300000, guid: 137adc4b5a4bdb84587af37f8855a33b, type: 3}

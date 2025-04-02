@@ -11,12 +11,11 @@ public class ClickManager : MonoBehaviour
     public static ClickManager Instance { get { return instance; } set { instance = value; } }
 
 
-    public CharacterStat characterStat;
-    public SkillBook skillBook;
-    public SKilldata skillData;
-    public bool IsBuff;
+    private CharacterStat characterStat;
+    private SkillBook skillBook;
+    private SKilldata skillData;
+    private bool IsBuff;
     public bool isAttacking;
-    public bool IsSilhum = false;
 
     public delegate void Next();
     public Next next;
@@ -37,7 +36,6 @@ public class ClickManager : MonoBehaviour
 
         if (isAttacking)
         {
-
             TargetSet();
             if (Input.GetMouseButtonDown(0))
             {
@@ -51,29 +49,25 @@ public class ClickManager : MonoBehaviour
                     {
                         if(skillData.isDebuff )
                         {
-                   
                             if(hit.transform.CompareTag("Friends"))
-                            {
-                                return;
-                            }
+                            {return;}
                         }
                         else if (skillData.isBuff || skillData.isHeal )
                         {
                             if (hit.transform.CompareTag("Enemy"))
-                            {
-                                return;
-                            }
+                            {return;}
                         }
                         if (skillData.skillTargetCount == 1)
                         {
+                            characterStat.GetComponent<AnimationHandler>().Attack();
                             OnePersonAttack(hit.transform.GetComponent<Character>(), hit);
                         }
                         else if(skillData.skillTargetCount>1)
                         {
+                            characterStat.GetComponent<AnimationHandler>().Attack();
                             AllPersonAttack();
                         }
                         AttackEnd();
-
                     }
                     else
                     {
@@ -83,7 +77,6 @@ public class ClickManager : MonoBehaviour
                 else
                 {
                     AttackEnd();
-                    Debug.Log("Not Enough Mana");
                 }
             }
         }
@@ -109,8 +102,6 @@ public class ClickManager : MonoBehaviour
             isAttacking = false;
             TargetDown();
         }
-
-
     }
 
     public void SetSkill(int index)
@@ -130,10 +121,12 @@ public class ClickManager : MonoBehaviour
 
 
 
+
     public void OnePersonAttack(Character stat, RaycastHit2D hit)
     {
         SKilldata skillData = this.skillData;
         skillData.skillDamage = skillData.skillDamage + characterStat.attack.value;
+
         if (skillData.isDebuff && hit.transform.CompareTag("Enemy")) 
         {
             Debuff(hit.transform.GetComponent<CharacterStat>());
@@ -154,7 +147,7 @@ public class ClickManager : MonoBehaviour
         else
         {
             //Attack
-            stat.TakeDamaged(skillData.skillDamage);
+            stat.TakeDamaged(skillData.skillDamage, 0, 0, 0);
             ManaSub(skillData);
             TargetDown();
             next.Invoke();
@@ -167,6 +160,7 @@ public class ClickManager : MonoBehaviour
 
         SKilldata sKilldata = skillData;
         sKilldata.skillDamage = skillData.skillDamage + characterStat.attack.value;
+
         if (skillData.isBuff)
         {
             IsBuff = false;
@@ -200,7 +194,7 @@ public class ClickManager : MonoBehaviour
             foreach (Character character in GameManager.instance.EnemyCharacterList)
             {
              
-                character.TakeDamaged(sKilldata.skillDamage);
+                character.TakeDamaged(sKilldata.skillDamage, 0, 0, 0);
                 ManaSub(sKilldata);
                 TargetDown();
         
@@ -219,9 +213,9 @@ public class ClickManager : MonoBehaviour
             skillData = sKillData;
         }
         SKilldata sKilldata = skillData;
-        character.health.AddHealth(skillData.skillDamage + this.characterStat.attack.value);
+        character.health.AddHealth(skillData.skillDamage);
         ManaSub(sKilldata);
-        //TargetDown();
+
      
     }
     public void Debuff(CharacterStat stat, SKilldata sKilldata = null)
@@ -233,22 +227,22 @@ public class ClickManager : MonoBehaviour
         switch (skillData.skillStatType)
         {
             case SkillStatType.Attack:
-                StartCoroutine(DeBuffStart(stat.attack));
+                StartCoroutine(DeBuffStart(stat.attack, skillData));
                 break;
             case SkillStatType.Critical:
-                StartCoroutine(DeBuffStart(stat.critical));
+                StartCoroutine(DeBuffStart(stat.critical, skillData));
                 break;
             case SkillStatType.Defense:
-                StartCoroutine(DeBuffStart(stat.defence));
+                StartCoroutine(DeBuffStart(stat.defence, skillData));
                 break;
             case SkillStatType.Evasion:
-                StartCoroutine(DeBuffStart(stat.evasion));
+                StartCoroutine(DeBuffStart(stat.evasion, skillData));
                 break;
             case SkillStatType.Speed:
-                StartCoroutine(DeBuffStart(stat.speed));
+                StartCoroutine(DeBuffStart(stat.speed, skillData));
                 break;
         }
-        //TargetDown();
+
     }
 
     public void Buff(CharacterStat stat , SKilldata sKilldata = null)
@@ -262,32 +256,33 @@ public class ClickManager : MonoBehaviour
         switch (skillData.skillStatType)
         {
             case SkillStatType.Attack:
-                StartCoroutine(BuffStart(stat.attack));
+                StartCoroutine(BuffStart(stat.attack, skillData));
                 break;
             case SkillStatType.Critical:
-                StartCoroutine(BuffStart(stat.critical));
+                StartCoroutine(BuffStart(stat.critical, skillData));
                 break;
             case SkillStatType.Defense:
-                StartCoroutine(BuffStart(stat.defence));
+                StartCoroutine(BuffStart(stat.defence, skillData));
                 break;
             case SkillStatType.Evasion:
-                StartCoroutine(BuffStart(stat.evasion));
+                StartCoroutine(BuffStart(stat.evasion, skillData));
                 break;
             case SkillStatType.Health:
-                StartCoroutine(BuffStart(stat.health));
+                StartCoroutine(BuffStart(stat.health, skillData));
                 break;
             case SkillStatType.Speed:
-                StartCoroutine(BuffStart(stat.speed));
+                StartCoroutine(BuffStart(stat.speed, skillData));
                 break;
         }
-        //TargetDown();
+
        
     }
 
-    public IEnumerator BuffStart(BaseStat stat)
+    public IEnumerator BuffStart(BaseStat stat , SKilldata sKilldata)
     {
-        SKilldata sKilldata = skillData;
         ManaSub(sKilldata);
+
+        int curTurn = Battle_Silhum.Instance.TurnCount;
         if (skillData.isMulti)
         {
             stat.AddMultiples(skillData.multiValue);
@@ -297,7 +292,7 @@ public class ClickManager : MonoBehaviour
             stat.AddStat(skillData.skillDamage);
         }
         
-        yield return new WaitUntil(() => IsSilhum) ;
+        yield return new WaitUntil(() => curTurn + sKilldata.duration < Battle_Silhum.Instance.TurnCount) ;
         if (sKilldata.isMulti)
         {
             stat.AddMultiples(-sKilldata.multiValue);
@@ -309,9 +304,9 @@ public class ClickManager : MonoBehaviour
 
     }
 
-    public IEnumerator DeBuffStart(BaseStat stat)
+    public IEnumerator DeBuffStart(BaseStat stat, SKilldata sKilldata)
     {
-        SKilldata sKilldata = skillData;
+        int curTurn = Battle_Silhum.Instance.TurnCount;
         ManaSub(sKilldata);
         if (sKilldata.isMulti)
         {
@@ -321,7 +316,7 @@ public class ClickManager : MonoBehaviour
         {
             stat.AddStat(-skillData.skillDamage);
         }
-        yield return new WaitUntil(() => IsSilhum);
+        yield return new WaitUntil(() => curTurn + sKilldata.duration < Battle_Silhum.Instance.TurnCount);
         if (sKilldata.isMulti)
         {
             stat.AddMultiples(sKilldata.multiValue);
@@ -395,10 +390,19 @@ public class ClickManager : MonoBehaviour
         characterStat.mana.curMana -= sKilldata.UsingValue;
     }
 
-    //public void CoolTimeSet()
-    //{
-        
-    //}
+    public void SetSkilldata(SKilldata sKilldata)
+    {
+        skillData = sKilldata;
+
+    }
+    public SKilldata GetSkilldata()
+    {
+        return skillData;
+    }
+    public SkillBook GetSkillBook()
+    {
+        return skillBook;
+    }
 
 
 
