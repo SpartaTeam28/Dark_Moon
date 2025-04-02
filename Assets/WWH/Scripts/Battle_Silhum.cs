@@ -117,7 +117,7 @@ public class Battle_Silhum : MonoBehaviour
     //            break;
     //    }
     //    Debug.Log($"Enemies Count after LoadEnemies(): {enemies.Count}"); // enemies�� ���������� �����ƴ��� Ȯ��
-    //}
+    }
 
     public void SpeedCheck()
     {
