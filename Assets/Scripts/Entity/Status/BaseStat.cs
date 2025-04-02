@@ -8,6 +8,11 @@ public class BaseStat : MonoBehaviour
 
     public event Action<float> OnValueChanged;
 
+    protected void NotifyValueChanged(float amount)
+    {
+        OnValueChanged?.Invoke(amount);
+    }
+
     public virtual void SetStat(float amount)
     {
         if (amount < 0) return;

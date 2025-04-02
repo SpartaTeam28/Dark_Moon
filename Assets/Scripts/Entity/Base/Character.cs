@@ -24,6 +24,7 @@ public class Character : MonoBehaviour
 
         stat.character = this;
         info.character = this;
+        turn = transform.GetChild(2).gameObject;
     }
 
     public void TakeDamaged(float amount, float target_attack, float target_critical, float target_accuracy)
@@ -35,11 +36,24 @@ public class Character : MonoBehaviour
             return;
         }
         var evasion = Random.Range(0, 100);
+        var accuary = Random.Range(0, 100);
+        var critical = Random.Range(0, 100);
         if (evasion < stat.evasion.value)
         {
             Debug.Log($"{info.name}이(가) 회피 했습니다.");
             return;
         }
+        if (accuary < target_accuracy)
+        {
+            Debug.Log($"공격이 빗나갔습니다.");
+            return;
+        }
+        if (critical < target_critical)
+        {
+            amount *= 1.5f;
+        }
+
+        amount = (100 / (100 + stat.defence.value)) * (amount + stat.attack.value);
         health.AddHealth(amount * -1);
         if(health.curHealth <= 0)
         {
