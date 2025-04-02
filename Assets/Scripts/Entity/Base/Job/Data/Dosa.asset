@@ -21,7 +21,7 @@ MonoBehaviour:
   defence: 10
   maxHealth: 30
   curHealth: 30
-  maxMana: 20
+  maxMana: 50
   curMana: 15
   critical: 20
   accurracy: 80
