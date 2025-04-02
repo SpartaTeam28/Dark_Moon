@@ -54,7 +54,7 @@ public class CommonBattleUI : BaseUI
 
         //battleCharacters = GameManager.instance.friendlyCharacterList;
         //enemyCharacters = GameManager.instance.EnemyCharacterList;
-        ShowUI(false); // °ÔÀÓ ½ÃÀÛ ½Ã UI ¼û±â±â
+        ShowUI(false); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ UI ï¿½ï¿½ï¿½ï¿½ï¿½
     }
 
 
@@ -73,7 +73,7 @@ public class CommonBattleUI : BaseUI
 
     }
 
-    // UI Ç¥½Ã/¼û±è ±â´É Ãß°¡
+    // UI Ç¥ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
     public void ShowUI(bool isVisible)
     {
         if (statPanel != null)
@@ -86,7 +86,8 @@ public class CommonBattleUI : BaseUI
     {
        // uiManager.OnEnableStageButton(currentStageName, currentStagenumber);
         SceneManager.LoadScene("YGM_Scene");
-        uiManager.OnClickStartStage();
+        uiManager.OnClickLobby();
+        clearPanel.SetActive(false);
       
     }
 
@@ -94,6 +95,7 @@ public class CommonBattleUI : BaseUI
     {
         SceneManager.LoadScene("YGM_Scene");
         uiManager.OnClickLobby();
+        defeatPanel.SetActive(false);
     }
 
 

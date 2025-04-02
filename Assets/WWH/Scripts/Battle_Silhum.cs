@@ -163,6 +163,7 @@ public class Battle_Silhum : MonoBehaviour
             turn = Turn.playerTurn;
             ClickManager.Instance.SetSkillBook(currentCharacter.GetComponent<SkillBook>());
             ClickManager.Instance.SetCharecterStat(currentCharacter.stat);
+            currentCharacter.StartTurn();
         }
         else
         {
@@ -170,6 +171,7 @@ public class Battle_Silhum : MonoBehaviour
             ClickManager.Instance.SetSkillBook(null);
             ClickManager.Instance.SetCharecterStat(currentCharacter.GetComponent<CharacterStat>());
             UpdateButtonState(false);
+            currentCharacter.StartTurn();
             StartCoroutine(EnemyAttack(currentCharacter));
         }
     }

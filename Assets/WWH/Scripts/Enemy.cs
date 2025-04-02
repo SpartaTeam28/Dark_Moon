@@ -73,8 +73,10 @@ public class Enemy : MonoBehaviour
                 transform.GetComponent<AnimationHandler>().Attack();
                 ClickManager.Instance.SetSkilldata(sKilldata);
                 RandomPlayer.transform.GetChild(0).gameObject.SetActive(true);
-                RandomPlayer.TakeDamaged(sKilldata.skillDamage,0,0,0);
+                RandomPlayer.TakeDamaged(sKilldata.skillDamage,transform.GetComponent<CharacterStat>().attack.value, 
+                    transform.GetComponent<CharacterStat>().critical.value, transform.GetComponent<CharacterStat>().attack.value);
             }
+            transform.GetComponent<Character>().EndTurn();
         }
         else
         {
@@ -112,10 +114,14 @@ public class Enemy : MonoBehaviour
                 ClickManager.Instance.SetSkilldata(sKilldata);
                 foreach (Character stat in ActivePlayerList)
                 {
-                    stat.TakeDamaged(sKilldata.skillDamage, 0, 0, 0);
+                    stat.TakeDamaged(sKilldata.skillDamage, transform.GetComponent<CharacterStat>().attack.value,
+                    transform.GetComponent<CharacterStat>().critical.value, transform.GetComponent<CharacterStat>().attack.value);
                     stat.transform.GetChild(0).gameObject.SetActive(true);
                 }
             }
+
+
+            transform.GetComponent<Character>().EndTurn();
         }
         
     }

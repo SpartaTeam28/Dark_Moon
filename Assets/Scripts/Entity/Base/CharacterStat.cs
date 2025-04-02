@@ -28,9 +28,13 @@ public class CharacterStat : MonoBehaviour
 
     public Dictionary<StatType, BaseStat> StatusDictionary { get; private set; }//StatType°ú BaseStatus¿¬°á
 
+    public HPBar hpBar;
+
 
     private void Awake()
     {
+        hpBar = GetComponentInChildren<HPBar>();
+        hpBar.stat = this;
         Init();
         StatusDictionary = new Dictionary<StatType, BaseStat>
         {

@@ -60,12 +60,16 @@ public class ClickManager : MonoBehaviour
                         if (skillData.skillTargetCount == 1)
                         {
                             characterStat.GetComponent<AnimationHandler>().Attack();
+                            characterStat.GetComponent<Character>().EndTurn();
                             OnePersonAttack(hit.transform.GetComponent<Character>(), hit);
+                   
                         }
                         else if(skillData.skillTargetCount>1)
                         {
                             characterStat.GetComponent<AnimationHandler>().Attack();
+                            characterStat.GetComponent<Character>().EndTurn();
                             AllPersonAttack();
+
                         }
                         AttackEnd();
                     }
@@ -126,7 +130,7 @@ public class ClickManager : MonoBehaviour
     {
         SKilldata skillData = this.skillData;
         skillData.skillDamage = skillData.skillDamage + characterStat.attack.value;
-
+        ManaSub(skillData);
         if (skillData.isDebuff && hit.transform.CompareTag("Enemy")) 
         {
             Debuff(hit.transform.GetComponent<CharacterStat>());
@@ -147,8 +151,7 @@ public class ClickManager : MonoBehaviour
         else
         {
             //Attack
-            stat.TakeDamaged(skillData.skillDamage, 0, 0, 0);
-            ManaSub(skillData);
+            stat.TakeDamaged(skillData.skillDamage, characterStat.attack.value, characterStat.critical.value, characterStat.accuracy.value);
             TargetDown();
             next.Invoke();
         }
@@ -161,6 +164,7 @@ public class ClickManager : MonoBehaviour
         SKilldata sKilldata = skillData;
         sKilldata.skillDamage = skillData.skillDamage + characterStat.attack.value;
 
+        ManaSub(sKilldata);
         if (skillData.isBuff)
         {
             IsBuff = false;
@@ -194,8 +198,8 @@ public class ClickManager : MonoBehaviour
             foreach (Character character in GameManager.instance.EnemyCharacterList)
             {
              
-                character.TakeDamaged(sKilldata.skillDamage, 0, 0, 0);
-                ManaSub(sKilldata);
+                character.TakeDamaged(sKilldata.skillDamage, characterStat.attack.value, characterStat.critical.value, characterStat.accuracy.value);
+             
                 TargetDown();
         
             }
@@ -280,7 +284,7 @@ public class ClickManager : MonoBehaviour
 
     public IEnumerator BuffStart(BaseStat stat , SKilldata sKilldata)
     {
-        ManaSub(sKilldata);
+      
 
         int curTurn = Battle_Silhum.Instance.TurnCount;
         if (skillData.isMulti)
@@ -307,7 +311,7 @@ public class ClickManager : MonoBehaviour
     public IEnumerator DeBuffStart(BaseStat stat, SKilldata sKilldata)
     {
         int curTurn = Battle_Silhum.Instance.TurnCount;
-        ManaSub(sKilldata);
+
         if (sKilldata.isMulti)
         {
             stat.AddMultiples(-skillData.multiValue);
@@ -341,6 +345,8 @@ public class ClickManager : MonoBehaviour
         }
         else
         {
+            NotEnoughMana notEnough = FindAnyObjectByType<NotEnoughMana>();
+            notEnough.OnManaNotEnough();
             return false;
         }
 
@@ -388,6 +394,7 @@ public class ClickManager : MonoBehaviour
             return;
         }
         characterStat.mana.curMana -= sKilldata.UsingValue;
+
     }
 
     public void SetSkilldata(SKilldata sKilldata)

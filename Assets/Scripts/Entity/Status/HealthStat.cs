@@ -48,7 +48,7 @@ public class HealthStat : BaseStat
 
     public void FullHealth()
     {
-        curHealth = value;
+        SetHealth(value * valueMultiples);
     }
 
     public override string GetValueToString()
