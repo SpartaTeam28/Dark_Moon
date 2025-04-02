@@ -233,7 +233,7 @@ public class Battle_Silhum : MonoBehaviour
     public void EndGameTrigger()
     {
 
-        if (playerDeathCount == 0)
+        if (playerDeathCount <= 0)
         {
             turn = Turn.lose;
             // //StartCoroutine(LoseGame());
@@ -241,7 +241,7 @@ public class Battle_Silhum : MonoBehaviour
             //cleartText.text = $"전투에서 패배하였습니다";
             return;
         }
-        if (enemyDeathCount == 0)
+        if (enemyDeathCount <=0)
         {
             isAlive = false;
             turn = Turn.win;
