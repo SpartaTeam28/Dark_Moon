@@ -15452,17 +15452,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f165691d98b5b2c43a432654772da7a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  subStageButtonList:
-  - {fileID: 7381348523999896570}
-  - {fileID: 7568424934703224067}
-  - {fileID: 743811789683292236}
-  - {fileID: 6734493786180151094}
-  - {fileID: 7304427334816106847}
-  - {fileID: 8270211563076841074}
-  - {fileID: 3662881705899124691}
-  closeButton: {fileID: 3495708812366749717}
-  currentStage: 1
-  currentStageName: 0
 --- !u!222 &2790638408904683363
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17798,7 +17787,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &3334420146182185456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19668,17 +19657,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f16ba1ab187a1fa43ad92180f015880d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  subStageButtonList:
-  - {fileID: 8728116386767945695}
-  - {fileID: 579792759689439421}
-  - {fileID: 8819991933337443223}
-  - {fileID: 3906528099015829190}
-  - {fileID: 3555502567802879052}
-  - {fileID: 3270775168735603885}
-  - {fileID: 6072172435370555388}
-  closeButton: {fileID: 1692152616265985985}
-  currentStage: 1
-  currentStageName: 0
 --- !u!114 &3822067803247128923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29755,17 +29733,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bacf9e3e1b8f5914ba6f33b6ddf3749e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  subStageButtonList:
-  - {fileID: 3805572884387967566}
-  - {fileID: 641178268838968109}
-  - {fileID: 6380842738644321694}
-  - {fileID: 1099610729456994041}
-  - {fileID: 651600863932677546}
-  - {fileID: 4134528446186405181}
-  - {fileID: 8390686978161380076}
-  closeButton: {fileID: 3882267777673997058}
-  currentStage: 1
-  currentStageName: 0
 --- !u!1 &5953360733598832830
 GameObject:
   m_ObjectHideFlags: 0
@@ -35252,17 +35219,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb75132d75c762642aee4ec74d054d53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  subStageButtonList:
-  - {fileID: 4390128131566234116}
-  - {fileID: 7704277293047260228}
-  - {fileID: 4152235086476110609}
-  - {fileID: 6116477997211281233}
-  - {fileID: 7370590068497808777}
-  - {fileID: 5078191083268396606}
-  - {fileID: 4862931055084871966}
-  closeButton: {fileID: 3631999249717171496}
-  currentStage: 1
-  currentStageName: 0
 --- !u!224 &7174679499155944379
 RectTransform:
   m_ObjectHideFlags: 0
