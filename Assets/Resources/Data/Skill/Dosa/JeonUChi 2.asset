@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43797c51a088d3b48ab4a8876a533138, type: 3}
+  m_Name: JeonUChi 2
+  m_EditorClassIdentifier: 
+  skillDamage: 0
+  skillTargetCount: 1
+  isHeal: 0
+  skillType: 0
+  UsingValue: 6
+  isEnemySkill: 0
+  skillStatType: 0
+  isMulti: 1
+  isBuff: 1
+  isDebuff: 0
+  multiValue: 0.3
+  duration: 4
+  skillText:
+    skillNametext: "\uB3C4\uC0AC\uB294 \uBB34\uC5C7\uC774\uB0D0"
+    skillDestext: "\uB2E8\uC77C \uC544\uAD70 \uACF5\uACA9\uB825 \uBC84\uD504"
+    skillAllAttactext: "30% 4\uD134 \uC9C0\uC18D"
+  Icon: {fileID: 21300000, guid: fccc7156f5a20d847b6f18880c73d76d, type: 3}

@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cc24d930c512bd4787339c2f28453ae, type: 3}
+  m_Name: DuUkSiNy
+  m_EditorClassIdentifier: 
+  jobName: "\uB450\uC5B5\uC2DC\uB2C8"
+  isMale: 1
+  sprite: {fileID: 21300000, guid: 47a341a7a34d7b84b9b2af2c74863b36, type: 3}
+  icon: {fileID: 21300000, guid: 6b2c21e664e871b4a832bfdfa1a2f78e, type: 3}
+  animatorController: {fileID: 22100000, guid: 3e53c32e59fe51b46ba8bdc9c209433c, type: 2}
+  attck: 5
+  defence: 20
+  maxHealth: 40
+  curHealth: 40
+  maxMana: 15
+  curMana: 15
+  critical: 20
+  accurracy: 80
+  evasion: 20
+  speed: 3
+  levelAttck: 1
+  levelDefence: 5
+  levelMaxHealth: 6
+  levelMaxMana: 0
+  levelCritical: 0
+  levelAccurracy: 0
+  leveltEvasion: 0
+  levelSpeed: 0

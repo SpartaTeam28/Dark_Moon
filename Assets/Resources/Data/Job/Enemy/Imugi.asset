@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cc24d930c512bd4787339c2f28453ae, type: 3}
+  m_Name: Imugi
+  m_EditorClassIdentifier: 
+  jobName: "\uC774\uBB34\uAE30"
+  isMale: 1
+  sprite: {fileID: 21300000, guid: 7918360c2f96e7243920233f34fbd1a4, type: 3}
+  icon: {fileID: 21300000, guid: 8ae73deda38e4a4418c5fb2fa2a98635, type: 3}
+  animatorController: {fileID: 22100000, guid: dafcc1db71e09dc4f96bc332b6a60929, type: 2}
+  attck: 20
+  defence: 20
+  maxHealth: 80
+  curHealth: 80
+  maxMana: 50
+  curMana: 50
+  critical: 20
+  accurracy: 80
+  evasion: 20
+  speed: 4
+  levelAttck: 7
+  levelDefence: 7
+  levelMaxHealth: 10
+  levelMaxMana: 7
+  levelCritical: 0
+  levelAccurracy: 0
+  leveltEvasion: 0
+  levelSpeed: 0

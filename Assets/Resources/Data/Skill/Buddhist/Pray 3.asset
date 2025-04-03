@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43797c51a088d3b48ab4a8876a533138, type: 3}
+  m_Name: Pray 3
+  m_EditorClassIdentifier: 
+  skillDamage: 1
+  skillTargetCount: 4
+  isHeal: 0
+  skillType: 3
+  skillUsingType: 0
+  UsingValue: 5
+  isEnemySkill: 0
+  skillStatType: 0
+  isMulti: 0
+  isBuff: 0
+  isDebuff: 1
+  multiValue: 0
+  duration: 0
+  skillText:
+    skillNametext: "\uC5FC\uBD88 \uC678\uCE58\uAE30"
+    skillDestext: "\uC801 \uC804\uCCB4 \uACF5\uACA9"
+    skillAllAttactext: "1 + \uACF5\uACA9\uB825"
+  Icon: {fileID: 21300000, guid: 7f44e5d4df72d7448af30e9e916a1009, type: 3}

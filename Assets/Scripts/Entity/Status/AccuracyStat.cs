@@ -1,0 +1,11 @@
+public class AccuracyStat : BaseStat
+{
+    public override void SetStat(float amount)
+    {
+        base.SetStat(amount);
+        if (value > 100)
+        {
+            value = 100f;
+        }
+    }
+}
