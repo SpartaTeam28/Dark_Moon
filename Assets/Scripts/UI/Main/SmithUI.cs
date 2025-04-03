@@ -74,7 +74,8 @@ public class SmithUI : BaseUI
     {
         UpgrageGold(populationGoldText,ref populationGold);
         uiManager.partnerMax += 1;
-  
+        partnerMaxText.text = uiManager.partnerMax.ToString();
+
     }
 
     public void OnClickUpgrageReword()
