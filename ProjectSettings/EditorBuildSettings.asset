@@ -6,39 +6,30 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/Test/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Stage/Busan.unity
-    guid: ffdd0e0e6c303e44d9b3f14d17528806
-  - enabled: 1
-    path: Assets/Scenes/Stage/Daegu.unity
-    guid: 045f2e6f2a3233c4bba7b220827ad99a
-  - enabled: 0
-    path: Assets/Scenes/YGM_TestBattle.unity
-    guid: aaa7a147bef58594fac84b0dd9b051af
-  - enabled: 1
-    path: Assets/Scenes/YGM_Scene.unity
+    path: Assets/Scenes/GameScene/YGM_Scene.unity
     guid: db7f495d97bd6e64fabd0bec32892b0e
   - enabled: 1
-    path: Assets/Scenes/Battle_Scene.unity
+    path: Assets/Scenes/GameScene/Battle_Scene/Battle_Scene.unity
     guid: 762d37c063f7c294d860f7034e8ebeb2
   - enabled: 1
-    path: Assets/Scenes/Battle_Scene/Battle_Scene_Busan.unity
+    path: Assets/Scenes/GameScene/Battle_Scene/Battle_Scene_Busan.unity
     guid: 93d376395bd86964c873e723123d7ae6
   - enabled: 1
-    path: Assets/Scenes/Battle_Scene/Battle_Scene_Dague.unity
+    path: Assets/Scenes/GameScene/Battle_Scene/Battle_Scene_Dague.unity
     guid: 05401972c82736941808ae26197142c5
   - enabled: 1
-    path: Assets/Scenes/Battle_Scene/Battle_Scene_Hanbat.unity
+    path: Assets/Scenes/GameScene/Battle_Scene/Battle_Scene_Hanbat.unity
     guid: d2741bb4470d8ae4f8c0f5bec7730600
   - enabled: 1
-    path: Assets/Scenes/Battle_Scene/Battle_Scene_Seoul.unity
+    path: Assets/Scenes/GameScene/Battle_Scene/Battle_Scene_Seoul.unity
     guid: 5a89cadac9f8f0149903b09310880ce3
   - enabled: 1
-    path: Assets/Scenes/Battle_Scene/ClearScene.unity
+    path: Assets/Scenes/GameScene/Battle_Scene/ClearScene.unity
     guid: 07f761206302b6944b756997294c48d9
   - enabled: 1
-    path: Assets/Scenes/Battle_Scene/DefeatScene.unity
+    path: Assets/Scenes/GameScene/Battle_Scene/DefeatScene.unity
     guid: 54f8d57cf6daa984aad0821044e2d138
   m_configObjects: {}
