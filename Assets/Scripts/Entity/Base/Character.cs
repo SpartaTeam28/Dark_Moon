@@ -3,7 +3,7 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     public CharacterStat stat;
-    public CharacterTraitManager traitManager;
+    public CharacterTrait traitManager;
     public CharacterInfo info;
     public AnimationHandler animationHandler;
 
@@ -18,7 +18,7 @@ public class Character : MonoBehaviour
     {
 
         stat = GetComponent<CharacterStat>();
-        traitManager = GetComponent<CharacterTraitManager>();
+        traitManager = GetComponent<CharacterTrait>();
         info = GetComponent<CharacterInfo>();
         animationHandler = GetComponent<AnimationHandler>();
 
